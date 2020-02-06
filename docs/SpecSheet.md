@@ -3,13 +3,13 @@
 ### Mobile War Game
 ##### By:
 * Mike Zurzolo <mikezurzolo@gmail.com>
-* Jeff Paulson <>
-* Colton Bonsall <>
-* Patrick O'Brien <>
-* Semih S <>
-* Steven Douglass <>
-* Tyler Roman <>
-* Vincent Paone <>
+* Jeff Paulson <paulsonj3@students.rowan.edu>
+* Colton Bonsall <Josephcbonsallv@gmail.com>
+* Patrick O'Brien <obrienp4@students.rowan.edu>
+* Semih Sahin <semihsahin2834@gmail.com>
+* Steven Douglass <smd940@gmail.com>
+* Tyler Roman <romant75@students.rowan.edu>
+* Vincent Paone <vpaone59@gmail.com>
 ##### Github: [https://github.com/mzurzolo/SeniorProject](https://github.com/mzurzolo/SeniorProject)
 ##### Slack: [https://seniorproject-zca9503.slack.com](https://seniorproject-zca9503.slack.com)
 #### Project Summary
