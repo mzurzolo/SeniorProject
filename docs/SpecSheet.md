@@ -21,8 +21,8 @@ The main goals of this project are to:
 * Implement chat room (in game chat, and a larger chat room to find a game/players)
 * Implement leader boards to track site-wide statistics
 ##### Product Features
-Platform: Web app/Platform agnostic.
-Game Concept: The game itself lies somewhere between Chess and an RPG; players choose what units to set to the field and command them against one or more other players for supremacy of the game field. Each user has game resources. Initial design will allow for 1v1 gameplay.
+* __Platform:__ Web app/Platform agnostic.
+* __Game Concept:__ The game itself lies somewhere between Chess and an RPG; players choose what units to set to the field and command them against one or more other players for supremacy of the game field. Each user has game resources. Initial design will allow for 1v1 gameplay.
 1. __Profiles and Matchmaking:__ We plan for each user to have their own profile which tracks their rank among other players based on their wins and losses. Each player must accept the Terms and Conditions of using the application in making the profile. The matchmaking engine the game uses should take each player’s rank into account. Matchmating will feature a "random match" feature for users who aren't interested in participating in the chatroom.
 1. __Chat Client:__ Players in a game lobby should have the ability to chat amongst themselves. The player will be able to disable the chat if they are not comfortable with it. Games can be requested/started from the game lobby.
 ##### Limitations
