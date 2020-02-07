@@ -15,8 +15,8 @@ pushd src/docker/django-docker
 sudo docker build -t djangotrial .
 popd
 
-echo To run the django image:
-echo     sudo docker run -p8000:8000 -it djangotrial
+printf "\nTo run the django image:\n"
+printf "    sudo docker run -p8000:8000 -it djangotrial\n"
 
-echo To run the database image:
-echo     sudo docker run -p5432:5432 -it userdatabase
+printf "\nTo run the database image:\n"
+printf "    sudo docker run -p5432:5432 -it userdatabase\n\n"
