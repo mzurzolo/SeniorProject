@@ -18,7 +18,6 @@ The purpose of this project is to deliver an interesting, fun, and convenient wa
 The main goals of this project are to:
 * Design a board-game style strategy game that can be played by multiple remote users on different devices
 * Allow users to create logins, profiles, and avatars
-* Implement chat room (in game chat, and a larger chat room to find a game/players)
 * Implement leader boards to track site-wide statistics
 ##### Product Features
 * __Platform:__ Web app/Platform agnostic.
@@ -31,3 +30,4 @@ Server-side hosting (for user profiles, and real-time state information for each
 #### Stretch Goals
 * Alternate game modes: Add the ability for users to configure game options like field size, player armies/game pieces, number of players, or RPG-style roleplaying objectives.
 * Native app ports for Android and IOS
+* Implement chat room (in game chat, and a larger chat room to find a game/players)
