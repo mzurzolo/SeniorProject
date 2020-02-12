@@ -9,5 +9,6 @@ ENV MYSQL_PASSWORD=password
 RUN yum clean all
 RUN yum upgrade -y
 COPY setup.sh /setup.sh
-RUN ["setup.sh"]
+RUN["mysqld"]
+RUN ["/setup.sh"]
 CMD ["mysqld"]
