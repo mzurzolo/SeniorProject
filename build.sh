@@ -16,6 +16,11 @@ pushd src/docker/django-docker
 sudo docker build -t djangotrial .
 popd
 
+container=$(sudo docker run --name mysqldb -d mysqldb)
+sleep 20s
+sudo docker exec -d $container bash /setup.sh
+sudo docker stop mysqldb
+
 printf "\nTo run the django image:\n"
 printf "    sudo docker run -p8000:8000 -d djangotrial\n"
 
