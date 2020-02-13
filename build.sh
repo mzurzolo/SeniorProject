@@ -6,7 +6,7 @@ if [ "$0" = "$BASH_SOURCE" ]; then
 fi
 
 
-# build the django image
+# build the database image
 pushd src/docker/db-docker
 sudo docker build -t mysqldb .
 popd
