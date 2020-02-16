@@ -5,7 +5,6 @@ if [ "$0" = "$BASH_SOURCE" ]; then
     exit 1
 fi
 
-
 # build the database image
 pushd src/docker/db-docker
 sudo docker build -t mysqldb .
@@ -13,11 +12,13 @@ popd
 
 # build the django image
 pushd src/docker/django-docker
-sudo docker build -t djangotrial .
+sudo docker build -t djangotest .
 popd
 
-printf "\nTo run the django image:\n"
-printf "    sudo docker run -p8000:8000 -d djangotrial\n"
+sudo docker network create db-django-net
 
-printf "\nTo run the database image:\n"
-printf "    sudo docker run -p 3306:3306 -d mysqldb \n"
+printf "\nTo run the docker containers, run:\n"
+printf "    . run.sh\n"
+
+printf "\nTo stop/remove/restart the docker containers, run:\n"
+printf "    . rerun.sh\n"
