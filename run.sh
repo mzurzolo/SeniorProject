@@ -1,12 +1,28 @@
 #!/bin/sh
 
+# I put this in for consistency, so all developer utility scripts are run the
+# same way
 if [ "$0" = "$BASH_SOURCE" ]; then
-    echo "Run build.sh with source. (source build.sh, or . build.sh)"
+    echo "Run this with source. (source run.sh, or . run.sh)"
     exit 1
 fi
 
-sudo docker run --name database --network db-django-net -p 3306:3306 -d mysqldb
+# $1 is the first argument passed to the function.
+# Arguments are space-delimited, no parentheses
+function start_container {
+  sudo docker run --name $1 --network db-django-net -p $2 -d $3
+}
 
-until [[ $(sudo docker logs database) == *"[Entrypoint] MySQL init process done. Ready for start up."* ]] ; do sleep 1s ; done
+# Start the database container.
+# The port will only be exposed while we're developing
+start_container database 3306:3306 mysqldb
 
-sudo docker run --name webserver --network db-django-net  -p 8000:8000 -d djangotest
+# This gives the database container time to come up and initialize
+READY_LOG="[Entrypoint] MySQL init process done. Ready for start up."
+until [[ $(sudo docker logs database) == *"${READY_LOG}"* ]] ; do
+  sleep 1s
+done
+
+# Start the webserver.
+# expose port 8000 (we'll probably change the port number to 443 in production)
+start_container webserver 8000:8000 djangotest

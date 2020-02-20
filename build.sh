@@ -1,7 +1,9 @@
 #!/bin/sh
 
+# I put this in for consistency, so all developer utility scripts are run the
+# same way
 if [ "$0" = "$BASH_SOURCE" ]; then
-    echo "Run build.sh with source. (source build.sh, or . build.sh)"
+    echo "Run this with source. (source build.sh, or . build.sh)"
     exit 1
 fi
 

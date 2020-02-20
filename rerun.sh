@@ -1,18 +1,36 @@
 #!/bin/sh
 
+# I put this in for consistency, so all developer utility scripts are run the
+# same way
 if [ "$0" = "$BASH_SOURCE" ]; then
-    echo "Run build.sh with source. (source build.sh, or . build.sh)"
+    echo "Run this with source. (source rerun.sh, or . rerun.sh)"
     exit 1
 fi
 
-sudo docker run --name database --network db-django-net -p 3306:3306 -d mysqldb || \
-sudo docker stop database ; \
-sudo docker rm database ; \
-sudo docker run --name database --network db-django-net -p 3306:3306 -d mysqldb
+# $1 is the first argument passed to the function.
+# Arguments are space-delimited, no parentheses
+function start_container {
+  sudo docker run --name $1 --network db-django-net -p $2 -d $3
+}
 
-until [[ $(sudo docker logs database) == *"[Entrypoint] MySQL init process done. Ready for start up."* ]] ; do sleep 1s ; done
+function restart_container {
+  sudo docker stop $1
+  sudo docker rm $1
+  sudo docker run --name $1 --network db-django-net -p $2 -d $3
+}
 
-sudo docker run --name webserver --network db-django-net  -p 8000:8000 -it djangotest || \
-sudo docker stop webserver ; \
-sudo docker rm webserver ; \
-sudo docker run --name webserver --network db-django-net  -p 8000:8000 -it djangotest
+# If starting the database container fails, restart it
+# The port will only be exposed while we're developing
+start_container database 3306:3306 mysqldb || \
+restart_container database 3306:3306 mysqldb
+
+# This gives the database container time to come up and initialize
+READY_LOG="[Entrypoint] MySQL init process done. Ready for start up."
+until [[ $(sudo docker logs database) == *"${READY_LOG}"* ]] ; do
+  sleep 1s
+done
+
+# If starting the webserver container fails, restart it
+# expose port 8000 (we'll probably change the port number to 443 in production)
+start_container webserver 8000:8000 djangotest || \
+restart_container webserver 8000:8000 djangotest
