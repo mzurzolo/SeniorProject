@@ -649,7 +649,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Who wins?
+  m_Text: Choose your winner! (Press Space)
 --- !u!222 &1439858225
 CanvasRenderer:
   m_ObjectHideFlags: 0

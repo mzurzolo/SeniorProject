@@ -9,22 +9,22 @@ public class Game_System : MonoBehaviour
     public GameObject Text;
     private Player[] players;
     private Random rnd = new Random();
-
+    private string assetPath;
 
     // Start is called before the first frame update
     void Start()
     {
         players = player_container.GetComponentsInChildren<Player>();
+        assetPath = Application.dataPath;
+        Debug.Log(assetPath);
+    }
 
-        Text.GetComponent<UnityEngine.UI.Text>().text += " = " + players[Random.Range(0, 2)].name;
-
-        //create Folder
-
-
-        string m_Path = Application.dataPath;
-
-        //Output the Game data path to the console
-        Debug.Log("dataPath : " + m_Path);
-        File.WriteAllText(m_Path + "/winner.txt", "Winner is " + players[Random.Range(0, 2)].name);
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Text.GetComponent<UnityEngine.UI.Text>().text = "Winner = " + players[Random.Range(0, 2)].name;
+            File.WriteAllText(assetPath + "/winner.txt", "Winner is " + players[Random.Range(0, 2)].name);
+        }
     }
 }
