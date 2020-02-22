@@ -7,7 +7,7 @@ public class Game_System : MonoBehaviour
 {
     public GameObject player_container;
     public GameObject Text;
-    private Player[] players;
+    public Player[] players;
     private Random rnd = new Random();
     private string assetPath;
 
