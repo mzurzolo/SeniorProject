@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Game_System.cs" />
+    <Compile Include="Assets\Scripts\Grid_Instance.cs" />
+    <Compile Include="Assets\Scripts\Grid_Space.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <None Include="Assets\winner.txt" />
     <Reference Include="Unity.Timeline.Editor">
