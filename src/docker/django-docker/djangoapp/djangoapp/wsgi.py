@@ -10,12 +10,11 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
+from django.contrib.auth import get_user_model
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoapp.settings")
 
 application = get_wsgi_application()
 
-from django.contrib.auth import get_user_model
-
 User = get_user_model()
-User.objects.create_superuser("admin", "admin@example.com", "adminpass")
+User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')
