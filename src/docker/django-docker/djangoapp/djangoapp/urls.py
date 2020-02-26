@@ -18,7 +18,9 @@ from django.urls import include, path
 from django.views.generic.base import TemplateView
 from rest_framework import routers, serializers, viewsets
 from django.conf.urls import url
-from django.contrib.auth.models import User
+from usersrestful.models import UserProfile
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 urlpatterns = [
