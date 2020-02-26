@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# uncomment dbHost = 127.0.0.1 to run django outside of a docker container
+dbHost = "database"
+# dbHost = "127.0.0.1"
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -84,7 +88,7 @@ DATABASES = {
         "NAME": "users",
         "USER": "default",
         "PASSWORD": "password",
-        "HOST": "database",
+        "HOST": dbHost,
         "PORT": "3306",
     }
 }
@@ -100,7 +104,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-AUTH_USER_MODEL = "usersrestful.UserProfile"
+AUTH_USER_MODEL = "usersrestful.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
