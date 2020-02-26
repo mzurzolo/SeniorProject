@@ -17,4 +17,4 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoapp.settings")
 application = get_wsgi_application()
 
 User = get_user_model()
-User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')
+User.objects.create_superuser("admin", "admin@example.com", "adminpass")
