@@ -25,7 +25,7 @@ SECRET_KEY = "$iuqv)@$vdic3%#q-r59k#htld3#3x6pem_wzk$cv&4#dznpf*"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["webserver"]
+ALLOWED_HOSTS = ["webserver", "localhost"]
 
 # uncomment dbHost = 127.0.0.1 to run django outside of a docker container
 dbHost = "database"
