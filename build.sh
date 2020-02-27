@@ -9,17 +9,17 @@ fi
 
 # build the database image
 pushd src/docker/db-docker
-sudo docker build --no-cache -t mysqldb .
+sudo docker build -t mysqldb .
 popd
 
 # build the django image
 pushd src/docker/django-docker
-sudo docker build --no-cache -t djangotest .
+sudo docker build -t djangotest .
 popd
 
 # build the django image
 pushd src/docker/react-docker
-sudo docker build --no-cache -t react .
+sudo docker build -t react .
 popd
 
 sudo docker network create db-django-net
