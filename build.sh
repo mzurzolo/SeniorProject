@@ -17,6 +17,11 @@ pushd src/docker/django-docker
 sudo docker build -t djangotest .
 popd
 
+# build the django image
+pushd src/docker/react-docker
+sudo docker build -t react .
+popd
+
 sudo docker network create db-django-net
 
 printf "\nTo run the docker containers, run:\n"

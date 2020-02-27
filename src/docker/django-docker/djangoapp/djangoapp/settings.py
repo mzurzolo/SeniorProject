@@ -25,7 +25,7 @@ SECRET_KEY = "$iuqv)@$vdic3%#q-r59k#htld3#3x6pem_wzk$cv&4#dznpf*"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["webserver"]
 
 # uncomment dbHost = 127.0.0.1 to run django outside of a docker container
 dbHost = "database"
@@ -58,12 +58,10 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:5000",
-    "http://127.0.0.1:5000",
-)
+CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ORIGIN_WHITELIST = (
+#    "http://reactapi:5000",
+#)
 
 ROOT_URLCONF = "djangoapp.urls"
 
