@@ -11,7 +11,7 @@ ENV HOSTNAME reactapi
 
 # install and cache app dependencies
 COPY frontend /app
-RUN npm install -g start-react-app
+RUN yarn global add start-react-app
 RUN yarn global add http-proxy-middleware
 
 RUN yarn build
