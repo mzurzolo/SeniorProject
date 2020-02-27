@@ -31,6 +31,8 @@ Host seniorProject
   LocalForward 8000 localhost:8000
   # Port forward for MySQL
   LocalForward 3306 localhost:3306
+  # Port forward for React
+  LocalForward 3000 localhost:3000
   User mzurzolo
   LogLevel ERROR
 ```
