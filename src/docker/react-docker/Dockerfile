@@ -13,6 +13,7 @@ ENV HOSTNAME reactapi
 COPY frontend /app
 RUN yarn global add start-react-app
 RUN yarn global add http-proxy-middleware
+RUN yarn global add react-scripts
 
 RUN yarn build
 RUN yarn global add serve
