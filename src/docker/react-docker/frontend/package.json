@@ -13,7 +13,8 @@
     "react": "^16.13.0",
     "react-dom": "^16.12.0",
     "react-proxy-loader": "^0.3.5",
-    "react-scripts": "3.4.0",
+    "react-scripts": "^3.4.0",
+    "react-unity-webgl": "^7.1.10",
     "start-react-app": "^0.1.9"
   },
   "scripts": {
