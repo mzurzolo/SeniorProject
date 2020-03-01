@@ -2,6 +2,8 @@
 Senior Project, Group Project
 ## [Specification Sheet](docs/SpecSheet.md)
 
+## [Design Doc](docs/DesignDoc.md)
+
 ### Get the project:
 `git clone git@github.com:mzurzolo/SeniorProject.git`
 
@@ -32,7 +34,7 @@ Host seniorProject
   # Port forward for MySQL
   LocalForward 3306 localhost:3306
   # Port forward for React
-  LocalForward 3000 localhost:3000
+  # LocalForward 3000 localhost:3000
   User mzurzolo
   LogLevel ERROR
 ```
