@@ -21,10 +21,28 @@
 ![GameScreen2](pics/GameScreen2.png)
 
 ##### RESTful API:
+* [/api]
+* [/auth]
+* [/api/users]
+* [/api/login]
+* [/api/signup]
 
 ##### User Authentication / Data Security Considerations:
+* All passwords will be hashed; plaintext password information will never be saved or manipulated.
+* UUIDs will be used instead of
 
 ##### Tech Stack:
+* EC2 / AWS:
+  * We chose to use AWS to host our project because launching EC2 instances was a straightforward process.
+  * The EC2 instance runs Ubuntu 18.04.4 LTS (Bionic Beaver) for its stability and usability.
+* Docker:
+  * We use docker to containerize each major system component.
+* Database:
+  * MySQL
+* Webserver:
+  * Django
+* Frontend:
+  * ReactJS
 
 ##### Goals:
 
