@@ -38,7 +38,7 @@ export class App extends React.Component {
    });
 
    this.unityContent.on("loaded", () => {
-     console.log("!!!");
+     console.log("Unity loaded!");
      var u = this.state.users.map( function(user) {
          return user.username;
          });
@@ -52,6 +52,7 @@ export class App extends React.Component {
        "SetName",
        u[1]
      );
+     console.log("Users assigned!");
    });
   }
 
