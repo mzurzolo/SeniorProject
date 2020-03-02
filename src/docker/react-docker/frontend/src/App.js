@@ -1,6 +1,10 @@
-import React, { Component } from 'react';
+// Get started by creating a new React
+// component and importing the libraries!
 
-class App extends Component {
+import React from "react";
+import Unity, { UnityContent } from "react-unity-webgl";
+
+export class App extends React.Component {
   state = {
     users: []
   };
@@ -17,19 +21,30 @@ class App extends Component {
     }
   }
 
-  render() {
-    return (
-      <div>
-        {this.state.users.map(item => (
-          <div key={item.id}>
-            <h1>Username: {item.username}</h1>
-            <h2><span>Email: {item.email}</span></h2>
-            <h2><span>UUID: {item.id}</span></h2>
-            <h2><span>URL: {item.url}</span></h2><br></br>
-          </div>
-        ))}
-      </div>
+  constructor(props) {
+    super(props);
+
+    // Next up create a new Unity Content object to
+    // initialise and define your WebGL build. The
+    // paths are relative from your index file.
+
+    this.unityContent = new UnityContent(
+      "MyGame/Build/MyGame.json",
+      "MyGame/Build/UnityLoader.js"
     );
+
+    this.unityContent.on("GameOver", winner => {
+     console.log("Winner is " + winner);
+     });
+
+  }
+
+  render() {
+
+    // Finally render the Unity component and pass
+    // the Unity content through the props.
+
+    return <Unity unityContent={this.unityContent} />;
   }
 }
 
