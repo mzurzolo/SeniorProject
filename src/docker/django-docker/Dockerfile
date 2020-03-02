@@ -3,7 +3,7 @@ FROM debian:buster-slim
 
 # get updates, install wget (command-line download utility)
 RUN apt-get update && apt-get -y upgrade \
-  && apt-get install -y tzdata  wget apt-utils \
+  && apt-get install -y tzdata  wget apt-utils curl \
   && apt clean all
 
 # get the mysql repository info (repo location, public key for signed packages)
@@ -17,7 +17,7 @@ RUN wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb \
 # this copy command manually puts the correct configuration in place
 COPY mysql.list /etc/apt/sources.list.d/mysql.list
 
-# install more packages we need for django and mysql
+# install more packages we need for django, react, and mysql
 RUN apt-get install -y python3-venv \
   libmysqlclient-dev \
   build-essential \
