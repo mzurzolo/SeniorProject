@@ -27,4 +27,9 @@ public class Player : MonoBehaviour
             gs.meshRenderer.material = gs.defMat;
         }
     }
+
+    public void SetName(string new_name)
+    {
+        name = new_name;
+    }
 }

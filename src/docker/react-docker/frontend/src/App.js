@@ -29,14 +29,30 @@ export class App extends React.Component {
     // paths are relative from your index file.
 
     this.unityContent = new UnityContent(
-      "MyGame/Build/MyGame.json",
-      "MyGame/Build/UnityLoader.js"
+      "/Build/public.json",
+      "/Build/UnityLoader.js"
     );
 
     this.unityContent.on("GameOver", winner => {
      console.log("Winner is " + winner);
-     });
+   });
 
+   this.unityContent.on("loaded", () => {
+     console.log("!!!");
+     var u = this.state.users.map( function(user) {
+         return user.username;
+         });
+     this.unityContent.send(
+        "Player1",
+        "SetName",
+        u[0]
+      );
+    this.unityContent.send(
+       "Player2",
+       "SetName",
+       u[1]
+     );
+   });
   }
 
   render() {

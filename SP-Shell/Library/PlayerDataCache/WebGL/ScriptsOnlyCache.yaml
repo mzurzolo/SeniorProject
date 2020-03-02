@@ -747,4 +747,4 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Tyler/Documents/GitHub/SeniorProject/src/docker/react-docker/frontend/public/MyGame
+  playerPath: C:/Users/Tyler/Documents/GitHub/SeniorProject/src/docker/react-docker/frontend/public
