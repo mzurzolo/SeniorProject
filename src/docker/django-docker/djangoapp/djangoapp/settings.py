@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["webserver", "localhost"]
 
 # uncomment dbHost = 127.0.0.1 to run django outside of a docker container
 dbHost = "database"
-# dbHost = "127.0.0.1"
+dbHost = "127.0.0.1"
 
 # Application definition
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "accounts.apps.AccountsConfig",
     "usersrestful.apps.UsersrestfulConfig",
+    "chatroom.apps.ChatroomConfig",
     "rest_framework",
     "corsheaders",
 ]
@@ -59,9 +60,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-#CORS_ORIGIN_WHITELIST = (
+# CORS_ORIGIN_WHITELIST = (
 #    "http://reactapi:5000",
-#)
+# )
 
 ROOT_URLCONF = "djangoapp.urls"
 
@@ -97,7 +98,7 @@ DATABASES = {
         "USER": "default",
         "PASSWORD": "password",
         "HOST": dbHost,
-        "PORT": "3306",
+        "PORT": "33306",
     }
 }
 
