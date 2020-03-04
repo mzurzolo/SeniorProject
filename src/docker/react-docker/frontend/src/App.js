@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Login from './containers/login';
+import GameDescription from './containers/GameDescription';
+import GamePicture from './containers/GamePicture';
+import Leaderboard from './containers/Leaderboard';
+import './App.css';
 
 class App extends Component {
   state = {
@@ -19,7 +24,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div id='app'>
+        <GameDescription />
+        <Login />
+        <GamePicture />
+        <Leaderboard />
+
         {this.state.users.map(item => (
           <div key={item.id}>
             <h1>Username: {item.username}</h1>
