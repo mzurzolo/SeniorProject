@@ -44,10 +44,16 @@
 
 ##### Tech Stack:
 * Platform
+  * WebApp, Platform independent
+  * The backend runs in an EC2 Instance of 
 * Development Tools
+  *
 * RESTful API's (third party I think?)
 * Backend (AWS, Frameworks, Database, etc)
-* Programming Languages
+* Programming Languages:
+  * The Database uses SQL
+  * The Project's base infrastructure is primarily python, and uses the Django Framework
+  *
 * EC2 / AWS:
   * We chose to use AWS to host our project because launching EC2 instances was a straightforward process.
   * The EC2 instance runs Ubuntu 18.04.4 LTS (Bionic Beaver) for its stability and usability.
