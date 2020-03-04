@@ -60,7 +60,7 @@
 * Frontend:
   * ReactJS
 * Game Engine:
-  * Unity
+  * Unity -- We are using unity?
 
 ##### Goals:
 
