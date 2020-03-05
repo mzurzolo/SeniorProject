@@ -3,7 +3,11 @@
 ### Fighting Roses / Rose Wars
 
 ##### High Level Description:
-* We need a system architecture diagram here
+* Rose Wars is a chess-style turn-based game for two players
+* The game runs through a webpage, and users can either login or sign up when they start the game.
+* After logging in, players are taken to a menu, where they can view their profile, view leaderboards, or play the game.
+* The game consists of two players taking turns controlling 6 units each, comprised of at least 1 General and 5 units chosen out of a random selection from a deck. On a player's turn, they can command their units to take 3 Actions and a possible Reaction between all of them. Actions include Movement, Attacking, and Charging. Each different type of unit has the ability to take Reactions that are unique to them.
+* Players win by eliminating all of their opponent's units.
 
 ##### Approaches Considered:
 * Unity vs React Rendering:
