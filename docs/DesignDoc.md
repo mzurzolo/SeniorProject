@@ -51,15 +51,16 @@
 ##### Tech Stack:
 * Platform
   * WebApp, Platform independent, using Node.js LTS 12.16.1
-  * The backend runs in an EC2 Instance of
+  * The game itself runs inside the WebApp, using the Unity-React-WebGL library to integrated with the rest of the stack.
 * Development Tools
-  *
-* RESTful API's (third party I think?)
+  * The team uses a variety of tools for local development. We ensure consistency in toolset only where required. Required areas of tool consistency include:
+    * Version Control: We use git, hosted on GitHub
+    * Package managers: we use pip for python, and yarn to manage javascript dependencies
+  * Areas where developers are 
 * Backend (AWS, Frameworks, Database, etc)
 * Programming Languages:
-  * The Database uses SQL
-  * The Project's base infrastructure is primarily python, and uses the Django Framework
-  *
+  * The Project uses a MySQL database to manage users and saved game state, primarily through an ORM API, with the exception of an SQL initialization script, which runs one time when a new database is created.
+  * The Project's base infrastructure is primarily python, and uses the Django Framework.
 * EC2 / AWS:
   * We chose to use AWS to host our project because launching EC2 instances was a straightforward process.
   * The EC2 instance runs Ubuntu 18.04.4 LTS (Bionic Beaver) for its stability and usability.
