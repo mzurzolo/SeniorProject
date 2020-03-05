@@ -76,6 +76,26 @@
   * Unity-React-WebGL is an open-source library of functions that expose Unity Web APIs using React, allowing us to seamlessly communicate between Unity and the backend using React as a liaison.
 
 ##### Goals:
+* Implement React Components to display landing page information including:
+    * Game Description.
+    * Login.
+    * Leaderboard.
+    * Game Picture.
+  * Implement responsive CSS design for viewing on different screen sizes
+  *  Successfully create an account on the signup page by hitting API/users end point.
+  * Successfully login from the landing page by hitting API/users end point.
+  * Establish a router within react linking pages as they are made.
+  * Developed templates for units on the game board.
+  * Secure connection between Unity and React (This is done)
+  * Get a working Grid with intractable entities.
+  * Have a basic turn system where each player commits moves and ends their turn one at a time.
+  * Replace shell scripts that I'm using to manage containers with a _docker-compose.yaml_ file.
+  * Add fields to the user model to support the leader board, and possibly a friends list.
+  * Start adding game support to Django (save game features, p2p communication for 2 player gameplay, possibly leveraging code Vince wrote for the chatroom).
+3:18
+* Have working chat functionality.
+  * Embed chat in home page.
+  * And I'll think of more and add them here.
 
 ##### Tasks Assigned:
 * Mike Zurzolo <mikezurzolo@gmail.com>
