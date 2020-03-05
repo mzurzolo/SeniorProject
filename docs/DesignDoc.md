@@ -49,15 +49,19 @@
 * UUIDs will be used instead of
 
 ##### Tech Stack:
-* Platform
+* __Platform__
   * WebApp, Platform independent, using Node.js LTS 12.16.1
   * The game itself runs inside the WebApp, using the Unity-React-WebGL library to integrated with the rest of the stack.
-* Development Tools
+* __Development Tools__
   * The team uses a variety of tools for local development. We ensure consistency in toolset only where required. Required areas of tool consistency include:
     * Version Control: We use git, hosted on GitHub
     * Package managers: we use pip for python, and yarn to manage javascript dependencies
-  * Areas where developers are 
-* Backend (AWS, Frameworks, Database, etc)
+  * Areas where developers use the tools they're most comfortable with:
+    * IDE/Text Editors (including Atom, and VSCode)
+    * Database GUI Clients (dBeaver or MySQL Toolbench)
+    * Code Quality tools, including black, pylint, and eslint
+    *
+* __Backend__
 * Programming Languages:
   * The Project uses a MySQL database to manage users and saved game state, primarily through an ORM API, with the exception of an SQL initialization script, which runs one time when a new database is created.
   * The Project's base infrastructure is primarily python, and uses the Django Framework.
