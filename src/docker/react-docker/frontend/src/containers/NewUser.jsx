@@ -16,23 +16,18 @@ export default function NewUser(props) {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
+    //event.preventDefault();
+    userAction();
   }
-  
+
    function userAction(){
-    axios({
-        method: "post",
-        url: "http://localhost:8000/api/users/",
-        data: {
-          username: "AAHHH_test",
-          email: "",
-          id: "",
-          group: "[]"
-        }
+    axios.post("/api/users/", {
+        username: "AAHHH_test",
+        email: "ahtest@email.com"
       });
-        
+
 }
-   
+
 
   return (
     <div className="NewUser">
@@ -60,10 +55,9 @@ export default function NewUser(props) {
             autoFocus
             type="password"
             value={password}
-            onChange={e => setPassword(e.target.value)}         
+            onChange={e => setPassword(e.target.value)}
           />
         </FormGroup>
-        
         <Button block bsSize="small" enabled={!validateForm()} type="submit" onclick={userAction()}>
           Create Account
 
