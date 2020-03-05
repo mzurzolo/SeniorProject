@@ -25,5 +25,5 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("api/", include("usersrestful.urls")),
-    path('chatroom/', include('chatroom.urls')),
+    path('chat/', include('chat.urls')),
 ]
