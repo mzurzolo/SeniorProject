@@ -34,8 +34,13 @@ export default function Login(props) {
             type="password"
           />
         </FormGroup>
+        
         <Button block bsSize="small" disabled={!validateForm()} type="submit">
           Login
+        </Button>
+        <p>No account?</p>
+        <Button block bsSize="small" disabled={!validateForm()} type="submit">
+          Register
         </Button>
       </form>
     </div>
