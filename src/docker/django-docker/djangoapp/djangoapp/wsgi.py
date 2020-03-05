@@ -17,4 +17,10 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoapp.settings")
 application = get_wsgi_application()
 
 User = get_user_model()
-User.objects.create_superuser("admin", "admin@example.com", "adminpass")
+
+# This still isn't a safe way to create an admin user...
+try:
+    User.objects.create_superuser("admin", "admin@example.com", "adminpass")
+
+except Exception as e:
+    print(e)

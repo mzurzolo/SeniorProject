@@ -32,6 +32,7 @@ dbHost = "database"
 # dbHost = "127.0.0.1"
 
 # Application definition
+AUTH_USER_MODEL = "usersrestful.RUser"
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "accounts.apps.AccountsConfig",
     "usersrestful.apps.UsersrestfulConfig",
     "rest_framework",
     "corsheaders",
@@ -59,9 +59,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-#CORS_ORIGIN_WHITELIST = (
+# CORS_ORIGIN_WHITELIST = (
 #    "http://reactapi:5000",
-#)
+# )
 
 ROOT_URLCONF = "djangoapp.urls"
 
@@ -112,7 +112,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-AUTH_USER_MODEL = "usersrestful.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
