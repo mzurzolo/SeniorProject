@@ -92,10 +92,8 @@
   * Replace shell scripts that I'm using to manage containers with a _docker-compose.yaml_ file.
   * Add fields to the user model to support the leader board, and possibly a friends list.
   * Start adding game support to Django (save game features, p2p communication for 2 player gameplay, possibly leveraging code Vince wrote for the chatroom).
-3:18
-* Have working chat functionality.
+  * Have working chat functionality.
   * Embed chat in home page.
-  * And I'll think of more and add them here.
 
 ##### Tasks Assigned:
 * Mike Zurzolo <mikezurzolo@gmail.com>
