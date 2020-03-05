@@ -6,7 +6,8 @@
 * We need a system architecture diagram here
 
 ##### Approaches Considered:
-
+* Unity vs React Rendering:
+  * We considered the pros and cons of using Unity versus using React itself to render our board. While using React to do this would mean we'd have a better understanding of our entire code base, we decided that we'd reach higher fidelity if we took advantage of the powerful tools provided by Unity. This decision was helped with the discovery of the Unity-React-WebGL library, which allows Unity to connect to React seamlessly and easily.
 ##### Mockups:
 * Homepage
 ![Homepage](pics/Homepage.png)
@@ -37,6 +38,7 @@
 
 ##### Functionality Provided by each screen:
 * Explain which RESTful endpoints are accessed by the screen to provide the specified functionality.
+* The Game Screen provides the main point of engagement with the user. Here, we will use Unity to deliver fun experiences to the user.
 
 ##### User Authentication / Data Security Considerations:
 * All passwords will be hashed; plaintext password information will never be saved or manipulated.
@@ -65,8 +67,9 @@
   * Django
 * Frontend:
   * ReactJS
-* Game Engine:
-  * Unity -- We are using unity?
+* Unity Game Engine:
+  * Unity is a widely-used game engine with a variety of readily available assets and tools. We think this will make it on-the-whole easier to develop with than using a custom-built solution.
+  * Unity-React-WebGL is an open-source library of functions that expose Unity Web APIs using React, allowing us to seamlessly communicate between Unity and the backend using React as a liaison.
 
 ##### Goals:
 
