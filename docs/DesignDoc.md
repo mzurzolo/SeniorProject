@@ -50,8 +50,8 @@
 
 ##### Tech Stack:
 * Platform
-  * WebApp, Platform independent
-  * The backend runs in an EC2 Instance of 
+  * WebApp, Platform independent, using Node.js LTS 12.16.1
+  * The backend runs in an EC2 Instance of
 * Development Tools
   *
 * RESTful API's (third party I think?)
