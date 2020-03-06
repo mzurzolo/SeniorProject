@@ -113,6 +113,23 @@
 * All passwords will be hashed; plaintext password information will never be saved or manipulated.
 * UUIDs will be used instead of sequential user numbers.
 * The app uses Djangos framework to hash the passwords as they are being stored within the database
+* Django contains some integrated applications to manage security, authentication and authorization. These include Django admin, auth, sessions, messages and more. Each of these provides a vital function to data security and user management.
+* Django admin will automatically create an admin interface that reads metadata from provided models to give a quick interface that allows trusted users to manage content
+* Django auth is the actual user-password manager
+  * Auth will hash passwords with a combination of metadata about the password and the password itself and store it in a database – Auth     will not store raw passwords
+  * Uses Password-Based Key Derivation Function 2 (PBKDF2) as the default algorithm of storing passwords
+    * -algorithm-$-iterations-$-salt-$-hash-
+    * Requires a massive amount of computing time to break
+  * Django provides other methods and algorithms for storing passwords which can be added or removed via the PASSWORD_HASHERS setting
+* Auth controls the majority of authentication and authorization for the system
+  * With third-party installations, it is possible to add more functionality including password strength checking, login attempt throttling, third-party authentication, etc
+* Django sessions provides full functionality for anonymous sessions
+  * One can store and retrieve arbitrary data on a per-site-visitor basis
+  *	Data is stored server side and abstracts the sending or receiving of cookies
+  * Cookies only contain the ID of the session; they do not contain any real data
+  * By default, Django will store session information in the database, but this is only for convenience rather than optimal functionality
+    * Django can be modified to store session data on a local environment or in cache for best performance
+
 ##### Tech Stack:
 * __Platform__
   * WebApp, Platform independent, using Node.js LTS 12.16.1
