@@ -1,6 +1,6 @@
 <h2 id=<span style="text-align:center;">Project Specification</span></h2>
 
-### Mobile War Game
+### Fighting Roses / Rose Wars
 ##### By:
 * Mike Zurzolo <mikezurzolo@gmail.com>
 * Jeff Paulson <paulsonj3@students.rowan.edu>
