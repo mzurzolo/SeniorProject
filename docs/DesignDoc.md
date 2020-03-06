@@ -9,6 +9,7 @@
 * The game consists of two players taking turns controlling 6 units each, comprised of at least 1 General and 5 units chosen out of a random selection from a deck. On a player's turn, they can command their units to take 3 Actions and a possible Reaction between all of them. Actions include Movement, Attacking, and Charging. Each different type of unit has the ability to take Reactions that are unique to them.
 * Players win by eliminating all of their opponent's units.
 * The webapp is hosted on an AWS EC2 server, and uses a MySQL database, Django for the backend infrastructure, and Node.js (using the React Framework) for the frontend. The game itself runs on the Unity Game Engine.
+
 ![archpicture](pics/arch.png)
 ##### Approaches Considered:
 * Unity vs React Rendering:
@@ -17,25 +18,44 @@
 * Homepage
 ![Homepage](pics/Homepage.png)
   * [/api/users/login]
-  * [/api/users/login]
+  * [/api/users/wincount]
+#####
 * SignupPage
 ![SignupPage](pics/SignupPage.png)
+  * [/api/users/registration]
+#####
 * Dashboard
 ![Dashboard](pics/Dashboard.png)
+  * [/api/users/wincount]
+  * [/api/users/logout]
+#####
 * UserProfile
 ![UserProfile](pics/UserProfile.png)
-* GameScreen
+  * [/api/users/editprofile]
+  * [/api/users/logout]
+#####
+* GameSetup
 ![GameScreen](pics/GameScreen.png)
-* GameScreen2
+  * [/api/game/startgame]
+  * [/api/chat/newchat]
+  * [/api/users/logout]
+#####
+* GamePlay
 ![GameScreen2](pics/GameScreen2.png)
+  * [/api/game/resumegame/game_uuid]
+  * [/api/game/resumegame/savestate]
+  * [/api/chat/join]
+  * [/api/users/logout]
 
 ##### Navigation Between Screens:
 * [Click here to click through the slides](https://xd.adobe.com/view/0afd475f-d31e-4b11-7b1d-ffa94a47ca39-7ccc/)
-* ![sequence](pics/sequence.png)
+
+
+ ![navflow](pics/navflow.png)
 
 ##### Backend Information:
-* Database schema: Describe the attributes for all tables in the database
-
+* Database schema: 
+ ![db_diag](pics/db_diag.png)
 ##### RESTful API:
 * A list of all RESTful endpoints that will be implemented. For each endpoint, list the endpoint’s functionality and it’s input and output payloads.
 * [/api]
