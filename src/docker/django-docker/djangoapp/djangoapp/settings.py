@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["webserver", "localhost"]
 
 # uncomment dbHost = 127.0.0.1 to run django outside of a docker container
 dbHost = "database"
-dbHost = "127.0.0.1"
+# dbHost = "127.0.0.1"
 
 # Application definition
 AUTH_USER_MODEL = "usersrestful.RUser"
