@@ -48,13 +48,13 @@
   * [/api/users/logout]
 
 ##### Navigation Between Screens:
-* [Click here to click through the slides](https://xd.adobe.com/view/0afd475f-d31e-4b11-7b1d-ffa94a47ca39-7ccc/)
+* [Click here to click through the screens](https://xd.adobe.com/view/0afd475f-d31e-4b11-7b1d-ffa94a47ca39-7ccc/)
 
 
  ![navflow](pics/navflow.png)
 
 ##### Backend Information:
-* Database schema: 
+* Database schema:
  ![db_diag](pics/db_diag.png)
 ##### RESTful API:
 * A list of all RESTful endpoints that will be implemented. For each endpoint, list the endpoint’s functionality and it’s input and output payloads.
@@ -139,34 +139,32 @@
     * Unity-React-WebGL is an open-source library of functions that expose Unity Web APIs using React, allowing us to seamlessly communicate between Unity and the backend using React as a liaison.
 
 ##### Goals, and Who They've Been Assigned to:
-* Steven Douglass <smd940@gmail.com>
+* __Steven Douglass <smd940@gmail.com>__
   * Implement React Components to display landing page information including:
     * Game Description.
     * Login.
     * Leaderboard.
     * Game Picture.
   * Implement responsive CSS design for viewing on different screen sizes
-* Successfully create an account on the signup page by hitting API/users end point.
-* Successfully login from the landing page by hitting API/users end point.
-* Semih Sahin <semihsahin2834@gmail.com>
-  * Lead endpoint development/organization
-  * Integration between Django backend and React Frontend
-* Jeff Paulson <paulsonj3@students.rowan.edu>
+* __Semih Sahin <semihsahin2834@gmail.com>__
+  * Lead endpoint development/organization.
+  * Integration between Django backend and React Frontend.
+* __Jeff Paulson <paulsonj3@students.rowan.edu>__
   * Establish a router within react linking pages as they are made.
-  * Secure connection between Unity and React
-* Tyler Roman <romant75@students.rowan.edu>
-  * Lead game design effort
+  * Secure connection between Unity and React.
+* __Tyler Roman <romant75@students.rowan.edu>__
+  * Lead game design effort.
   * Have a basic turn system where each player commits moves and ends their turn one at a time.
-* Patrick O'Brien <obrienp4@students.rowan.edu>
+* __Patrick O'Brien <obrienp4@students.rowan.edu>__
   * Develop templates for units on the game board.
   * Get a working Grid with intractable entities.
-* Mike Zurzolo <mikezurzolo@gmail.com>
+* __Mike Zurzolo <mikezurzolo@gmail.com>__
   * Replace shell scripts that I'm using to manage containers with a _docker-compose.yaml_ file.
   * Add fields to the user model to support the leader board, and possibly a friends list.
   * Start adding game support to Django (save game features, p2p communication for 2 player gameplay, possibly leveraging code Vince wrote for the chatroom).
-* Vincent Paone <vpaone59@gmail.com>
+* __Vincent Paone <vpaone59@gmail.com>__
   * Have working chat functionality.
   * Embed chat in home page.
-* Colton Bonsall <Josephcbonsallv@gmail.com>
-  * Develop working model of the leaderboard
-  * Lead integration effort of the leaderboard with the rest of the codebase
+* __Colton Bonsall <Josephcbonsallv@gmail.com>__
+  * Develop working model of the leaderboard.
+  * Lead integration effort of the leaderboard with the rest of the codebase.
