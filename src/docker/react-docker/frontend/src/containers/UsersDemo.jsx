@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 export default class UserDemo extends React.Component {
   state = {
+    reload: true,
     users: []
   };
 
@@ -32,5 +33,3 @@ export default class UserDemo extends React.Component {
     );
   }
 }
-
-

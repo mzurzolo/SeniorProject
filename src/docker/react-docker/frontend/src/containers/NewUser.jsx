@@ -7,28 +7,31 @@ import axios from "axios";
 export default function NewUser(props) {
     const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [password1, setPassword1] = useState("");
+    const [password2, setPassword2] = useState("");
 
 
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return email.length > 0 && password1.length > 0;
   }
 
   function handleSubmit(event) {
-    //event.preventDefault();
-    userAction();
+    event.preventDefault();
   }
 
    function userAction(){
-    axios.post("/api/users/", {
-        username: "AAHHH_test",
-        email: "ahtest@email.com"
+     axios.post("/api/registration", {
+        username: user,
+        email: email,
+        password1: password1,
+        password2: password2
       });
 
 }
 
 
+// onclick={userAction()}>>
   return (
     <div className="NewUser">
       <form onSubmit={handleSubmit}>
@@ -49,16 +52,25 @@ export default function NewUser(props) {
             onChange={e => setEmail(e.target.value)}
           />
         </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
+        <FormGroup controlId="password1" bsSize="large">
           <FormLabel>Password</FormLabel>
           <FormControl
             autoFocus
             type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            value={password1}
+            onChange={e => setPassword1(e.target.value)}
           />
         </FormGroup>
-        <Button block bsSize="small" enabled={!validateForm()} type="submit" onclick={userAction()}>
+        <FormGroup controlId="password2" bsSize="large">
+          <FormLabel>Retype Password</FormLabel>
+          <FormControl
+            autoFocus
+            type="password"
+            value={password2}
+            onChange={e => setPassword2(e.target.value)}
+          />
+        </FormGroup>
+        <Button block bsSize="small" enabled={!validateForm()} type="submit">
           Create Account
 
                </Button>

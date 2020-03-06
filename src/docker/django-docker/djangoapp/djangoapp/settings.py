@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["webserver", "localhost"]
 
 # uncomment dbHost = 127.0.0.1 to run django outside of a docker container
 dbHost = "database"
-# dbHost = "127.0.0.1"
+dbHost = "127.0.0.1"
 
 # Application definition
 AUTH_USER_MODEL = "usersrestful.RUser"
@@ -43,7 +43,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "usersrestful.apps.UsersrestfulConfig",
     "rest_framework",
+    'rest_framework.authtoken',
+    'rest_auth',
     "corsheaders",
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
 ]
 
 MIDDLEWARE = [
