@@ -1,6 +1,6 @@
 <h2 id=<span style="text-align:center;">Design Specification</span></h2>
 
-### Fighting Roses / Rose Wars
+### Rose Wars
 
 ##### High Level Description:
 * Rose Wars is a chess-style turn-based game for two players.
