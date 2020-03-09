@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './Landing.css';
 
-import Login from '../../containers/login';
-import GameDescription from '../../containers/GameDescription';
-import GamePicture from '../../containers/GamePicture';
-import Leaderboard from '../../containers/Leaderboard';
+import Login from '../../containers/forms/login';
+import GameDescription from '../../containers/media/GameDescription';
+import GamePicture from '../../containers/media/GamePicture';
+import Leaderboard from '../../containers/media/Leaderboard';
 
 
 export default class Landing extends Component {
