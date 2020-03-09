@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["webserver", "localhost"]
 
 # uncomment dbHost = 127.0.0.1 to run django outside of a docker container
 dbHost = "database"
-# dbHost = "127.0.0.1"
+dbHost = "127.0.0.1"
 
 # Application definition
 AUTH_USER_MODEL = "usersrestful.RUser"
@@ -40,16 +40,18 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    'django.contrib.sites',
     "django.contrib.staticfiles",
-    "usersrestful.apps.UsersrestfulConfig",
+    'allauth',
+    'allauth.account',
+    "corsheaders",
     "rest_framework",
     'rest_framework.authtoken',
     'rest_auth',
-    "corsheaders",
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
     'rest_auth.registration',
+    'rest_registration',
+    "usersrestful.apps.UsersrestfulConfig",
+    "accounts.apps.AccountsConfig"
 ]
 
 MIDDLEWARE = [
@@ -118,6 +120,11 @@ REST_FRAMEWORK = {
     ]
 }
 
+REST_REGISTRATION = {
+    'REGISTER_VERIFICATION_ENABLED': False,
+    'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
+    'RESET_PASSWORD_VERIFICATION_ENABLED': False,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
