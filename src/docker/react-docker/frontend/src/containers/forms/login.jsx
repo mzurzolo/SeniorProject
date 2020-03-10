@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "./login.css";
 import {useHistory} from "react-router-dom";
-
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
@@ -16,30 +14,26 @@ export default function Login(props) {
   return (
     <div className="Login">
       <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email" bsSize="large">
-          <FormLabel>Email</FormLabel>
-          <FormControl
+          <label for="email">Email</label>
+          <input
             autoFocus
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-        </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
-          <FormLabel>Password</FormLabel>
-          <FormControl
+          <label>Password</label>
+          <input
             value={password}
             onChange={e => setPassword(e.target.value)}
             type="password"
           />
-        </FormGroup>
-        
-        <Button block bsSize="small" type="submit" >
+
+        <button block bsSize="small" type="submit" >
           Login
-        </Button>
-        <Button block bsSize="small" type="submit" onClick={() => history.push("/Signup")}>
+        </button>
+        <button block bsSize="small" type="submit" onClick={() => history.push("/Signup")}>
         No account? --> Register
-        </Button>
+        </button>
       </form>
     </div>
   );
