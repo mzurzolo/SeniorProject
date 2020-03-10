@@ -42,6 +42,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 INSTALLED_APPS = [
+    "channels",
     "djangoapp",
     "chat",
     "django.contrib.admin",
@@ -100,6 +101,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "djangoapp.wsgi.application"
+ASGI_APPLICATION = 'mysite.routing.application'
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
