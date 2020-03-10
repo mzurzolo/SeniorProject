@@ -1,0 +1,10 @@
+#landing {
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    display: grid;
+    padding: 50px;
+  }
+  
+
+  
+  
