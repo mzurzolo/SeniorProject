@@ -1,12 +1,11 @@
 from django.contrib.auth.models import Group
-from rest_framework import viewsets
-from rest_framework import generics
-from django.contrib.auth import get_user_model
-from django.urls import reverse_lazy
-from django.views import generic
+from rest_framework import viewsets, status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from .serializers import UserSerializer, GroupSerializer
-from .forms import CustomUserCreationForm
 from .models import RUser
+from rest_auth.registration import views
+
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -16,6 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     queryset = RUser.objects.all().order_by("-date_joined")
     serializer_class = UserSerializer
+
 
 
 class GroupViewSet(viewsets.ModelViewSet):

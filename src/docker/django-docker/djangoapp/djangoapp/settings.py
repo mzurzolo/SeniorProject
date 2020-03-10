@@ -33,8 +33,16 @@ dbHost = "database"
 
 # Application definition
 AUTH_USER_MODEL = "usersrestful.RUser"
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 INSTALLED_APPS = [
+    "djangoapp",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -51,7 +59,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'rest_registration',
     "usersrestful.apps.UsersrestfulConfig",
-    "accounts.apps.AccountsConfig"
+    'allauth.socialaccount',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -121,10 +130,12 @@ REST_FRAMEWORK = {
 }
 
 REST_REGISTRATION = {
+    'EMAIL_VERIFICATION': False,
     'REGISTER_VERIFICATION_ENABLED': False,
     'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
     'RESET_PASSWORD_VERIFICATION_ENABLED': False,
 }
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
