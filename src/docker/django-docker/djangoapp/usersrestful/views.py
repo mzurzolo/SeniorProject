@@ -1,5 +1,6 @@
 from django.contrib.auth.models import Group
 from rest_framework import viewsets
+from rest_framework import generics
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 from django.views import generic
@@ -24,9 +25,3 @@ class GroupViewSet(viewsets.ModelViewSet):
 
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-
-
-class SignUp(generic.CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy("login")
-    template_name = "signup.html"

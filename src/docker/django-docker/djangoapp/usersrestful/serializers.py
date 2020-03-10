@@ -1,9 +1,10 @@
 from django.contrib.auth.models import Group
 from rest_framework import serializers
+from rest_auth.registration import serializers as rserializers
 from .models import RUser
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer, rserializers.RegisterSerializer):
     class Meta:
         model = RUser
         fields = ["url", "username", "email", "id", "groups"]

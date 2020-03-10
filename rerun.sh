@@ -37,5 +37,5 @@ restart_container webserver 8000:8000 djangotest
 
 # If starting the react container fails, restart it
 # expose port 3000
-#start_container reactapi 3000:3000 react || \
-#restart_container reactapi 3000:3000 react
+start_container reactapi 3000:3000 react || \
+restart_container reactapi 3000:3000 react

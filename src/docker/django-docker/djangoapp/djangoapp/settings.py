@@ -40,10 +40,18 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    'django.contrib.sites',
     "django.contrib.staticfiles",
-    "usersrestful.apps.UsersrestfulConfig",
-    "rest_framework",
+    'allauth',
+    'allauth.account',
     "corsheaders",
+    "rest_framework",
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
+    'rest_registration',
+    "usersrestful.apps.UsersrestfulConfig",
+    "accounts.apps.AccountsConfig"
 ]
 
 MIDDLEWARE = [
@@ -112,6 +120,11 @@ REST_FRAMEWORK = {
     ]
 }
 
+REST_REGISTRATION = {
+    'REGISTER_VERIFICATION_ENABLED': False,
+    'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
+    'RESET_PASSWORD_VERIFICATION_ENABLED': False,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
