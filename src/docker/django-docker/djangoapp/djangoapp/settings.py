@@ -43,6 +43,7 @@ AUTHENTICATION_BACKENDS = (
 
 INSTALLED_APPS = [
     "djangoapp",
+    "chat",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
