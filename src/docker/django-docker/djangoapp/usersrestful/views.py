@@ -39,7 +39,6 @@ class ConfirmEmail(viewsets.ViewSetMixin, views.VerifyEmailView):
     pass
 
 
-
 @api_view()
 def null_view(request):
     return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -47,7 +46,6 @@ def null_view(request):
 @api_view()
 def complete_view(request):
     return Response("Email account is activated")
-
 
 
 class SignUp(generic.CreateView):
