@@ -17,10 +17,15 @@ pushd src/docker/django-docker
 sudo docker build -t djangotest .
 popd
 
-# build the django image
-#pushd src/docker/react-docker
-#sudo docker build -t react .
-#popd
+# build the nodejs image
+pushd src/docker/react-docker
+sudo docker build -t react .
+popd
+
+# build the nodejs image
+pushd src/docker/redis-docker
+sudo docker build -t redis .
+popd
 
 sudo docker network create db-django-net
 

@@ -35,6 +35,10 @@ done
 start_container webserver 8000:8000 djangotest || \
 restart_container webserver 8000:8000 djangotest
 
+# If starting the redischat container fails, restart it
+start_container redischat 6379:6379 redis || \
+restart_container redischat 6379:6379 redis
+
 # If starting the react container fails, restart it
 # expose port 3000
 #start_container reactapi 3000:3000 react || \
