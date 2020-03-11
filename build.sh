@@ -18,9 +18,9 @@ sudo docker build -t djangotest .
 popd
 
 # build the django image
-pushd src/docker/react-docker
-sudo docker build -t react .
-popd
+#pushd src/docker/react-docker
+#sudo docker build -t react .
+#popd
 
 sudo docker network create db-django-net
 
