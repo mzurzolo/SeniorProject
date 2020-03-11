@@ -34,6 +34,7 @@ dbHost = "127.0.0.1"
 # Application definition
 
 INSTALLED_APPS = [
+    # "channels", (needs asynchronous functionality)
     "chat",
     "django.contrib.admin",
     "django.contrib.auth",
