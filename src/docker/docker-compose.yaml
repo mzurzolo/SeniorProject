@@ -9,7 +9,6 @@ services:
     networks:
       - docker-network
     deploy:
-      container-name: database
       restart_policy:
         condition: on-failure
 
@@ -21,7 +20,6 @@ services:
     networks:
       - docker-network
     deploy:
-      container-name: redischat
       restart_policy:
         condition: on-failure
 
@@ -32,8 +30,13 @@ services:
       - "8000:8000"
     networks:
       - docker-network
+    links:
+      - "db:database"
+      - "redis:redischat"
+    depends_on:
+      - db
+      - redis
     deploy:
-      container-name: webserver
       restart_policy:
         condition: on-failure
 
@@ -46,11 +49,11 @@ services:
       - "3000:3000"
     networks:
       - docker-network
+    links:
+      - "django:webserver"
     deploy:
-      container-name: reactapi
       restart_policy:
         condition: on-failure
-
 
 networks:
   docker-network:
