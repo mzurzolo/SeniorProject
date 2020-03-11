@@ -101,7 +101,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "djangoapp.wsgi.application"
-ASGI_APPLICATION = 'mysite.routing.application'
+ASGI_APPLICATION = 'djangoapp.routing.application'
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
