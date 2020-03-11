@@ -44,7 +44,7 @@ services:
     build: ./react-docker
     image: react
     volumes:
-      - frontend:/app
+      - ./react-docker/frontend:/app
     ports:
       - "3000:3000"
     networks:
