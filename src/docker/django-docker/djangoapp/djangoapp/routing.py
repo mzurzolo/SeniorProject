@@ -1,6 +1,17 @@
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 import chat.routing
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
+# This still isn't a safe way to create an admin user...
+try:
+    User.objects.create_superuser("admin", "admin@example.com", "adminpass")
+
+except Exception as e:
+    print(e)
+
 
 application = ProtocolTypeRouter({
     # (http->django views is added by default)
