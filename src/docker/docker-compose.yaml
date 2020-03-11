@@ -26,6 +26,8 @@ services:
   django:
     build: ./django-docker
     image: django
+    volumes:
+      - ./django-docker/djangoapp:/djangoapp
     ports:
       - "8000:8000"
     networks:
@@ -60,4 +62,3 @@ networks:
 
 volumes:
   db-data:
-  frontend:
