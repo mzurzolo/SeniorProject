@@ -9,6 +9,7 @@ router.register(r"users", views.UserViewSet)
 router.register(r"groups", views.GroupViewSet)
 router.register(r"register", views.Register, basename="register")
 router.register(r"login", views.Login, basename="login")
+router.register(r"userdetail", views.UserDetails, basename="userdetail")
 
 
 # Wire up our API using automatic URL routing.
