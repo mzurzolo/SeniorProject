@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from .serializers import UserSerializer, GroupSerializer
 from .models import RUser
 from rest_auth.registration import views
+from rest_auth.views import LoginView
 
 
 
@@ -28,6 +29,10 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 
 class Register(viewsets.ViewSetMixin, views.RegisterView):
+    pass
+
+
+class Login(viewsets.ViewSetMixin, LoginView):
     pass
 
 
