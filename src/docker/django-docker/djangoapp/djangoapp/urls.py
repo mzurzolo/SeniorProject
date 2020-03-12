@@ -44,13 +44,5 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("api/", include("usersrestful.urls")),
-    path('chat/', include('chat.urls')),
+    path('api/chat/', include('chat.urls')),
 ]
-#,, , renderers.HTMLFormRenderer
-"""
-path('openapi/', get_schema_view(
-    title='Server Monitoring API',
-    urlconf="rest_registration.api.urls",
-    #patterns=schema_url_patterns,
-    renderer_classes=[renderers.JSONRenderer, renderers.BrowsableAPIRenderer]
-), name='openapi-schema'),"""
