@@ -13,11 +13,9 @@ except Exception as e:
     print(e)
 
 
-application = ProtocolTypeRouter({
-    # (http->django views is added by default)
-    'websocket': AuthMiddlewareStack(
-        URLRouter(
-            chat.routing.websocket_urlpatterns
-        )
-    ),
-})
+application = ProtocolTypeRouter(
+    {
+        # (http->django views is added by default)
+        "websocket": AuthMiddlewareStack(URLRouter(chat.routing.websocket_urlpatterns))
+    }
+)

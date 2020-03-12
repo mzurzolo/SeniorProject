@@ -12,5 +12,5 @@ router.register(r"register", views.Register, basename="register")
 urlpatterns = [
     path("", include(router.urls)),
     path("", include("rest_registration.api.urls")),
-    path("", include('rest_auth.registration.urls')),
+    path("", include("rest_auth.registration.urls")),
 ]
