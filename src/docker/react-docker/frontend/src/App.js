@@ -29,8 +29,8 @@ export class App extends React.Component {
     // paths are relative from your index file.
 
     this.unityContent = new UnityContent(
-      "/Build/public.json",
-      "/Build/UnityLoader.js"
+      "MyGame/Build/MyGame.json",
+      "MyGame/Build/UnityLoader.js"
     );
 
     this.unityContent.on("GameOver", winner => {
