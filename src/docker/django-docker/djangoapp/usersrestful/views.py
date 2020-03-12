@@ -5,8 +5,7 @@ from rest_framework.response import Response
 from .serializers import UserSerializer, GroupSerializer
 from .models import RUser
 from rest_auth.registration import views
-from rest_auth.views import LoginView, UserDetailsView
-from rest_framework.generics import CreateAPIView, UpdateAPIView
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """

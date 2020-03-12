@@ -17,8 +17,6 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url
 from django.views.generic.base import TemplateView
-from rest_framework.schemas import get_schema_view
-from rest_framework import renderers
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
