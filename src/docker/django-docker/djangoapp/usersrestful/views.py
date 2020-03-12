@@ -8,7 +8,7 @@ from rest_auth.registration import views
 from rest_auth.views import LoginView, UserDetailsView
 from rest_framework.generics import CreateAPIView, UpdateAPIView
 
-class UserViewSet(viewsets.ModelViewSet, UserDetailsView):
+class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
@@ -27,21 +27,6 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 
 class Register(viewsets.ViewSetMixin, views.RegisterView):
-    pass
-
-
-class Login(viewsets.ViewSetMixin, LoginView, CreateAPIView):
-    def create(self, request):
-        pass
-    pass
-
-
-class UserDetails(viewsets.ViewSetMixin, UserDetailsView):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    def create(self, request):
-        pass
     pass
 
 
