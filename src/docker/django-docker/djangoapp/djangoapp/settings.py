@@ -43,9 +43,9 @@ AUTHENTICATION_BACKENDS = (
 
 INSTALLED_APPS = [
     "channels",
-    "djangoapp",
     "chat",
     "django.contrib.admin",
+    "django.contrib.redirects",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -97,13 +97,12 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
             ]
         },
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
     }
 ]
 
 WSGI_APPLICATION = "djangoapp.wsgi.application"
-LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "home"
+#LOGIN_REDIRECT_URL = "index"
+#LOGOUT_REDIRECT_URL = "index"
 
 
 ASGI_APPLICATION = "djangoapp.routing.application"

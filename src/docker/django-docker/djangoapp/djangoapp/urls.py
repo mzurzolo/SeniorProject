@@ -20,6 +20,7 @@ from django.views.generic.base import TemplateView
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from usersrestful import views
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -50,7 +51,6 @@ urlpatterns = [
     ),
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
-    path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("api/", include("usersrestful.urls")),
     path("chat/", include("chat.urls")),
 ]

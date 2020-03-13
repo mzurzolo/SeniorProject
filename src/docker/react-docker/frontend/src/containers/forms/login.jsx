@@ -13,7 +13,7 @@ export default function Login(props) {
     function userLogin(){
       // Call post to login user
       axios.post("/api/login/", {
-          username: user,
+          login: user,
           password: password
         }).then(function (response) {
           // If successful response (200)
