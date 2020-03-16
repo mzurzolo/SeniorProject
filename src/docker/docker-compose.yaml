@@ -6,6 +6,8 @@ services:
     image: database
     volumes:
       - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
     networks:
       - docker-network
     deploy:
