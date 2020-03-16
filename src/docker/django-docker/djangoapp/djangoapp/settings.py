@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "usersrestful.apps.UsersrestfulConfig",
     "rest_framework",
     "corsheaders",
     "rest_framework.authtoken",
@@ -63,6 +62,8 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "django.contrib.sites",
     "drf_yasg",
+    "usersrestful.apps.UsersrestfulConfig",
+    "game.apps.GameConfig",
 ]
 
 MIDDLEWARE = [
@@ -101,8 +102,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "djangoapp.wsgi.application"
-#LOGIN_REDIRECT_URL = "index"
-#LOGOUT_REDIRECT_URL = "index"
+# LOGIN_REDIRECT_URL = "index"
+# LOGOUT_REDIRECT_URL = "index"
 
 
 ASGI_APPLICATION = "djangoapp.routing.application"
