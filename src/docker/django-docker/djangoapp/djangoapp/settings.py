@@ -102,8 +102,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "djangoapp.wsgi.application"
-#LOGIN_REDIRECT_URL = "index"
-#LOGOUT_REDIRECT_URL = "index"
+# LOGIN_REDIRECT_URL = "index"
+# LOGOUT_REDIRECT_URL = "index"
 
 
 ASGI_APPLICATION = "djangoapp.routing.application"

@@ -9,11 +9,17 @@ User = get_user_model()
 
 class Game(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    player_1 = models.ForeignKey(User, related_name="player_1", on_delete=models.SET_NULL, null=True, blank=True)
-    player_2 = models.ForeignKey(User, related_name="player_2", on_delete=models.SET_NULL, null=True, blank=True)
-    date_created = models.DateTimeField(_('date created'), default=timezone.now)
-    date_completed = models.DateTimeField(_('date completed'), null=True, blank=True)
-    winner = models.ForeignKey(User, related_name="winner", on_delete=models.SET_NULL, null=True, blank=True)
+    player_1 = models.ForeignKey(
+        User, related_name="player_1", on_delete=models.SET_NULL, null=True, blank=True
+    )
+    player_2 = models.ForeignKey(
+        User, related_name="player_2", on_delete=models.SET_NULL, null=True, blank=True
+    )
+    date_created = models.DateTimeField(_("date created"), default=timezone.now)
+    date_completed = models.DateTimeField(_("date completed"), null=True, blank=True)
+    winner = models.ForeignKey(
+        User, related_name="winner", on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     @staticmethod
     def create(user):

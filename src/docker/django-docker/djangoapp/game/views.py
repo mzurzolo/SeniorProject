@@ -8,6 +8,7 @@ class GameViewSet(viewsets.ModelViewSet):
     """
     API endpoint for games.
     """
-    queryset = models.Game.objects.all().order_by('-date_created')
+
+    queryset = models.Game.objects.all().order_by("-date_created")
     serializer_class = serializers.GameSerializer
     permission_classes = [permissions.IsAuthenticated]
