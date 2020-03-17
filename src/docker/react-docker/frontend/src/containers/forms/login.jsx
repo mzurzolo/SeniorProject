@@ -19,7 +19,7 @@ export default function Login(props) {
           // If successful response (200)
           if (response.status === 200) {
             alert("Success! Your account has been logged in");
-            history.push("/UserDashboard")
+            history.push("/Dashboard")
           }
         }).catch(function (error) {
           alert("Invalid request! \n" + error);

@@ -1,12 +1,13 @@
 // Get started by creating a new React
 // component and importing the libraries!
 
-import React from "react";
+import React, { useState } from "react";
 import Unity, { UnityContent } from "react-unity-webgl";
 
-export class App extends React.Component {
+export default class Game extends React.Component {
   state = {
-    users: []
+    users: [],
+    game_uuid: ""
   };
 
   async componentDidMount() {
@@ -63,6 +64,7 @@ export class App extends React.Component {
 
     return <Unity unityContent={this.unityContent} />;
   }
+
 }
 
-export default App;
+//export default Game;
