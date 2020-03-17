@@ -7,7 +7,6 @@ from .models import RUser
 from rest_auth.registration import views
 
 
-
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
@@ -15,7 +14,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
     queryset = RUser.objects.all().order_by("-date_joined")
     serializer_class = UserSerializer
-
 
 
 class GroupViewSet(viewsets.ModelViewSet):

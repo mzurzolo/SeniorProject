@@ -4,6 +4,8 @@ Senior Project, Group Project
 
 ## [Design Doc](docs/DesignDoc.md)
 
+## [Contributions](src/README.md)
+
 ### Get the project:
 `git clone git@github.com:mzurzolo/SeniorProject.git`
 

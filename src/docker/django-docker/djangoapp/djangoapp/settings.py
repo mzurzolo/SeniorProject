@@ -36,30 +36,34 @@ AUTH_USER_MODEL = "usersrestful.RUser"
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
+    "django.contrib.auth.backends.ModelBackend",
     # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
+    "allauth.account.auth_backends.AuthenticationBackend",
 )
 
 INSTALLED_APPS = [
-    "djangoapp",
+    "channels",
+    "chat",
     "django.contrib.admin",
+    "django.contrib.redirects",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "usersrestful.apps.UsersrestfulConfig",
     "rest_framework",
     "corsheaders",
-    'rest_framework.authtoken',
-    'rest_auth',
-    'rest_auth.registration',
-    'rest_registration',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'django.contrib.sites',
+    "rest_framework.authtoken",
+    "rest_auth",
+    "rest_auth.registration",
+    "rest_registration",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "django.contrib.sites",
+    "drf_yasg",
+    "usersrestful.apps.UsersrestfulConfig",
+    "game.apps.GameConfig",
 ]
 
 MIDDLEWARE = [
@@ -94,13 +98,21 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
             ]
         },
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
     }
 ]
 
 WSGI_APPLICATION = "djangoapp.wsgi.application"
-LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "home"
+# LOGIN_REDIRECT_URL = "index"
+# LOGOUT_REDIRECT_URL = "index"
+
+
+ASGI_APPLICATION = "djangoapp.routing.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {"hosts": [("redischat", 6379)]},
+    }
+}
 
 
 # Database
@@ -125,16 +137,20 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
-    ]
+    ],
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+    ],
 }
 
 REST_REGISTRATION = {
-    'EMAIL_VERIFICATION': False,
-    'REGISTER_VERIFICATION_ENABLED': False,
-    'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
-    'RESET_PASSWORD_VERIFICATION_ENABLED': False,
+    "EMAIL_VERIFICATION": False,
+    "REGISTER_VERIFICATION_ENABLED": False,
+    "REGISTER_EMAIL_VERIFICATION_ENABLED": False,
+    "RESET_PASSWORD_VERIFICATION_ENABLED": False,
 }
-EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

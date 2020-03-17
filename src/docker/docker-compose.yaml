@@ -1,0 +1,66 @@
+version: "3.7"
+services:
+
+  db:
+    build: ./db-docker
+    image: database
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - docker-network
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  redis:
+    build: ./redis-docker
+    image: redis
+    ports:
+      - "6379"
+    networks:
+      - docker-network
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  django:
+    build: ./django-docker
+    image: django
+    volumes:
+      - ./django-docker/djangoapp:/djangoapp
+    ports:
+      - "8000:8000"
+    networks:
+      - docker-network
+    links:
+      - "db:database"
+      - "redis:redischat"
+    depends_on:
+      - db
+      - redis
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  react:
+    build: ./react-docker
+    image: react
+    volumes:
+      - ./react-docker/frontend:/app
+    ports:
+      - "3000:3000"
+    networks:
+      - docker-network
+    links:
+      - "django:webserver"
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+networks:
+  docker-network:
+
+volumes:
+  db-data:

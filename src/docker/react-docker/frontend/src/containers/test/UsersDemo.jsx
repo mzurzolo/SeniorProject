@@ -32,5 +32,3 @@ export default class UserDemo extends React.Component {
     );
   }
 }
-
-
