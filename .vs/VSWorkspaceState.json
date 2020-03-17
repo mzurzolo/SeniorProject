@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\docker",
+    "\\src\\docker\\django-docker",
+    "\\src\\docker\\django-docker\\djangoapp",
+    "\\src\\docker\\django-docker\\djangoapp\\chat"
+  ],
+  "SelectedNode": "\\src\\docker\\django-docker\\djangoapp\\chat\\admin.py",
+  "PreviewInSolutionExplorer": false
+}
