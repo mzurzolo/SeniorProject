@@ -1,10 +1,10 @@
 import React from 'react';
-import "./gamepicture.css";
+import './gamepicture.css';
 
 export default function GamePicture() {
-    return(
-        <div>
-            <div id='placeholder'></div>    
-        </div>
-    )
+  return (
+    <div>
+      <div id='placeholder'></div>
+    </div>
+  );
 }
