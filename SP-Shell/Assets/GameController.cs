@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -11,15 +13,27 @@ public class GameController : MonoBehaviour
     public GameObject restartButton;
     private string side;
     private int moves;
+    public GameObject player_container;
+    public Player[] players;
+    private int player_idx = 0;
+
+    [DllImport("__Internal")]
+    private static extern void GameOver(string winner);
 
     // Start is called before the first frame update
     void Start()
     {
+        players = player_container.GetComponentsInChildren<Player>();
         SetGameControllerReferenceForButtons();
         side = "X";
         gameOverPanel.SetActive(false);
         moves = 0;
         restartButton.SetActive(false);
+    }
+
+    public void UGameOver(string winner)
+    {
+        GameOver(winner);
     }
 
     void SetGameControllerReferenceForButtons()
@@ -37,9 +51,15 @@ public class GameController : MonoBehaviour
     void ChangeSide()
     {
         if (side == "X")
+        {
             side = "O";
+            player_idx = 1;
+        }
         else
+        {
             side = "X";
+            player_idx = 0;
+        }
     }
 
     public void EndTurn()
@@ -72,8 +92,9 @@ public class GameController : MonoBehaviour
 
     void GameOver()
     {
+        UGameOver(players[player_idx].name);
         gameOverPanel.SetActive(true);
-        gameOverText.text = side + " wins!";
+        gameOverText.text = players[player_idx].name + " wins!";
         restartButton.SetActive(true);
         for (int i = 0; i < spaceList.Length; i++)
             SetInteractable(false);
