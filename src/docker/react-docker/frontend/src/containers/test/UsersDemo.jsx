@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 export default class UserDemo extends React.Component {
   state = {
@@ -7,7 +7,7 @@ export default class UserDemo extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('/api/users');
+      const res = await fetch('/api/users/');
       const users = await res.json();
       this.setState({
         users

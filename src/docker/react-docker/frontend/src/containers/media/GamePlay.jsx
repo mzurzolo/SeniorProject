@@ -1,31 +1,49 @@
 // Get started by creating a new React
 // component and importing the libraries!
 
-import React, {useState} from 'react';
+import React from 'react';
 import Unity, {UnityContent} from 'react-unity-webgl';
 import axios from 'axios';
 
 export default class Game extends React.Component {
   async componentDidMount() {
+    this.state = this.state;
     try {
-      const res = await fetch('/game/');
-      const response = await res.json();
-      this.setState({
-        response,
+      const user_profile = await axios.get('/api/profile/').then(function(response) {
+        if (response.status === 200) {
+          return response.data;
+        }
+      }).catch(function(error) {
+        alert('Invalid request! \n' + error);
       });
+      const response = await axios.post('/game/', {
+        player_1: user_profile.id,
+      }).then(function(response) {
+        // If successful response (201)
+        if (response.status === 201) {
+          return response.data;
+        }
+      }).catch(function(error) {
+        alert('Invalid request! \n' + error);
+      });
+      console.log(response);
+      try {
+        this.setState({
+          response,
+        });
+      } catch (e) {
+        console.log(e);
+      }
+      console.log(this.state);
     } catch (e) {
       console.log(e);
     }
   }
 
-
   constructor(props) {
     super(props);
-    this.state = {
-      response: [],
-      users: [],
-    };
-
+    console.log(props);
+    console.log(this.state);
     // Next up create a new Unity Content object to
     // initialise and define your WebGL build. The
     // paths are relative from your index file.
@@ -36,7 +54,7 @@ export default class Game extends React.Component {
     );
 
     this.unityContent.on('GameOver', (winner) => {
-      const r = this.state.response[0];
+      const r = this.state.response;
       const game_id = r.id;
       axios.patch('/game/' + game_id + '/', {
         winner: winner,
@@ -53,7 +71,7 @@ export default class Game extends React.Component {
 
     this.unityContent.on('loaded', () => {
       console.log('Unity loaded!');
-      const r = this.state.response[0];
+      const r = this.state.response;
       console.log(r);
       this.unityContent.send(
           'Player1',

@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import './newuser.css';
 import axios from 'axios';
 
 export default function NewUser(props) {
+  const history = useHistory();
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [email2, setEmail2] = useState('');
@@ -50,9 +52,11 @@ export default function NewUser(props) {
       // If successful response (201)
       if (response.status === 201) {
         alert('Success! Your account has been created');
+        history.push('/Dashboard');
       }
     }).catch(function(error) {
       alert('Invalid request! \n' + error);
+      window.location.reload();
     });
   }
 
