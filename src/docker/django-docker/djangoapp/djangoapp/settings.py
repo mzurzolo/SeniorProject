@@ -43,7 +43,7 @@ AUTHENTICATION_BACKENDS = (
 
 INSTALLED_APPS = [
     "channels",
-    "chat",
+    "chat.apps.ChatConfig",
     "django.contrib.admin",
     "django.contrib.redirects",
     "django.contrib.auth",

@@ -16,7 +16,7 @@ export default class Game extends React.Component {
       }).catch(function(error) {
         alert('Invalid request! \n' + error);
       });
-      const response = await axios.post('/game/', {
+      const response = await axios.post('/game/game/', {
         player_1: user_profile.id,
       }).then(function(response) {
         // If successful response (201)
@@ -56,7 +56,7 @@ export default class Game extends React.Component {
     this.unityContent.on('GameOver', (winner) => {
       const r = this.state.response;
       const game_id = r.id;
-      axios.patch('/game/' + game_id + '/', {
+      axios.patch('/game/game/' + game_id + '/', {
         winner: winner,
       }).then(function(response) {
         // If successful response (201)

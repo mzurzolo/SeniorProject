@@ -53,5 +53,5 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("api/", include("usersrestful.urls")),
     path("", include("chat.urls")),
-    path("", include("game.urls")),
+    path("game/", include("game.urls")),
 ]
