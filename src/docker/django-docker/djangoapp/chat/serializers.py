@@ -8,5 +8,6 @@ class RoomSerializer(serializers.ModelSerializer):
         fields = [
             "name",
             "label",
-            "members"
+            "members",
+            "date_created"
         ]

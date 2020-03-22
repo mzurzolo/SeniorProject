@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
-# Create your models here.
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
@@ -11,6 +11,7 @@ class Room(models.Model):
     name = models.TextField()
     label = models.SlugField(unique=True)
     members = models.ManyToManyField(User)
+    date_created = models.DateTimeField(_("date created"), default=timezone.now)
 
 
 class Message(models.Model):

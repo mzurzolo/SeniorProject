@@ -31,6 +31,6 @@ $(function() {
         }
         chatsock.send(JSON.stringify(message));
         $("#message").val('').focus();
-        return true;
+        return false;
     });
 });
