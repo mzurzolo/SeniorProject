@@ -1,10 +1,10 @@
 $(function() {
     // When we're using HTTPS, use WSS too.
     // // https://www.techiediaries.com/django-react-forms-csrf-axios/
-    axios.defaults.xsrfCookieName = 'csrftoken';
-    axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+    //axios.defaults.xsrfCookieName = 'csrftoken';
+    //axios.defaults.xsrfHeaderName = 'X-CSRFToken';
     var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-    var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + "/" + window.location.pathname);
+    var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + window.location.pathname);
 
     chatsock.onmessage = function(message) {
         var data = JSON.parse(message.data);

@@ -5,12 +5,13 @@ from channels.db import database_sync_to_async
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
-    async def connect(self):
+    name = "ChatConsumer"
+
+    async def websocket_connect(self, event):
         self.room_name = self.scope["url_route"]["kwargs"]["label"]
         self.room_group_name = "chat_%s" % self.room_name
         # Join room group
         await self.channel_layer.group_add(self.room_group_name, self.channel_name)
-
         await self.accept()
 
     async def disconnect(self, close_code):
@@ -25,9 +26,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.save_message(handle=handle, message=message, label=self.room_name)
         # Send message to room group
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "chat_message", "handle": handle, "message": message}
+            self.room_group_name,
+            {"type": "chat_message", "handle": handle, "message": message},
         )
-
 
     # Receive message from room group
     async def chat_message(self, event):
@@ -36,7 +37,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({"handle": handle, "message": message}))
-
 
     @database_sync_to_async
     def save_message(self, handle, message, label):

@@ -22,7 +22,7 @@ def about(request):
     return render(request, "chat/about.html")
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 @permission_classes((permissions.AllowAny,))
 def new_room(request):
     """
@@ -40,7 +40,7 @@ def new_room(request):
     return redirect(chat_room, label=label)
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 @permission_classes((permissions.AllowAny,))
 def chat_room(request, label):
     # If the room with the given label doesn't exist, automatically create it
@@ -48,9 +48,5 @@ def chat_room(request, label):
     room, created = models.Room.objects.get_or_create(label=label)
     room.save()
     # We want to show the last 50 messages, ordered most-recent-last
-    messages = reversed(room.messages.order_by('-timestamp')[:50])
-    return render(request, "chat/room.html", {
-        'label': label,
-        'room': room,
-        'messages': messages,
-    })
+    messages = reversed(room.messages.order_by("-timestamp")[:50])
+    return render(request, "chat/room.html", {"room": room, "messages": messages})
