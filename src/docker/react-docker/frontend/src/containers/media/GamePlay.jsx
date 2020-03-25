@@ -90,7 +90,6 @@ export default class Game extends React.Component {
   render() {
     // Finally render the Unity component and pass
     // the Unity content through the props.
-
     return (
       <div id='games'>
         <Unity unityContent={this.unityContent} />

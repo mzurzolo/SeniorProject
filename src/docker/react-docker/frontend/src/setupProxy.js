@@ -15,18 +15,4 @@ module.exports = function(app) {
         changeOrigin: true,
       }),
   );
-  app.use(
-      '/ws',
-      createProxyMiddleware({
-        target: 'http://webserver:8000',
-        changeOrigin: true,
-      }),
-  );
-  app.use(
-      'ws',
-      createProxyMiddleware({
-        target: 'http://webserver:8000',
-        changeOrigin: true,
-      }),
-  );
 };
