@@ -52,6 +52,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path("api/", include("usersrestful.urls")),
-    path("chat/", include("chat.urls")),
-    path("", include("game.urls")),
+    path("", include("chat.urls")),
+    path("game/", include("game.urls")),
 ]
