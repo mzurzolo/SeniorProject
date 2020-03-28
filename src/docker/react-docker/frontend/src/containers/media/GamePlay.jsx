@@ -69,6 +69,10 @@ export default class Game extends React.Component {
       console.log('Winner is ' + winner);
     });
 
+    this.unityContent.on('EndMove' => {
+      console.log("Ended move!")
+    });
+
     this.unityContent.on('loaded', () => {
       console.log('Unity loaded!');
       const r = this.state.response;
