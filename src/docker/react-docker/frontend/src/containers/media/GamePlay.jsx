@@ -17,7 +17,7 @@ export default class Game extends React.Component {
         alert('Invalid request! \n' + error);
       });
       const response = await axios.post('/game/game/', {
-        player_1: user_profile.id,
+        player_1: user_profile,
       }).then(function(response) {
         // If successful response (201)
         if (response.status === 201) {
@@ -80,15 +80,31 @@ export default class Game extends React.Component {
       this.unityContent.send(
           'Player1',
           'SetName',
-          r.player_1,
+          r.player_1.name,
       );
       this.unityContent.send(
           'Player2',
           'SetName',
-          r.player_2,
+          r.player_2.name,
       );
       console.log('Users assigned!');
     });
+
+    this.unityContent.on('ImportSave', (player_1_id,player_2_id) => {
+      console.log('Unity Imported!');
+      //based on the given IDs, we need to reassign player 1 and player 2
+      //after that, we post each player's name back to the game
+    });
+    this.unityContent.send(
+        'Player1',
+        'SetName',
+        r.player_1.name,
+    );
+    this.unityContent.send(
+        'Player2',
+        'SetName',
+        r.player_2.name,
+    );
   }
 
   render() {

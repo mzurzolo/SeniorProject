@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private ArrayList grid_selected = new ArrayList();
+    public string pid;
 
     public void push_space(Grid_Space gs)
     {
@@ -31,5 +32,10 @@ public class Player : MonoBehaviour
     public void SetName(string new_name)
     {
         name = new_name;
+    }
+
+    public void SetID(string id)
+    {
+        pid = id;
     }
 }
