@@ -22,6 +22,7 @@ RUN git clone https://github.com/mzurzolo/SeniorProject.git \
   && git checkout ready \
   && cp -r src/docker/django-docker/djangoapp /djangoapp \
   && cp src/docker/django-docker/mysql.list /etc/apt/sources.list.d/mysql.list \
+  && cp -r src/docker/django-docker/djangoapp/run.sh /run.sh \
   && popd \
   && rm -fR SeniorProject
 
@@ -40,7 +41,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt update \
 RUN /djangoapp/build.sh
 
 # set this script to run when the image starts up
-ENTRYPOINT ["/djangoapp/run.sh"]
+ENTRYPOINT ["/run.sh"]
 
 # we're using port 8000
 EXPOSE 8000/tcp

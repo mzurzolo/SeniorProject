@@ -24,8 +24,8 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
-RUN yarn && yarn build && yarn global add serve
+RUN yarn --verbose && yarn global add serve
 
 # start app
-CMD yarn && yarn start
+CMD yarn --verbose && yarn start
 #CMD ["npx", "serve", "-s", "build", "-p", "5000"]

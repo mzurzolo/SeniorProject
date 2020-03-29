@@ -1,5 +1,5 @@
 import React from 'react';
-import './gamedescription.css';
+import './GameDescription.css';
 
 export default function GameDescription() {
   return (
