@@ -1,10 +1,58 @@
+#Login {
+  align-items: center;
+  display: flex;
+  padding: 0px 50px 0px 50px;
+}
+
+#Login form {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto auto;
+  width:100%;
+}
+
+form input {
+  border: 1px solid rgb(180, 180, 180);
+  font-size: 18px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 30px;
+  padding-left: 10px;
+  transition: border 400ms;
+}
+
+#Login form input:hover {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+form > * {
+  /* This syntax accesses all form children */
+  margin: 5px;
+}
+
+button {
+  background-color: rgb(12, 89, 204);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+  transition: background-color 400ms;
+}
+
+#Login button {
+  width: 95%;
+}
+
+button:hover {
+  background-color: rgb(28, 115, 245);
+}
+
+#loginbutton {
+  justify-self: right;
+}
+
 @media all and (min-width: 380px) {
-    .Login {
-      padding: 60px 0;
-    }
   
-    .Login form {
-      margin: 0 auto;
-      max-width: 220px;
-    }
-  }
+}

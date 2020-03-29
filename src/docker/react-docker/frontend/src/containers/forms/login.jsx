@@ -29,16 +29,14 @@ export default function Login(props) {
   }
 
   return (
-    <div className="Login">
+    <div id="Login">
       <form onSubmit={handleSubmit}>
-        <label>Username:</label>
         <input
           autoFocus
           placeholder="Username"
           required
           type="text"
           onChange={(e) => setUser(e.target.value)} />
-        <label>Password:</label>
         <input
           placeholder="Password"
           type="password"
@@ -46,11 +44,11 @@ export default function Login(props) {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button block bsSize="small" type="submit" >
-            Login
-        </button>
         <button block bsSize="small" type="submit" onClick={() => history.push('/Signup')}>
-          {'No account? --> Register'}
+          {'Create an account'}
+        </button>
+        <button block bsSize="small" type="submit" id="loginbutton">
+            Login
         </button>
       </form>
     </div>
