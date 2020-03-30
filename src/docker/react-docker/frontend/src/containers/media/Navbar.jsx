@@ -13,9 +13,10 @@ export default function NavBar() {
 
   return (
     <div id='navbar'>
-      <a onClick={() => history.push('/Dashboard')}>Dashboard</a>
-      <a onClick={() => history.push('/Profile')}>User Profile</a>
-      <a onClick={handleLogout}>Sign Out</a>
+      <button onClick={() => history.push('/Dashboard')}>Dashboard</button>
+      <button onClick={() => history.push('/Profile')}>User Profile</button>
+      <button onClick={handleLogout}>Sign Out</button>
     </div>
   );
 }
+// <a onClick={() => history.push('/Dashboard')}>Dashboard</a>
