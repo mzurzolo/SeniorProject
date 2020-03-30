@@ -1,0 +1,11 @@
+#navbar {
+    align-items: center;
+    display: flex;
+    height: 75px;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#navbar a:hover {
+    cursor: pointer;
+}

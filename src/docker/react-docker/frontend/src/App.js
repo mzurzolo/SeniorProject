@@ -6,6 +6,7 @@ import Signup from './pages/Signup/Signup';
 import Game from './pages/GamePlay/GamePlay';
 import ChatRoom from './pages/ChatRoom/chat';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
+import UserProfile from './pages/UserProfile/UserProfile';
 
 // https://www.techiediaries.com/django-react-forms-csrf-axios/
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -21,6 +22,7 @@ export default class App extends React.Component {
           <Route path='/Signup' component={Signup} />
           <Route path='/Game' component={Game} />
           <Route path='/Chat' component={ChatRoom} />
+          <Route path='/Profile' component={UserProfile} />
         </div>
       </Router>
     );
