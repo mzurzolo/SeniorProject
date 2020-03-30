@@ -1,5 +1,5 @@
 import React from 'react';
-import './leaderboard.css';
+import './Leaderboard.css';
 
 export default class Leaderboard extends React.Component {
   render() {

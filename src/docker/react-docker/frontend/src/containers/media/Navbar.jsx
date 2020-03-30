@@ -1,5 +1,5 @@
 import React from 'react';
-import './navbar.css';
+import './Navbar.css';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 
@@ -7,8 +7,8 @@ export default function NavBar() {
   const history = useHistory();
 
   function handleLogout() {
-    axios.post('/api/logout/')
-    history.push('/')
+    axios.post('/api/logout/');
+    history.push('/');
   }
 
   return (

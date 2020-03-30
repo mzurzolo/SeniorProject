@@ -1,5 +1,5 @@
 import React from 'react';
-import './gamepicture.css';
+import './GamePicture.css';
 
 export default function GamePicture() {
   return (
