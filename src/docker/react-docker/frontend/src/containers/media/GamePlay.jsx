@@ -9,14 +9,14 @@ export default class Game extends React.Component {
   async componentDidMount() {
     this.state = this.state;
     try {
-      const user_profile = await axios.get('/api/profile/').then(function(response) {
+      const user_profile = await axios.get('/d/acct/profile/').then(function(response) {
         if (response.status === 200) {
           return response.data;
         }
       }).catch(function(error) {
         alert('Invalid request! \n' + error);
       });
-      const response = await axios.post('/game/game/', {
+      const response = await axios.post('/d/game/', {
         player_1: user_profile.id,
       }).then(function(response) {
         // If successful response (201)
@@ -56,7 +56,7 @@ export default class Game extends React.Component {
     this.unityContent.on('GameOver', (winner) => {
       const r = this.state.response;
       const game_id = r.id;
-      axios.patch('/game/game/' + game_id + '/', {
+      axios.patch('/d/game/' + game_id + '/', {
         winner: winner,
       }).then(function(response) {
         // If successful response (201)

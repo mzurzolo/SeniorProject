@@ -7,7 +7,7 @@ export default function NavBar() {
   const history = useHistory();
 
   function handleLogout() {
-    axios.post('/api/logout/');
+    axios.post('/d/acct/logout/');
     history.push('/');
   }
 

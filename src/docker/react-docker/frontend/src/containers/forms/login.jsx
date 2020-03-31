@@ -15,7 +15,7 @@ export default function Login(props) {
 
   function userLogin() {
     // Call post to login user
-    axios.post('/api/login/', {
+    axios.post('/d/acct/login/', {
       login: user,
       password: password,
     }).then(function(response) {

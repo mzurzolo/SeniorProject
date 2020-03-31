@@ -43,7 +43,7 @@ export default function NewUser(props) {
     }
 
     // Call post to create a new user
-    axios.post('/api/register/', {
+    axios.post('/d/acct/register/', {
       username: user,
       email: email,
       password1: password,
