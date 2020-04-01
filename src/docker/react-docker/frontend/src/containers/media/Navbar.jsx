@@ -1,5 +1,5 @@
 import React from 'react';
-import './navbar.css';
+import './Navbar.css';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 
@@ -7,15 +7,16 @@ export default function NavBar() {
   const history = useHistory();
 
   function handleLogout() {
-    axios.post('/api/logout/')
-    history.push('/')
+    axios.post('/api/logout/');
+    history.push('/');
   }
 
   return (
     <div id='navbar'>
-      <a onClick={() => history.push('/Dashboard')}>Dashboard</a>
-      <a onClick={() => history.push('/Profile')}>User Profile</a>
-      <a onClick={handleLogout}>Sign Out</a>
+      <button onClick={() => history.push('/Dashboard')}>Dashboard</button>
+      <button onClick={() => history.push('/Profile')}>User Profile</button>
+      <button onClick={handleLogout}>Sign Out</button>
     </div>
   );
 }
+// <a onClick={() => history.push('/Dashboard')}>Dashboard</a>

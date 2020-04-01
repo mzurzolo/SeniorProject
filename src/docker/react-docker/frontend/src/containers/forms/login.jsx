@@ -44,11 +44,11 @@ export default function Login(props) {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button block bsSize="small" type="submit" onClick={() => history.push('/Signup')}>
-          {'Create an account'}
-        </button>
         <button block bsSize="small" type="submit" id="loginbutton">
             Login
+        </button>
+        <button block bsSize="small" type="submit" onClick={() => history.push('/Signup')}>
+          {'Create an account'}
         </button>
       </form>
     </div>
