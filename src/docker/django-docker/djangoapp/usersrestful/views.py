@@ -7,9 +7,9 @@ from .models import RUser
 from rest_auth.registration import views
 
 
-class UsersViewSet(mixins.RetrieveModelMixin,
-                   mixins.ListModelMixin,
-                   viewsets.GenericViewSet,):
+class UsersViewSet(
+    mixins.RetrieveModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet
+):
     """
     API endpoint that allows users to be viewed or edited.
     """
@@ -18,9 +18,7 @@ class UsersViewSet(mixins.RetrieveModelMixin,
     serializer_class = UserSerializer
 
 
-
-class UserViewSet(mixins.RetrieveModelMixin,
-                  viewsets.GenericViewSet,):
+class UserViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """

@@ -16,11 +16,9 @@ export default class Game extends React.Component {
       }).catch(function(error) {
         alert('Invalid request! \n' + error);
       });
-      const response = await axios.post('/d/game/', {
-        player_1: user_profile.id,
-      }).then(function(response) {
+      const response = await axios.get('/d/game/available/').then(function(response) {
         // If successful response (201)
-        if (response.status === 201) {
+        if (response.status === 200) {
           return response.data;
         }
       }).catch(function(error) {

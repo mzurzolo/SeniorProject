@@ -15,18 +15,20 @@ class Game(models.Model):
     player_2 = models.ForeignKey(
         User, related_name="player_2", on_delete=models.SET_NULL, null=True, blank=True
     )
-    date_created = models.DateTimeField(_("date created"), default=timezone.now)
+    date_created = models.DateTimeField(
+        _("date created"), default=timezone.now, db_index=True
+    )
     date_completed = models.DateTimeField(_("date completed"), null=True, blank=True)
     winner = models.ForeignKey(
         User, related_name="winner", on_delete=models.SET_NULL, null=True, blank=True
     )
 
     @staticmethod
-    def create(user):
+    def create():
         """
         Create a new game
         :param user: the user that created the game
         :return: a new game object
         """
-        new_game = Game(player_1=user.id)
+        new_game = Game()
         new_game.save()
