@@ -71,7 +71,4 @@ class GameViewSet(viewsets.ModelViewSet):
                 }
                 for entry in results
             ]
-
-            print(return_value, file=sys.stderr)
-        # serializer = self.get_serializer(outcomes, many=True)
         return Response(return_value)
