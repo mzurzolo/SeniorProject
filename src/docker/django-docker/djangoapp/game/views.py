@@ -5,6 +5,11 @@ from rest_framework import permissions
 from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
 from django.db import transaction
+from django.db.models import Q, Count, Sum
+from django.contrib.auth import get_user_model
+import sys
+
+User = get_user_model()
 
 
 @permission_classes((permissions.AllowAny,))
@@ -39,8 +44,34 @@ class GameViewSet(viewsets.ModelViewSet):
                     .filter(player_2=None)
                     .reverse()[0]
                 )
-                print(game)
                 models.Game.objects.filter(id=game.id).update(player_2=request.user)
                 game = models.Game.objects.get(id=game.id)
         serializer = self.get_serializer(game, many=False)
         return Response(serializer.data)
+
+    @action(detail=False, methods=["get"])
+    def leaderboard(self, request):
+        with transaction.atomic():
+            gamequery = (
+                models.Game.objects.all()
+                .prefetch_related()
+                .exclude(winner=None)
+                .values("winner")
+                .annotate(num_wins=Count("winner"))
+            )
+            results = (
+                gamequery.order_by("num_wins")
+                .values("winner", "num_wins")
+                .reverse()[:10]
+            )
+            return_value = [
+                {
+                    "username": User.objects.get(id=entry["winner"]).username,
+                    "num_wins": entry["num_wins"],
+                }
+                for entry in results
+            ]
+
+            print(return_value, file=sys.stderr)
+        # serializer = self.get_serializer(outcomes, many=True)
+        return Response(return_value)
