@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,10 +16,16 @@ public class GameController : MonoBehaviour
     private int moves;
     public GameObject player_container;
     public Player[] players;
-    private int player_idx = 0;
+    public int player_idx = 0;
+    private Save save = new Save();
 
+    /*
     [DllImport("__Internal")]
     private static extern void GameOver(string winner);
+    [DllImport("__Internal")]
+    private static extern void EndMove();
+    [DllImport("__Internal")]
+    private static extern void ImportSave(string player1id, string player2id);*/
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +38,26 @@ public class GameController : MonoBehaviour
         restartButton.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+            SaveFile();
+        if (Input.GetKeyDown(KeyCode.L))
+            LoadFile();
+        if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
+            SetInteractable(false);
+        else
+            SetInteractable(true);
+    }
+
     public void UGameOver(string winner)
     {
-        GameOver(winner);
+        //GameOver(winner);
+    }
+
+    public void UEndMove()
+    {
+        //EndMove();
     }
 
     void SetGameControllerReferenceForButtons()
@@ -42,6 +66,50 @@ public class GameController : MonoBehaviour
             spaceList[i].GetComponentInParent<Space>().SetControllerReference(this);
     }
 
+    public void SaveFile()
+    {
+        File.Delete("save.json");
+        StreamWriter writer = new StreamWriter("save.json", true);
+        writer.WriteLine(ExportState());
+        writer.Close();
+        Debug.Log("File saved!");
+    }
+
+    public void LoadFile()
+    {
+        StreamReader reader = new StreamReader("save.json");
+        string json = reader.ReadToEnd();
+        Debug.Log(json);
+        reader.Close();
+        UImportSave(json);
+        Debug.Log("File loaded!");
+    }
+
+    public string ExportState()
+    {
+        save.spaceList = new string[spaceList.Length];
+        for (int i = 0; i < spaceList.Length; i++)
+            save.spaceList[i] = spaceList[i].text;
+        save.side = side;
+        save.moves = moves;
+        save.player1 = players[0].pid;
+        save.player2 = players[1].pid;
+        return JsonUtility.ToJson(save);
+    }
+    
+    public void UImportSave(string json)
+    {
+        save = JsonUtility.FromJson<Save>(json);
+        
+        side = save.side;
+        moves = save.moves;
+        players[0].pid = save.player1;
+        players[1].pid = save.player2;
+        for (int i = 0; i < spaceList.Length; i++)
+            spaceList[i].text = save.spaceList[i];
+        CheckInteractable();
+        //ImportSave(players[0].pid,players[0].pid)
+    }
 
     public string GetSide()
     {
@@ -81,12 +149,13 @@ public class GameController : MonoBehaviour
             GameOver();
         else if (spaceList[2].text == side && spaceList[4].text == side && spaceList[6].text == side)
             GameOver();
-        if (moves >= 9)
+        else if (moves >= 9)
         {
             gameOverPanel.SetActive(true);
             gameOverText.text = "Tie!";
             restartButton.SetActive(true);
         }
+        UEndMove();
         ChangeSide();
     }
 
@@ -106,6 +175,12 @@ public class GameController : MonoBehaviour
             spaceList[i].GetComponentInParent<Button>().interactable = setting;
     }
 
+    void CheckInteractable()
+    {
+        for (int i = 0; i < spaceList.Length; i++)
+            spaceList[i].GetComponentInParent<Button>().interactable = spaceList[i].text == "";
+    }
+
     public void Restart()
     {
         side = "X";
@@ -116,4 +191,14 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < spaceList.Length; i++)
             spaceList[i].text = "";
     }
+}
+
+[System.Serializable]
+public class Save
+{
+    public string[] spaceList;
+    public string side = "";
+    public int moves = 0;
+    public string player1 = "";
+    public string player2 = "";
 }
