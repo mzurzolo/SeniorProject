@@ -10,28 +10,25 @@ export default function GameSelection(props) {
   const [P2, setP2] = useState('');
 
 
+  function joinGame() {
 
-function joinGame(){
+  }
 
-}
+  function createGame() {
 
-function createGame(){
-
-}
-
+  }
 
 
-
-
-return (
+  return (
     <div id="gameType">
-        <h1>Select Game Type</h1>
-        <button block bsSize="small" type="submit" id="pubButton">
+      <h1>Select Game Type</h1>
+      <button block bsSize="small" type="submit" id="pubButton">
           Public
-        </button>
-        <button block bsSize="small" type="submit" id="privButton">
+      </button>
+      <button onClick={() => history.push('/Game')}>Game</button>
+      <button block bsSize="small" type="submit" id="privButton">
           Private
-        </button>
+      </button>
     </div>
   );
 }
