@@ -69,8 +69,11 @@ export default class Game extends React.Component {
       console.log('Winner is ' + winner);
     });
 
-    this.unityContent.on('EndMove' => {
-      console.log("Ended move!")
+    this.unityContent.on('EndMove', () => {
+      console.log(this.unityContent.send(
+          'GameController',
+          'ExportState',
+      ));
     });
 
     this.unityContent.on('loaded', () => {
@@ -92,19 +95,22 @@ export default class Game extends React.Component {
 
     this.unityContent.on('ImportSave', (player_1_id,player_2_id) => {
       console.log('Unity Imported!');
+      /*
+      const r = this.state.response;
       //based on the given IDs, we need to reassign player 1 and player 2
       //after that, we post each player's name back to the game
+      this.unityContent.send(
+          'Player1',
+          'SetName',
+          r.player_1.name,
+      );
+      this.unityContent.send(
+          'Player2',
+          'SetName',
+          r.player_2.name,
+      );*/
     });
-    this.unityContent.send(
-        'Player1',
-        'SetName',
-        r.player_1.name,
-    );
-    this.unityContent.send(
-        'Player2',
-        'SetName',
-        r.player_2.name,
-    );
+
   }
 
   render() {

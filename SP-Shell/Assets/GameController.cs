@@ -19,14 +19,13 @@ public class GameController : MonoBehaviour
     public int player_idx = 0;
     private Save save = new Save();
 
-    /*
+
     [DllImport("__Internal")]
     private static extern void GameOver(string winner);
     [DllImport("__Internal")]
     private static extern void EndMove();
-    [DllImport("__Internal")]
-    private static extern void ImportSave(string player1id, string player2id);*/
-
+     [DllImport("__Internal")]
+     private static extern void ImportSave(string player_1_id, string player_2_id);
     // Start is called before the first frame update
     void Start()
     {
@@ -41,9 +40,23 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
-            SaveFile();
+        {
+            #if UNITY_WEBGL
+                //Call react function to export json i guess?
+            #endif
+            #if UNITY_EDITOR
+                SaveFile();
+            #endif
+        }
         if (Input.GetKeyDown(KeyCode.L))
-            LoadFile();
+        {
+            #if UNITY_WEBGL
+                //Call react function to import json i guess?
+            #endif
+            #if UNITY_EDITOR
+                LoadFile();
+            #endif
+        }
         if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
             SetInteractable(false);
         else
@@ -52,12 +65,16 @@ public class GameController : MonoBehaviour
 
     public void UGameOver(string winner)
     {
-        //GameOver(winner);
+        #if UNITY_WEBGL
+            GameOver(winner);
+        #endif
     }
 
     public void UEndMove()
     {
-        //EndMove();
+        #if UNITY_WEBGL
+            EndMove();
+        #endif
     }
 
     void SetGameControllerReferenceForButtons()
@@ -108,7 +125,9 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < spaceList.Length; i++)
             spaceList[i].text = save.spaceList[i];
         CheckInteractable();
-        //ImportSave(players[0].pid,players[0].pid)
+        #if UNITY_WEBGL
+            ImportSave(players[0].pid, players[0].pid);
+        #endif
     }
 
     public string GetSide()
