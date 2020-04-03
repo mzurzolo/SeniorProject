@@ -46,7 +46,21 @@ class GameViewSet(viewsets.ModelViewSet):
                 )
                 models.Game.objects.filter(id=game.id).update(player_2=request.user)
                 game = models.Game.objects.get(id=game.id)
-        serializer = self.get_serializer(game, many=False)
+        #serializer = self.get_serializer(game, many=False)
+        with transaction.atomic():
+            games = list(
+                models.Game.objects.all()
+                .order_by("-date_created")
+                .filter(date_completed=None)
+                .filter(player_1=request.user)
+            )
+            games = games + list(
+                models.Game.objects.all()
+                .order_by("-date_created")
+                .filter(date_completed=None)
+                .filter(player_2=request.user)
+            )
+            serializer = self.get_serializer(games, many=True)
         return Response(serializer.data)
 
     @action(detail=False, methods=["get"])

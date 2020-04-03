@@ -1,7 +1,23 @@
 import React from 'react';
 import './Leaderboard.css';
+import axios from 'axios';
 
 export default class Leaderboard extends React.Component {
+  
+  
+  state = {
+    games: []
+  }
+
+  componentDidMount() {
+    axios.get(`/d/game/leaderboard/`)
+      .then(res => {
+        const games = res.data;
+        this.setState({ games });
+      })
+  }
+  
+  
   render() {
     return (
       <div id='leaderboard'>
@@ -14,30 +30,13 @@ export default class Leaderboard extends React.Component {
           <h3>Score</h3>
         </div>
 
-        <div className='player'>
-          <p>Player 1</p>
-          <p>101,293</p>
-        </div>
-
-        <div className='player'>
-          <p>Player 2</p>
-          <p>98,423</p>
-        </div>
-
-        <div className='player'>
-          <p>Player 3</p>
-          <p>93,947</p>
-        </div>
-
-        <div className='player'>
-          <p>Player 4</p>
-          <p>87,305</p>
-        </div>
-
-        <div className='player'>
-          <p>Player 5</p>
-          <p>84,590</p>
-        </div>
+        <ul>
+        { this.state.games.map(game => <li>{game.username}</li>)}
+      </ul>
+      <ul>
+        { this.state.games.map(game => <li>{game.num_wins}</li>)}
+      </ul>
+        
       </div>
     );
   }

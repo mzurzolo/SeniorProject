@@ -1,34 +1,25 @@
-import React, {useState} from 'react';
-import './GameSelection.css';
-import {useHistory} from 'react-router-dom';
+import React from 'react';
 
+import axios from 'axios';
 
-export default function GameSelection(props) {
-  const history = useHistory();
-
-  const [P1, setP1] = useState('');
-  const [P2, setP2] = useState('');
-
-
-  function joinGame() {
-
+export default class GameSelection extends React.Component {
+  state = {
+    games: []
   }
 
-  function createGame() {
-
+  componentDidMount() {
+    axios.get(`/d/game/available/`)
+      .then(res => {
+        const games = res.data;
+        this.setState({ games });
+      })
   }
 
-
-  return (
-    <div id="gameType">
-      <h1>Select Game Type</h1>
-      <button block bsSize="small" type="submit" id="pubButton">
-          Public
-      </button>
-      <button onClick={() => history.push('/Game')}>Game</button>
-      <button block bsSize="small" type="submit" id="privButton">
-          Private
-      </button>
-    </div>
-  );
+  render() {
+    return (
+      <ul>
+        { this.state.games.map(game => <button>{game.id}</button>)}
+      </ul>
+    )
+  }
 }
