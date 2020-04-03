@@ -9,19 +9,6 @@ public class Space : MonoBehaviour
     public Text buttonText;
     private GameController gameController;
 
-    // Start is called before the first frame update
-   /* void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }*/
-
-
     public void SetControllerReference(GameController control)
     {
         gameController = control;
@@ -30,9 +17,11 @@ public class Space : MonoBehaviour
 
     public void SetSpace()
     {
-        buttonText.text = gameController.GetSide();
-        button.interactable = false;
-        gameController.EndTurn();
+        if (buttonText.text == "")
+        {
+            buttonText.text = gameController.GetSide();
+            gameController.EndTurn();
+        }
     }
 
 }

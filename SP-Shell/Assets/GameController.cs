@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour
     public Text gameOverText;
     public GameObject restartButton;
     private string side;
-    private int moves;
     public GameObject player_container;
     public Player[] players;
     public int player_idx = 0;
@@ -33,7 +32,6 @@ public class GameController : MonoBehaviour
         SetGameControllerReferenceForButtons();
         side = "X";
         gameOverPanel.SetActive(false);
-        moves = 0;
         restartButton.SetActive(false);
     }
 
@@ -65,13 +63,19 @@ public class GameController : MonoBehaviour
 
     public void UGameOver(string winner)
     {
+        #if UNITY_EDITOR
+            return;
+        #endif
         #if UNITY_WEBGL
             GameOver(winner);
         #endif
     }
-
+        
     public void UEndMove()
     {
+        #if UNITY_EDITOR
+            return;
+        #endif
         #if UNITY_WEBGL
             EndMove();
         #endif
@@ -108,7 +112,6 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < spaceList.Length; i++)
             save.spaceList[i] = spaceList[i].text;
         save.side = side;
-        save.moves = moves;
         save.player1 = players[0].pid;
         save.player2 = players[1].pid;
         return JsonUtility.ToJson(save);
@@ -119,7 +122,6 @@ public class GameController : MonoBehaviour
         save = JsonUtility.FromJson<Save>(json);
         
         side = save.side;
-        moves = save.moves;
         players[0].pid = save.player1;
         players[1].pid = save.player2;
         for (int i = 0; i < spaceList.Length; i++)
@@ -139,6 +141,7 @@ public class GameController : MonoBehaviour
     {
         if (side == "X")
         {
+            Debug.Log("!!!");
             side = "O";
             player_idx = 1;
         }
@@ -151,7 +154,6 @@ public class GameController : MonoBehaviour
 
     public void EndTurn()
     {
-        moves++;
         if (spaceList[0].text == side && spaceList[1].text == side && spaceList[2].text == side)
             GameOver();
         else if (spaceList[3].text == side && spaceList[4].text == side && spaceList[5].text == side)
@@ -168,7 +170,7 @@ public class GameController : MonoBehaviour
             GameOver();
         else if (spaceList[2].text == side && spaceList[4].text == side && spaceList[6].text == side)
             GameOver();
-        else if (moves >= 9)
+        else if (CheckBoard())
         {
             gameOverPanel.SetActive(true);
             gameOverText.text = "Tie!";
@@ -176,6 +178,14 @@ public class GameController : MonoBehaviour
         }
         UEndMove();
         ChangeSide();
+    }
+
+    bool CheckBoard()
+    {
+        for(int i=0;i<spaceList.Length;i++)
+            if (spaceList[i].text == "")
+                return false;
+        return true;
     }
 
     void GameOver()
@@ -203,7 +213,6 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         side = "X";
-        moves = 0;
         gameOverPanel.SetActive(false);
         SetInteractable(true);
         restartButton.SetActive(false);
