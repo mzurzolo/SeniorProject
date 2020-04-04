@@ -81,17 +81,17 @@ export default class Game extends React.Component {
       this.unityContent.send(
           'Player1',
           'SetName',
-          r.player_1.name,
+          r.player_1,
       );
       this.unityContent.send(
           'Player2',
           'SetName',
-          r.player_2.name,
+          r.player_2,
       );
       console.log('Users assigned!');
     });
 
-    this.unityContent.on('ImportSave', (player_1_id,player_2_id) => {
+    this.unityContent.on('ImportSave', (player_1_id, player_2_id) => {
       console.log('Unity Imported!');
       /*
       const r = this.state.response;
@@ -108,7 +108,6 @@ export default class Game extends React.Component {
           r.player_2.name,
       );*/
     });
-
   }
 
   render() {

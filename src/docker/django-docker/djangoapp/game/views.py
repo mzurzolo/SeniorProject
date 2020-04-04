@@ -86,3 +86,15 @@ class GameViewSet(viewsets.ModelViewSet):
                 for entry in results
             ]
         return Response(return_value)
+
+    @action(detail=True, methods=["get", "patch"])
+    def state(self, request, pk):
+        print(pk, file=sys.stderr)
+        if request.method in ["GET"]:
+            with transaction.atomic():
+                gamestate = (
+                    models.Game.objects
+                    .get(id=pk)
+                    .gamestate
+                )
+        return Response(gamestate)
