@@ -89,7 +89,6 @@ class GameViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=["get", "patch"])
     def state(self, request, pk):
-        print(pk, file=sys.stderr)
         if request.method in ["GET"]:
             with transaction.atomic():
                 gamestate = (
@@ -97,4 +96,12 @@ class GameViewSet(viewsets.ModelViewSet):
                     .get(id=pk)
                     .gamestate
                 )
-        return Response(gamestate)
+        if request.method in ["PATCH"]:
+            with transaction.atomic():
+                game = (
+                    models.Game.objects
+                    .get(id=pk)
+                )
+            game.gamestate = request.data['gamestate']
+            game.save()
+        return Response(game.gamestate)
