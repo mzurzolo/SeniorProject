@@ -1,60 +1,49 @@
 // Get started by creating a new React
 // component and importing the libraries!
 
-import React from 'react';
+import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import Unity, {UnityContent} from 'react-unity-webgl';
+import GameSelection from '../forms/GameSelection';
 import axios from 'axios';
+import {withRouter} from 'react-router';
 
-export default class Game extends React.Component {
-  async componentDidMount() {
-    this.state = this.state;
-    try {
-      const user_profile = await axios.get('/d/acct/profile/').then(function(response) {
-        if (response.status === 200) {
-          return response.data;
-        }
-      }).catch(function(error) {
-        alert('Invalid request! \n' + error);
-      });
-      const response = await axios.get('/d/game/available/').then(function(response) {
-        // If successful response (201)
-        if (response.status === 200) {
-          return response.data;
-        }
-      }).catch(function(error) {
-        alert('Invalid request! \n' + error);
-      });
-      console.log(response);
-      try {
-        this.setState({
-          response,
-        });
-      } catch (e) {
-        console.log(e);
-      }
-      console.log(this.state);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
+class Game extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
-    console.log(this.state);
-    // Next up create a new Unity Content object to
-    // initialise and define your WebGL build. The
-    // paths are relative from your index file.
-
     this.unityContent = new UnityContent(
         'MyGame/Build/MyGame.json',
         'MyGame/Build/UnityLoader.js',
     );
-
+  }
+  async componentDidMount() {
+    const gameuuid = this.props.location.state.game.id;
+    this.unityContent.on('loaded', () => {
+      console.log('Unity loaded!');
+      axios.get('/d/game/' + gameuuid + '/state/').then((res) => {
+        if (res.status === 200) {
+          const gamestate = res.data;
+          this.unityContent.send(
+              'Player1',
+              'SetName',
+              gamestate.player1,
+          );
+          this.unityContent.send(
+              'Player2',
+              'SetName',
+              gamestate.player2,
+          );
+          this.unityContent.send(
+              'GameController',
+              'ImportSave',
+              JSON.stringify(gamestate),
+          );
+        }
+      });
+    });
     this.unityContent.on('GameOver', (winner) => {
-      const r = this.state.response;
-      const game_id = r.id;
-      axios.patch('/d/game/' + game_id + '/', {
+      const gameuuid = this.props.location.state.game.id;
+      axios.patch('/d/game/' + gameuuid + '/winner/', {
         winner: winner,
       }).then(function(response) {
         // If successful response (201)
@@ -68,47 +57,24 @@ export default class Game extends React.Component {
     });
 
     this.unityContent.on('EndMove', () => {
-      console.log(this.unityContent.send(
-          'GameController',
-          'ExportState',
-      ));
+      console.log('End move');
+      // console.log(this.unityContent.send(
+      //  'GameController',
+      //  'ExportState', 'state',
+      // ));
     });
-
-    this.unityContent.on('loaded', () => {
-      console.log('Unity loaded!');
-      const r = this.state.response;
-      console.log(r);
-      this.unityContent.send(
-          'Player1',
-          'SetName',
-          r.player_1,
-      );
-      this.unityContent.send(
-          'Player2',
-          'SetName',
-          r.player_2,
-      );
-      console.log('Users assigned!');
-    });
-
-    this.unityContent.on('ImportSave', (player_1_id, player_2_id) => {
-      console.log('Unity Imported!');
-      /*
-      const r = this.state.response;
-      //based on the given IDs, we need to reassign player 1 and player 2
-      //after that, we post each player's name back to the game
-      this.unityContent.send(
-          'Player1',
-          'SetName',
-          r.player_1.name,
-      );
-      this.unityContent.send(
-          'Player2',
-          'SetName',
-          r.player_2.name,
-      );*/
+    this.unityContent.on('ExportState', (savestate) => {
+      const jsonsavestate = JSON.parse(savestate);
+      axios.patch('/d/game/' + gameuuid + '/state/', {gamestate: jsonsavestate}).then(function(response) {
+        if (response.status === 200) {
+          console.log('good');
+        }
+      }).catch(function(error) {
+        alert('Invalid request! \n' + error);
+      });
     });
   }
+
 
   render() {
     // Finally render the Unity component and pass
@@ -120,4 +86,4 @@ export default class Game extends React.Component {
   }
 }
 
-// export default Game;
+export default withRouter(Game);

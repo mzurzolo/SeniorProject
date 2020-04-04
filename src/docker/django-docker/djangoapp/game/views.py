@@ -34,6 +34,7 @@ class GameViewSet(viewsets.ModelViewSet):
         if len(games) < 1:
             with transaction.atomic():
                 game = models.Game.objects.create(player_1=request.user)
+                game.gamestate['player1'] = request.user.username
                 game.save()
         else:
             with transaction.atomic():
@@ -46,7 +47,10 @@ class GameViewSet(viewsets.ModelViewSet):
                 )
                 models.Game.objects.filter(id=game.id).update(player_2=request.user)
                 game = models.Game.objects.get(id=game.id)
-        #serializer = self.get_serializer(game, many=False)
+                game.gamestate['player2'] = request.user.username
+                game.save()
+        # serializer = self.get_serializer(game, many=False)
+        print(game.gamestate['player1'], file=sys.stderr)
         with transaction.atomic():
             games = list(
                 models.Game.objects.all()
@@ -91,18 +95,21 @@ class GameViewSet(viewsets.ModelViewSet):
     def state(self, request, pk):
         if request.method in ["GET"]:
             with transaction.atomic():
-                gamestate = (
-                    models.Game.objects
-                    .get(id=pk)
-                    .gamestate
-                )
+                gamestate = models.Game.objects.get(id=pk).gamestate
         if request.method in ["PATCH"]:
             with transaction.atomic():
-                game = (
-                    models.Game.objects
-                    .get(id=pk)
-                )
-            game.gamestate = request.data['gamestate']
+                game = models.Game.objects.get(id=pk)
+            game.gamestate = request.data["gamestate"]
             game.save()
             gamestate = game.gamestate
         return Response(gamestate)
+
+    @action(detail=True, methods=["patch"])
+    def winner(self, request, pk):
+        if request.method in ["PATCH"]:
+            with transaction.atomic():
+                winner = User.objects.get(username=request.data["winner"])
+                game = models.Game.objects.get(id=pk)
+                game.set_winner(user=winner)
+            serializer = self.get_serializer(game, many=False)
+        return Response(serializer.data)

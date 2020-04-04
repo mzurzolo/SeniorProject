@@ -9,8 +9,8 @@ export default class UserDashboard extends Component {
       <div id='dashboard'>
         <NavBar/>
         <div id='startgame'>
-          <button block bsSize="small" type="button" onClick={() => 
-              this.props.history.push('/SelectGame')}>Play Game</button>
+          <button block bsSize="small" type="button" onClick={() =>
+            this.props.history.push('/SelectGame')}>Play Game</button>
         </div>
         <Leaderboard/>
       </div>

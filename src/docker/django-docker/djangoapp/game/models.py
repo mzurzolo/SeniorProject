@@ -3,8 +3,10 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
-#import jsonfield
+
+# import jsonfield
 from jsonfield import JSONField
+import sys
 
 User = get_user_model()
 
@@ -24,7 +26,15 @@ class Game(models.Model):
     winner = models.ForeignKey(
         User, related_name="winner", on_delete=models.SET_NULL, null=True, blank=True
     )
-    gamestate = JSONField(default={"spaceList":["","","","","","","","",""],"side":"X","moves":0,"player1":"","player2":""})
+    gamestate = JSONField(
+        default={
+            "spaceList": ["", "", "", "", "", "", "", "", ""],
+            "side": "X",
+            "moves": 0,
+            "player1": "",
+            "player2": "",
+        }
+    )
 
     @staticmethod
     def create():
@@ -35,3 +45,8 @@ class Game(models.Model):
         """
         new_game = Game()
         new_game.save()
+
+    def set_winner(self, user):
+        self.winner = user
+        self.date_completed = timezone.now()
+        self.save()

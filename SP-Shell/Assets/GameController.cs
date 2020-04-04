@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class GameController : MonoBehaviour
 {
     public Text[] spaceList;
@@ -16,15 +17,15 @@ public class GameController : MonoBehaviour
     public GameObject player_container;
     public Player[] players;
     public int player_idx = 0;
-    private Save save = new Save();
+    public Save save = new Save();
 
 
     [DllImport("__Internal")]
     private static extern void GameOver(string winner);
     [DllImport("__Internal")]
     private static extern void EndMove();
-     [DllImport("__Internal")]
-     private static extern void ImportSave(string player_1_id, string player_2_id);
+    [DllImport("__Internal")]
+    private static extern void ExportState(string savestate);
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +71,7 @@ public class GameController : MonoBehaviour
             GameOver(winner);
         #endif
     }
-        
+
     public void UEndMove()
     {
         #if UNITY_EDITOR
@@ -78,6 +79,28 @@ public class GameController : MonoBehaviour
         #endif
         #if UNITY_WEBGL
             EndMove();
+        #endif
+    }
+
+    public void UImportSave(string gamestate)
+    {
+        Debug.Log(gamestate);
+        #if UNITY_EDITOR
+            ImportSave(gamestate);
+        #endif
+        #if UNITY_WEBGL
+            ImportSave(gamestate);
+        #endif
+    }
+
+    public void UExportState(string savestate)
+    {
+        Debug.Log(savestate);
+        #if UNITY_EDITOR
+            ExportState(savestate);
+        #endif
+        #if UNITY_WEBGL
+            ExportState(savestate);
         #endif
     }
 
@@ -91,7 +114,7 @@ public class GameController : MonoBehaviour
     {
         File.Delete("save.json");
         StreamWriter writer = new StreamWriter("save.json", true);
-        writer.WriteLine(ExportState());
+        //writer.WriteLine(ExportState());
         writer.Close();
         Debug.Log("File saved!");
     }
@@ -102,34 +125,37 @@ public class GameController : MonoBehaviour
         string json = reader.ReadToEnd();
         Debug.Log(json);
         reader.Close();
-        UImportSave(json);
+        ImportSave(json);
         Debug.Log("File loaded!");
     }
 
-    public string ExportState()
+    public void ExportState()
     {
         save.spaceList = new string[spaceList.Length];
         for (int i = 0; i < spaceList.Length; i++)
             save.spaceList[i] = spaceList[i].text;
         save.side = side;
-        save.player1 = players[0].pid;
-        save.player2 = players[1].pid;
-        return JsonUtility.ToJson(save);
+        save.player1 = players[0].name;
+        save.player2 = players[1].name;
+        UExportState(JsonUtility.ToJson(save));
     }
-    
-    public void UImportSave(string json)
+
+    public void ImportSave(string gamestate)
     {
-        save = JsonUtility.FromJson<Save>(json);
-        
-        side = save.side;
-        players[0].pid = save.player1;
-        players[1].pid = save.player2;
+        Save s_ave = JsonUtility.FromJson<Save>(JsonUtility.ToJson(gamestate));
+
+        side = s_ave.side;
+        //players[0].name = s_ave.player1;
+        //players[1].name = s_ave.player2;
+        //save.player1 = s_ave.player1;
+        //save.player2 = s_ave.player2;
+        //save = s_ave;
         for (int i = 0; i < spaceList.Length; i++)
-            spaceList[i].text = save.spaceList[i];
+            spaceList[i].text = s_ave.spaceList[i];
         CheckInteractable();
-        #if UNITY_WEBGL
-            ImportSave(players[0].pid, players[0].pid);
-        #endif
+        //#if UNITY_WEBGL
+          //  ImportSave(players[0].pid, players[0].pid);
+        //#endif
     }
 
     public string GetSide()
@@ -178,6 +204,7 @@ public class GameController : MonoBehaviour
         }
         UEndMove();
         ChangeSide();
+        ExportState();
     }
 
     bool CheckBoard()
@@ -225,8 +252,8 @@ public class GameController : MonoBehaviour
 public class Save
 {
     public string[] spaceList;
-    public string side = "";
-    public int moves = 0;
-    public string player1 = "";
-    public string player2 = "";
+    public string side;
+    public int moves;
+    public string player1;
+    public string player2;
 }

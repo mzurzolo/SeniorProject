@@ -14,9 +14,11 @@
     justify-content: space-between;
 }
 
+tbody {
+  text-align: center;
+}
+
 .player {
     display: flex;
     justify-content: space-between;
 }
-
-

@@ -1,25 +1,63 @@
-import React from 'react';
-
+import React, {
+  useState,
+} from 'react';
+import {
+  useHistory,
+} from 'react-router-dom';
 import axios from 'axios';
+import {
+  withRouter,
+} from 'react-router';
 
-export default class GameSelection extends React.Component {
-  state = {
-    games: []
+class GameSelection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      games: [],
+    };
+  }
+  async componentDidMount() {
+    const games = await axios.get(`/d/game/available/`)
+        .then((res) => {
+          const games = res.data;
+          return games;
+        });
+    this.setState({
+      games: games,
+    });
+  }
+  handleStartGame(game) {
+    if (game.player_2 === null) {
+      alert('Waiting on player 2!');
+    } else {
+      this.setState({
+        game: game,
+      });
+      this.props.history.push({
+        pathname: '/Game',
+        state: {
+          game: game,
+        },
+      });
+    }
   }
 
-  componentDidMount() {
-    axios.get(`/d/game/available/`)
-      .then(res => {
-        const games = res.data;
-        this.setState({ games });
-      })
-  }
 
   render() {
-    return (
-      <ul>
-        { this.state.games.map(game => <button>{game.id}</button>)}
-      </ul>
-    )
+    return ( <
+      div id = 'gamelist' > {
+        this.state.games.map((game) => ( <
+          div key = {
+            game.id
+          } >
+          <
+            button onClick = {
+              () => this.handleStartGame(game)
+            } > {
+              game.id
+            } < /button> </div > ))
+      } < /div>
+    );
   }
 }
+export default withRouter(GameSelection);
