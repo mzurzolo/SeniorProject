@@ -104,4 +104,5 @@ class GameViewSet(viewsets.ModelViewSet):
                 )
             game.gamestate = request.data['gamestate']
             game.save()
-        return Response(game.gamestate)
+            gamestate = game.gamestate
+        return Response(gamestate)
