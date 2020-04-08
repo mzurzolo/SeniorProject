@@ -35,7 +35,7 @@ class Game extends React.Component {
           );
           this.unityContent.send(
               'GameController',
-              'ImportSave',
+              'ImportState',
               JSON.stringify(gamestate),
           );
         }
