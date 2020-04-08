@@ -81,23 +81,23 @@ public class GameController : MonoBehaviour
             EndMove();
         #endif
     }
-
+    /*
     public void UImportSave(string gamestate)
     {
-        Debug.Log(gamestate);
         #if UNITY_EDITOR
-            ImportSave(gamestate);
+            return;
         #endif
         #if UNITY_WEBGL
             ImportSave(gamestate);
         #endif
-    }
+
+    }*/
 
     public void UExportState(string savestate)
     {
         Debug.Log(savestate);
         #if UNITY_EDITOR
-            ExportState(savestate);
+            return;
         #endif
         #if UNITY_WEBGL
             ExportState(savestate);
@@ -114,7 +114,7 @@ public class GameController : MonoBehaviour
     {
         File.Delete("save.json");
         StreamWriter writer = new StreamWriter("save.json", true);
-        //writer.WriteLine(ExportState());
+        writer.WriteLine(ExportSaveState());
         writer.Close();
         Debug.Log("File saved!");
     }
@@ -123,9 +123,10 @@ public class GameController : MonoBehaviour
     {
         StreamReader reader = new StreamReader("save.json");
         string json = reader.ReadToEnd();
-        Debug.Log(json);
         reader.Close();
-        ImportSave(json);
+        Debug.Log(json);
+
+        ImportState(json);
         Debug.Log("File loaded!");
     }
 
@@ -140,22 +141,26 @@ public class GameController : MonoBehaviour
         UExportState(JsonUtility.ToJson(save));
     }
 
-    public void ImportSave(string gamestate)
+    public string ExportSaveState()
     {
-        Save s_ave = JsonUtility.FromJson<Save>(JsonUtility.ToJson(gamestate));
+        save.spaceList = new string[spaceList.Length];
+        for (int i = 0; i < spaceList.Length; i++)
+            save.spaceList[i] = spaceList[i].text;
+        save.side = side;
+        save.player1 = players[0].name;
+        save.player2 = players[1].name;
+        return JsonUtility.ToJson(save);
+    }
 
+    public void ImportState(string gamestate)
+    {
+        Save s_ave = JsonUtility.FromJson<Save>(gamestate);
         side = s_ave.side;
-        //players[0].name = s_ave.player1;
-        //players[1].name = s_ave.player2;
-        //save.player1 = s_ave.player1;
-        //save.player2 = s_ave.player2;
-        //save = s_ave;
+        players[0].name = s_ave.player1;
+        players[1].name = s_ave.player2;
         for (int i = 0; i < spaceList.Length; i++)
             spaceList[i].text = s_ave.spaceList[i];
         CheckInteractable();
-        //#if UNITY_WEBGL
-          //  ImportSave(players[0].pid, players[0].pid);
-        //#endif
     }
 
     public string GetSide()
@@ -240,6 +245,7 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         side = "X";
+        player_idx = 0;
         gameOverPanel.SetActive(false);
         SetInteractable(true);
         restartButton.SetActive(false);
@@ -253,7 +259,6 @@ public class Save
 {
     public string[] spaceList;
     public string side;
-    public int moves;
     public string player1;
     public string player2;
 }
