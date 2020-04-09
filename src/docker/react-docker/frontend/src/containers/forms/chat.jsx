@@ -17,7 +17,7 @@ class Chat extends React.Component {
     this.sendSocketMessage = this.sendSocketMessage.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   componentWillUnmount() {
     this.serverRequest.abort();
@@ -29,7 +29,7 @@ class Chat extends React.Component {
 
 
     // we've received an updated list of available games
-    this.setState({available_game_list: result});
+    this.setState({ available_game_list: result });
   }
 
   sendSocketMessage(message) {
@@ -47,13 +47,13 @@ class Chat extends React.Component {
     return (
       <div>
         <head>
-          <meta charset="utf-8"/>
+          <meta charset="utf-8" />
           <title>Chat Room</title>
         </head>
         <body>
-          <textarea id="chat-log" cols="100" rows="20"></textarea><br/>
-          <input id="chat-message-input" type="text" size="100"/><br/>
-          <input id="chat-message-submit" type="button" value="Send"/>
+          <textarea id="chat-log" cols="100" rows="20"></textarea><br />
+          <input id="chat-message-input" type="text" size="100" /><br />
+          <input id="chat-message-submit" type="button" value="3end" />
         </body>
       </div>
 
