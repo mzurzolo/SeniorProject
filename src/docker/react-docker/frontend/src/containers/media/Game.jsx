@@ -33,6 +33,24 @@ class Game extends React.Component {
               'SetName',
               gamestate.player2,
           );
+          axios.get('/d/acct/profile/').then((res) => {
+            if (res.status === 200) {
+              const curr_user = res.data;
+              if (curr_user.username === gamestate.player1) {
+                this.unityContent.send(
+                    'GameController',
+                    'SetIDX',
+                    0,
+                );
+              } else {
+                this.unityContent.send(
+                    'GameController',
+                    'SetIDX',
+                    1,
+                );
+              }
+            }
+          });
           console.log('ImportState');
           this.unityContent.send(
               'GameController',

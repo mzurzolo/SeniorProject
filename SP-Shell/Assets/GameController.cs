@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     private string side;
     public GameObject player_container;
     public Player[] players;
-    public int player_idx = 0;
+    public int player_idx;
     public Save save = new Save();
 
 
@@ -69,6 +69,12 @@ public class GameController : MonoBehaviour
         #if UNITY_WEBGL
             GameOver(winner);
         #endif
+    }
+
+
+    public void SetIDX(int index)
+    {
+      player_idx = index;
     }
 
     public void UEndMove()
@@ -170,12 +176,12 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("!!!");
             side = "O";
-            player_idx = 0;
+            //player_idx = 0;
         }
         else
         {
             side = "X";
-            player_idx = 1;
+            //player_idx = 1;
         }
     }
 
