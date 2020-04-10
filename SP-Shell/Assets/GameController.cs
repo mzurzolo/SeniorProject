@@ -157,6 +157,10 @@ public class GameController : MonoBehaviour
         players[1].name = s_ave.player2;
         for (int i = 0; i < spaceList.Length; i++)
             spaceList[i].text = s_ave.spaceList[i];
+        if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
+            SetInteractable(false);
+        else
+            SetInteractable(true);
         CheckInteractable();
     }
 
