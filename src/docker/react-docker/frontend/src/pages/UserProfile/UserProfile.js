@@ -4,7 +4,12 @@ import axios from 'axios';
 
 export default class UserProfile extends Component {
   async componentloggedin(){
+
+    state = {
+      user_profile: []
+    };
         try{
+          const res = await fetch('/d/acct/profile/');
         const user_profile = await axios.get('/d/acct/profile/').then(function(response) {
         if (response.status === 200) {
           return response.data;
