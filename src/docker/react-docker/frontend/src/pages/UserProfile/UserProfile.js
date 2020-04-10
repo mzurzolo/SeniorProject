@@ -6,7 +6,7 @@ export default class UserProfile extends Component {
   async componentloggedin(){
 
     state = {
-      user_profile: []
+      profile: []
     };
         try{
           const res = await fetch('/d/acct/profile/');
@@ -28,7 +28,7 @@ export default class UserProfile extends Component {
           <div id='userprofile'>
             <NavBar/>
         <h1>User Profile </h1>
-          {this.state.user_profile.map(item =>(
+          {this.state.profile.map(item =>(
             <div key={item.id}>
         <h2>Username: {item.username}</h2>
         <h2><span> Email: {item.email}</span></h2>
