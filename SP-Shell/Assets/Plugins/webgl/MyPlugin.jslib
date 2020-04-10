@@ -22,3 +22,16 @@ mergeInto(LibraryManager.library,
         ReactUnityWebGL.ExportState(Pointer_stringify(savestate));
       },
     });
+mergeInto(LibraryManager.library,
+    {
+      PollLoop: function() {
+        ReactUnityWebGL.PollLoop();
+      },
+    });
+
+mergeInto(LibraryManager.library,
+    {
+      PollTrigger: function() {
+        ReactUnityWebGL.PollTrigger();
+      },
+    });

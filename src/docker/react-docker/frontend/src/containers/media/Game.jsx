@@ -36,6 +36,7 @@ class Game extends React.Component {
           axios.get('/d/acct/profile/').then((res) => {
             if (res.status === 200) {
               const curr_user = res.data;
+              console.log('ImportState');
               if (curr_user.username === gamestate.player1) {
                 this.unityContent.send(
                     'GameController',
@@ -49,19 +50,24 @@ class Game extends React.Component {
                     1,
                 );
               }
+              this.unityContent.send(
+                  'GameController',
+                  'ImportState',
+                  JSON.stringify(gamestate),
+              );
+              this.unityContent.send(
+                  'GameController',
+                  'PollTrigger',
+              );
             }
           });
-          console.log('ImportState');
-          this.unityContent.send(
-              'GameController',
-              'ImportState',
-              JSON.stringify(gamestate),
-          );
         }
       });
     });
     this.unityContent.on('GameOver', (winner) => {
       const gameuuid = this.props.location.state.game.id;
+      console.log('winner!');
+      console.log(winner);
       axios.patch('/d/game/' + gameuuid + '/winner/', {
         winner: winner,
       }).then(function(response) {
@@ -76,12 +82,33 @@ class Game extends React.Component {
     });
 
     this.unityContent.on('EndMove', () => {
-      console.log('End move');
-      // console.log(this.unityContent.send(
-      //  'GameController',
-      //  'ExportState', 'state',
-      // ));
+      console.log('End Move');
+      axios.get('/d/game/' + gameuuid + '/state/').then((res) => {
+        if (res.status === 200) {
+          const gamestate = res.data;
+          this.unityContent.send(
+              'GameController',
+              'ImportState',
+              JSON.stringify(gamestate),
+          );
+        }
+      });
     });
+
+    this.unityContent.on('PollTrigger', () => {
+      console.log('PollTrigger');
+      axios.get('/d/game/' + gameuuid + '/state/').then((res) => {
+        if (res.status === 200) {
+          const gamestate = res.data;
+          this.unityContent.send(
+              'GameController',
+              'ImportState',
+              JSON.stringify(gamestate),
+          );
+        }
+      });
+    });
+
     this.unityContent.on('ExportState', (savestate) => {
       console.log('Export State');
       const jsonsavestate = JSON.parse(savestate);

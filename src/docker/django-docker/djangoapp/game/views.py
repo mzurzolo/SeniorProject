@@ -111,5 +111,6 @@ class GameViewSet(viewsets.ModelViewSet):
                 winner = User.objects.get(username=request.data["winner"])
                 game = models.Game.objects.get(id=pk)
                 game.set_winner(user=winner)
+                game.save()
             serializer = self.get_serializer(game, many=False)
         return Response(serializer.data)

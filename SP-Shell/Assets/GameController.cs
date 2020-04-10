@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System.Threading;
 
 [System.Serializable]
 public class GameController : MonoBehaviour
@@ -26,6 +27,8 @@ public class GameController : MonoBehaviour
     private static extern void EndMove();
     [DllImport("__Internal")]
     private static extern void ExportState(string savestate);
+    [DllImport("__Internal")]
+    private static extern void PollTrigger();
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +99,9 @@ public class GameController : MonoBehaviour
         #endif
         #if UNITY_WEBGL
             ExportState(savestate);
+            Thread.Sleep(1000);
+            PollLoop(1);
+            Debug.Log("postexport");
         #endif
     }
 
@@ -130,7 +136,7 @@ public class GameController : MonoBehaviour
         save.spaceList = new string[spaceList.Length];
         for (int i = 0; i < spaceList.Length; i++)
             save.spaceList[i] = spaceList[i].text;
-        save.side = side;
+        save.side = GetSide();
         save.player1 = players[0].name;
         save.player2 = players[1].name;
         UExportState(JsonUtility.ToJson(save));
@@ -150,18 +156,15 @@ public class GameController : MonoBehaviour
     public void ImportState(string gamestate)
     {
         Save s_ave = JsonUtility.FromJson<Save>(gamestate);
-        Debug.Log(this.side);
         SetSide(s_ave.side);
-        Debug.Log(this.side);
+        side = GetSide();
         players[0].name = s_ave.player1;
         players[1].name = s_ave.player2;
         for (int i = 0; i < spaceList.Length; i++)
             spaceList[i].text = s_ave.spaceList[i];
         if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
-            SetInteractable(false);
-        else
-            SetInteractable(true);
-        CheckInteractable();
+            PollLoop(1);
+        Debug.Log("postimport");
     }
 
     public string GetSide()
@@ -169,9 +172,9 @@ public class GameController : MonoBehaviour
         return side;
     }
 
-    public void SetSide(string side)
+    public void SetSide(string newside)
     {
-        this.side = side;
+        side = newside;
     }
 
     void ChangeSide()
@@ -179,14 +182,36 @@ public class GameController : MonoBehaviour
         if (side == "X")
         {
             Debug.Log("!!!");
-            side = "O";
+            SetSide("O");
             //player_idx = 0;
         }
         else
         {
-            side = "X";
+            SetSide("X");
             //player_idx = 1;
         }
+    }
+
+    public void PollLoop(int i)
+    {
+      string pside = GetSide();
+      if ((pside == "X" && player_idx != 0) || (pside == "O" && player_idx != 1))
+      {
+        Debug.Log("Poll Loop!");
+        Debug.Log(pside);
+        Thread.Sleep(2500);
+        Debug.Log("Slept!");
+        #if UNITY_WEBGL
+          PollTrigger();
+        #endif
+        pside = GetSide();
+      }
+
+      //while (poll_side == side)
+      //{
+        //Thread.Sleep(1000);
+        //side = GetSide();
+      //}
     }
 
     public void EndTurn()
