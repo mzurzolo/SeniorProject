@@ -1,0 +1,29 @@
+/* blue bar above chat box */
+.infoBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #3bb6eb;
+  border-radius: 4px 4px 0 0;
+  height: 60px;
+  width: 100%;
+}
+/* room name text */
+.leftInnerContainer {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+  color:white;
+}
+
+.rightInnerContainer {
+  display: flex;
+  flex: 0.5;
+  justify-content: flex-end;
+  margin-right: 5%;
+}
+
+.onlineIcon {
+  margin-right: 10%;
+}
