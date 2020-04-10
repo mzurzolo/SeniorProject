@@ -170,12 +170,12 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("!!!");
             side = "O";
-            //player_idx = 1;
+            player_idx = 0;
         }
         else
         {
             side = "X";
-            //player_idx = 0;
+            player_idx = 1;
         }
     }
 
