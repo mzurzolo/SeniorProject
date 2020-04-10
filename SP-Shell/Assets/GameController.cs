@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour
     {
         players = player_container.GetComponentsInChildren<Player>();
         SetGameControllerReferenceForButtons();
-        side = "X";
         gameOverPanel.SetActive(false);
         restartButton.SetActive(false);
     }
