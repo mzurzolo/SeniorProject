@@ -22,7 +22,7 @@ export default class UserProfile extends Component {
         return (
           <div id='userprofile'>
             <NavBar/>
-        <h1>User Profile </h1>
+        <h1>Profile </h1>
         <h2>Username: </h2>
         <h2> Email: </h2>
       </div>
