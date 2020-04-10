@@ -1,31 +1,14 @@
 {
-  "name": "frontend",
+  "name": "project_chat_application",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "axios": "^0.19.2",
-    "eslint": "^6.8.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.19.0",
-    "http-proxy": "^1.18.0",
-    "http-proxy-middleware": "^1.0.1",
-    "node-http-proxy": "^0.2.3",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-proxy-loader": "^0.3.5",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.0",
-    "react-unity-webgl": "^7.1.10",
-    "react-websocket": "^2.1.0",
-    "react-websockets": "^1.0.0",
-    "start-react-app": "^0.1.9",
     "query-string": "^6.8.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-emoji": "^0.5.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.1",
     "react-scroll-to-bottom": "^1.3.2",
     "socket.io-client": "^2.2.0"
   },
@@ -33,8 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint --ext .js --ext .jsx ."
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
