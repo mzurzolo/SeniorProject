@@ -81,17 +81,7 @@ public class GameController : MonoBehaviour
             EndMove();
         #endif
     }
-    /*
-    public void UImportSave(string gamestate)
-    {
-        #if UNITY_EDITOR
-            return;
-        #endif
-        #if UNITY_WEBGL
-            ImportSave(gamestate);
-        #endif
 
-    }*/
 
     public void UExportState(string savestate)
     {
@@ -146,7 +136,7 @@ public class GameController : MonoBehaviour
         save.spaceList = new string[spaceList.Length];
         for (int i = 0; i < spaceList.Length; i++)
             save.spaceList[i] = spaceList[i].text;
-        save.side = side;
+        save.side = GetSide();
         save.player1 = players[0].name;
         save.player2 = players[1].name;
         return JsonUtility.ToJson(save);
@@ -155,7 +145,9 @@ public class GameController : MonoBehaviour
     public void ImportState(string gamestate)
     {
         Save s_ave = JsonUtility.FromJson<Save>(gamestate);
-        side = s_ave.side;
+        Debug.Log(this.side);
+        SetSide(s_ave.side);
+        Debug.Log(this.side);
         players[0].name = s_ave.player1;
         players[1].name = s_ave.player2;
         for (int i = 0; i < spaceList.Length; i++)
@@ -168,18 +160,23 @@ public class GameController : MonoBehaviour
         return side;
     }
 
+    public void SetSide(string side)
+    {
+        this.side = side;
+    }
+
     void ChangeSide()
     {
         if (side == "X")
         {
             Debug.Log("!!!");
             side = "O";
-            player_idx = 1;
+            //player_idx = 1;
         }
         else
         {
             side = "X";
-            player_idx = 0;
+            //player_idx = 0;
         }
     }
 

@@ -33,6 +33,7 @@ class Game extends React.Component {
               'SetName',
               gamestate.player2,
           );
+          console.log('ImportState');
           this.unityContent.send(
               'GameController',
               'ImportState',
@@ -64,6 +65,7 @@ class Game extends React.Component {
       // ));
     });
     this.unityContent.on('ExportState', (savestate) => {
+      console.log('Export State');
       const jsonsavestate = JSON.parse(savestate);
       axios.patch('/d/game/' + gameuuid + '/state/', {gamestate: jsonsavestate}).then(function(response) {
         if (response.status === 200) {
