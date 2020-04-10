@@ -4,7 +4,8 @@ import Landing from './pages/Landing/Landing';
 import UserDashboard from './pages/UserDashboard/UserDashboard';
 import Signup from './pages/Signup/Signup';
 import Game from './pages/GamePlay/GamePlay';
-import ChatRoom from './pages/ChatRoom/chat';
+import ChatJoin from './containers/forms/chat/client/src/components/Join/Join.js';
+import ChatRoom from './containers/forms/chat/client/src/components/Chat/Chat.js';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 import UserProfile from './pages/UserProfile/UserProfile';
 
@@ -21,7 +22,8 @@ export default class App extends React.Component {
           <Route path='/Dashboard' component={UserDashboard} />
           <Route path='/Signup' component={Signup} />
           <Route path='/Game' component={Game} />
-          <Route path='/Chat' component={ChatRoom} />
+          <Route path='/Chat' component={ChatJoin} />
+          <Route path="/chatroom" component={ChatRoom} />
           <Route path='/Profile' component={UserProfile} />
         </div>
       </Router>
