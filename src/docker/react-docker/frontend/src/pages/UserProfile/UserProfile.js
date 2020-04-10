@@ -22,11 +22,12 @@ export default class UserProfile extends Component {
         return (
           <div id='userprofile'>
             <NavBar/>
+        <h1>User Profile </h1>
           {this.state.user_profile.map(item =>(
             <div key={item.id}>
-        <h1>User Profile </h1>
         <h2>Username: {item.username}</h2>
         <h2><span> Email: {item.email}</span></h2>
+        <h2><span> UUID: {item.id}</span></h2>
         </div>
           ))};
       </div>
