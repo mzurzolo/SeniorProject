@@ -19,8 +19,8 @@ export default class UserProfile extends Component {
       <div id='userprofile'>
           <NavBar/>
       <h1>User Profile </h1>
-      <h2>Username: {curr_user.username}</h2>
-      <h2><span> Email: {curr_user.email}</span></h2>
+      <h2>Username: {Call(curr_user.username)}</h2>
+      <h2><span> Email: {Call(curr_user.email)}</span></h2>
       <h2><span> UUID: </span></h2>
       </div>
     );
