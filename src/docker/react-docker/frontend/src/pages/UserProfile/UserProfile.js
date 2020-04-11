@@ -2,17 +2,23 @@ import React, {Component} from 'react';
 import NavBar from '../../containers/media/Navbar.jsx';
 import axios from 'axios';
 
+
+
 export default class UserProfile extends Component {
+
+  async componentDidMount() {
+    const curr_user = axios.get('/d/acct/profile/').then((res) => {
+      if (res.status === 200) {
+        const curr_user_data = res.data;
+        return curr_user_data;
+  }})}
+
   state = {
     curr_user: []
   };
+
  render() {
-        const curr_user = axios.get('/d/acct/profile/').then((res) => {
-          if (res.status === 200) {
-            const curr_user_data = res.data;
-            return curr_user_data;
-          }
-        return (
+    return (
           <div id='userprofile'>
             <NavBar/>
             {this.state.curr_user.map(item => (
@@ -26,5 +32,4 @@ export default class UserProfile extends Component {
         </div>
     );
   }
-}
 }
