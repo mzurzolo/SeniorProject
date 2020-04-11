@@ -9,8 +9,6 @@ export default class UserProfile extends Component {
   axios.get('/d/acct/profile/').then((res) => {
     if (res.status === 200) {
       const curr_user = res.data;
-    }
-});
     return (
       <div id='userprofile'>
           <NavBar/>
@@ -20,7 +18,9 @@ export default class UserProfile extends Component {
       <h2>Email: {curr_user.email} </h2>
       <h2>UUID: </h2>
       </div>
-      </div>
-    );
+      </div>  
+    );    
+    }
+  });
   }
 }
