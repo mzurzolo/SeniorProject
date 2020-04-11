@@ -5,22 +5,20 @@ import axios from 'axios';
 
 
 export default class UserProfile extends Component {
-
-  async Call(){
-  const curr_user = axios.get('/d/acct/profile/').then((res) => {
-    if (res.status === 200) {
-      const curr_user_data = res.data;
-      return curr_user_data;
-    }
-});}
-
  render() {
+  axios.get('/d/acct/profile/').then((res) => {
+    if (res.status === 200) {
+      const curr_user = res.data;
+      var username = curr_user.username;
+      var email = curr_user.email;
+    }
+});
     return (
       <div id='userprofile'>
           <NavBar/>
       <h1>User Profile </h1>
-      <h2>Username: {Call(curr_user.username)}</h2>
-      <h2><span> Email: {Call(curr_user.email)}</span></h2>
+      <h2>Username: {username} </h2>
+      <h2><span> Email: {email}</span></h2>
       <h2><span> UUID: </span></h2>
       </div>
     );
