@@ -6,29 +6,21 @@ import axios from 'axios';
 
 export default class UserProfile extends Component {
 
-  async componentDidMount() {
-    const curr_user = axios.get('/d/acct/profile/').then((res) => {
-      if (res.status === 200) {
-        const curr_user_data = res.data;
-        return curr_user_data;
-  }})}
-
-  state = {
-    curr_user: []
-  };
-
  render() {
+   axios.get('/d/acct/profile/').then((res) => {
+  if (res.status === 200) {
+    const curr_user = res.data;
+    // now you can do things with profile data,
+    // like const_curr_user_username = curr_user.username;
+  }
+});
     return (
           <div id='userprofile'>
             <NavBar/>
-            {this.state.curr_user.map(item => (
-              <div key={item.id}>
         <h1>User Profile </h1>
-        <h2>Username: {item.username}</h2>
-        <h2><span> Email: {item.email} </span></h2>
+        <h2>Username: {curr_user.username} </h2>
+        <h2><span> Email: {curr_user.email}</span></h2>
         <h2><span> UUID: </span></h2>
-        </div>
-        ))}
         </div>
     );
   }
