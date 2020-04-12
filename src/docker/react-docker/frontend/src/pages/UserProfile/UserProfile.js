@@ -5,12 +5,12 @@ import axios from 'axios';
 
 
 export default class UserProfile extends Component {
- render() {
+ async Here() {
   axios.get('/d/acct/profile/').then((res) => {
     if (res.status === 200) {
-      const curr_user = res.data;
-    }
-});
+    const curr_user = res.data;
+ }})}
+  render() {
     return (
       <div id='userprofile'>
           <NavBar/>
