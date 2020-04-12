@@ -11,6 +11,7 @@ export default class UserProfile extends Component {
     const curr_user = res.data;
     const curr_username = curr_user.username;
     const curr_email =curr_user.email;
+    }
     return (
       <div id='userprofile'>
           <NavBar/>
@@ -20,6 +21,5 @@ export default class UserProfile extends Component {
       <h2>UUID: </h2>
       </div>
     );
-  }
   })}}
 
