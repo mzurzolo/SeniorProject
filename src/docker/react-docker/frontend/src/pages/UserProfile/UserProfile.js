@@ -11,12 +11,13 @@ export default class UserProfile extends Component {
     const curr_user = res.data;
  }})}
   render() {
+    var User;
     return (
       <div id='userprofile'>
           <NavBar/>
       <h1>User Profile </h1>
-      <h2>Username: {curr_user.username} </h2>
-      <h2>Email: {curr_user.email} </h2>
+      <h2>Username: </h2>
+      <h2>Email: </h2>
       <h2>UUID: </h2>
       </div>
       
