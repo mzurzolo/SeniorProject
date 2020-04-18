@@ -7,6 +7,7 @@ export default class UserProfile extends Component {
     axios.get('/d/acct/profile/').then((res) => {
       if (res.status === 200) {
           const curr_user = res.data;
+          window.alert(5 + 6);
       }
     })
   }
