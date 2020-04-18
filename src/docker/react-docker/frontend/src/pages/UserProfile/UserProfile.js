@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import NavBar from '../../containers/media/Navbar.jsx';
-import axios from 'axios';
-
-
 
 export default class UserProfile extends Component {
+  
   render() { 
     return (
       <div id='userprofile'>
