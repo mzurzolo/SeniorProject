@@ -13,8 +13,8 @@ export default class UserProfile extends Component {
   }
   async componentDidMount() {
   try {
-    const res = await fetch('/acct/profile/')
-    const profile = await res.json();
+    var res = await fetch('/acct/profile/')
+    var profile = await res.json();
     var username = profile.username;
     var email = profile.email;
     this.setState({
