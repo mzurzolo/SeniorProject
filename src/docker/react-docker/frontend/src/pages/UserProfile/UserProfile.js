@@ -29,7 +29,7 @@ export default class UserProfile extends Component {
   render() {
     return (
       <div id='userprofile'>
-        <NavBar />
+        {/* <NavBar /> */}
         {this.state.profile.map(item => (
           <div key={item.id}>
         <h1>User Profile </h1>
