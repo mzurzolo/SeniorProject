@@ -3,7 +3,7 @@ import NavBar from '../../containers/media/Navbar.jsx';
 import axios from 'axios';
 
 export default class UserProfile extends Component {
-  async componentdidMount() {
+  async componentDidMount() {
     axios.get('/d/acct/profile/').then((res) => {
       if (res.status === 200) {
           const curr_user = res.data;
