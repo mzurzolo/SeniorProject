@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import NavBar from '../../containers/media/Navbar.jsx';
 
 export default class UserProfile extends Component {
-  
-  render() { 
+  async componentdidMount() {
+    axios.get('/d/acct/profile/').then((res) => {
+      if (res.status === 200) {
+          const curr_user = res.data;
+      }
+    })
+  }
+  render() {
     return (
       <div id='userprofile'>
         <NavBar />
