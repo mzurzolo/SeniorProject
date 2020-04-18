@@ -13,7 +13,6 @@ export default class UserProfile extends Component {
   }
   async componentDidMount() {
   try {
-
     const res = await fetch('/acct/profile/')
     const profile = await res.json();
     this.setState({
@@ -21,7 +20,6 @@ export default class UserProfile extends Component {
     });
     
     window.alert(5 + 6);
-    
   } catch (e) {
     console.log(e);
   }
@@ -29,16 +27,12 @@ export default class UserProfile extends Component {
   render() {
     return (
       <div id='userprofile'>
-        {/* <NavBar /> */}
-        {this.state.profile.map(item => (
-          <div key={item.id}>
+        <NavBar/>
         <h1>User Profile </h1>
-        <h2>Username:{item.username}</h2>
-        <h2>Email: {item.email}</h2>
+        <h2>Username:{profile.username}</h2>
+        <h2>Email: {profile.email}</h2>
         <h2>UUID: </h2>
       </div>
-        ))}
-    </div>
     );
   }
 }
