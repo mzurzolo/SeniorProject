@@ -15,6 +15,8 @@ export default class UserProfile extends Component {
   try {
     const res = await fetch('/acct/profile/')
     const profile = await res.json();
+    var username = profile.username;
+    var email = profile.email;
     this.setState({
       profile
     });
