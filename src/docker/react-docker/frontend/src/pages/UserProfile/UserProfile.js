@@ -7,32 +7,27 @@ import NavBar from '../../containers/media/Navbar.jsx';
          //})
          
 export default class UserProfile extends Component {
-
-  state = {
-   profile: []
-  }
   async componentDidMount() {
-  try {
-    var res = await fetch('/acct/profile/')
-    var profile = await res.json();
-    var username = profile.username;
-    var email = profile.email;
-    this.setState({
-      profile
+  fetch(/acct/profile/)
+    .then(function (response) {
+      // The JSON data will arrive here
+      return response.json();
+    })
+    .then(function (data) {
+      appendData(data);
+    })
+    .catch(function (err) {
+      // If an error occured, you will catch it here
+      console.log("THIS DIDN'T WORK")
     });
-    
-    window.alert(5 + 6);
-  } catch (e) {
-    console.log(e);
-  }
-  }
+}
   render() {
     return (
       <div id='userprofile'>
         <NavBar/>
         <h1>User Profile </h1>
-        <h2>Username:{username}</h2>
-        <h2>Email: {email}</h2>
+        <h2>Username:</h2>
+        <h2>Email:</h2>
         <h2>UUID: </h2>
       </div>
     );
