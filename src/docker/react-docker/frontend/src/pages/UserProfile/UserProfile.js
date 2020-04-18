@@ -29,8 +29,8 @@ export default class UserProfile extends Component {
       <div id='userprofile'>
         <NavBar/>
         <h1>User Profile </h1>
-        <h2>Username:{profile.username}</h2>
-        <h2>Email: {profile.email}</h2>
+        <h2>Username:{username}</h2>
+        <h2>Email: {email}</h2>
         <h2>UUID: </h2>
       </div>
     );
