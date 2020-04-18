@@ -7,6 +7,10 @@ import NavBar from '../../containers/media/Navbar.jsx';
          //})
          
 export default class UserProfile extends Component {
+
+  state = {
+   profile: []
+  }
   async componentDidMount() {
   try {
 
@@ -26,7 +30,7 @@ export default class UserProfile extends Component {
     return (
       <div id='userprofile'>
         <NavBar />
-        {this.profile.map(item => (
+        {this.state.profile.map(item => (
           <div key={item.id}>
         <h1>User Profile </h1>
         <h2>Username:{item.username}</h2>
