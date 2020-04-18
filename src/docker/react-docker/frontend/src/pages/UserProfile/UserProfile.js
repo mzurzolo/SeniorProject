@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import NavBar from '../../containers/media/Navbar.jsx';
 import axios from 'axios';
 
-
-
-
-
 export default class UserProfile extends Component {
   async componentDidMount() {
     axios.get('/d/acct/profile/').then((res) => {
@@ -16,7 +12,6 @@ export default class UserProfile extends Component {
           <script>
             window.alert(5 + 6)
            </script>
-
         </body>
       </html>
 
