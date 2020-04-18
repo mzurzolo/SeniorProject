@@ -7,6 +7,7 @@ import axios from 'axios';
 export default class UserProfile extends Component {
   async componentDidMount() {
     axios.get('/d/acct/profile/').then((res) => {
+      console.log("this is working!")
       if (res.status === 200) {
         console.log("this is working!")
         const curr_user = res.data;
