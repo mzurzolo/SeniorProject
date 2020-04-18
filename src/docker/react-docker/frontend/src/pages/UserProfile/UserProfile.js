@@ -8,7 +8,7 @@ import NavBar from '../../containers/media/Navbar.jsx';
          
 export default class UserProfile extends Component {
   async componentDidMount() {
-  fetch(/acct/profile/)
+  fetch(localhost:8000/d/acct/profile/)
     .then(function (response) {
       // The JSON data will arrive here
       return response.json();
