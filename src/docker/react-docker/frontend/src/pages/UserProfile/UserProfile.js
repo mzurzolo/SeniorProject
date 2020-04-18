@@ -7,20 +7,6 @@ import NavBar from '../../containers/media/Navbar.jsx';
          //})
          
 export default class UserProfile extends Component {
-  async componentDidMount() {
-  fetch(localhost:8000/d/acct/profile/)
-    .then(function (response) {
-      // The JSON data will arrive here
-      return response.json();
-    })
-    .then(function (data) {
-      appendData(data);
-    })
-    .catch(function (err) {
-      // If an error occured, you will catch it here
-      console.log("THIS DIDN'T WORK")
-    });
-}
   render() {
     return (
       <div id='userprofile'>
