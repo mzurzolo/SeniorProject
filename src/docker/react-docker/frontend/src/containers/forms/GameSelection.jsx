@@ -54,8 +54,8 @@ class GameSelection extends React.Component {
             button onClick = {
               () => this.handleStartGame(game)
             } > {
-              game.id
-            } < /button> </div > ))
+              game.player_1
+            } vs. {game.player_2}< /button> </div > ))
       } < /div>
     );
   }
