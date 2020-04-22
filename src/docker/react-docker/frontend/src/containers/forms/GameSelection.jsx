@@ -42,7 +42,7 @@ class GameSelection extends React.Component {
     }
   }
 
-
+// Item #10 on the ToDo list. usernames are in the gamestate
   render() {
     return ( <
       div id = 'gamelist' > {

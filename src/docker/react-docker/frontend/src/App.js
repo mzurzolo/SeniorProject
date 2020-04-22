@@ -14,6 +14,7 @@ import GameSelection from './containers/forms/GameSelection';
 // https://www.techiediaries.com/django-react-forms-csrf-axios/
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+// ToDo Item #7, we need it everywhere I think? or maybe just at the toplevel? not sure how it works (¯\_(ツ)_/¯)
 // Item #11 on the ToDo list probably needs to specify a url variable here or something (¯\_(ツ)_/¯)
 export default class App extends React.Component {
   render() {

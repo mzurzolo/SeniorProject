@@ -10,7 +10,7 @@ export default function NavBar() {
     axios.post('/d/acct/logout/');
     history.push('/');
   }
-
+// ToDo Item #8: we need another button here maybe
   return (
     <div id='navbar'>
       <button onClick={() => history.push('/Dashboard')}>Dashboard</button>

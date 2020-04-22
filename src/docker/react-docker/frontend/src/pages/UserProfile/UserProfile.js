@@ -20,7 +20,7 @@ export default class UserProfile extends Component {
       }
     });
   }
-  // Item #10 on the ToDo list. usernames are in the gamestate
+  // ToDo item #6: we may need a different page for this as well, maybe a form like user registration.
   render() {
     return (
       <div id='userprofile'>

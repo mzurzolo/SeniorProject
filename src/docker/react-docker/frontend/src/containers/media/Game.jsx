@@ -17,6 +17,7 @@ class Game extends React.Component {
     );
   }
   async componentDidMount() {
+    // ToDo Item #9. We need a listener here, and probably most of the repeated steps here. Hopefully we don't need to back out farther than this to get the behavior we want.
     const gameuuid = this.props.location.state.game.id;
     this.unityContent.on('loaded', () => {
       console.log('Unity loaded!');
@@ -80,7 +81,7 @@ class Game extends React.Component {
       });
       console.log('Winner is ' + winner);
     });
-    // TODO: 1. EndMove, ExportState and PollTrigger may both be contributing factors to fast busy waits.
+    // TODO: 1. EndMove, ExportState and PollTrigger may all be contributing factors to fast busy waits.
     this.unityContent.on('EndMove', () => {
       console.log('End Move');
       axios.get('/d/game/' + gameuuid + '/state/').then((res) => {
@@ -94,7 +95,7 @@ class Game extends React.Component {
         }
       });
     });
-    // TODO: 1. EndMove, ExportState and PollTrigger may both be contributing factors to fast busy waits.
+    // TODO: 1. EndMove, ExportState and PollTrigger may all be contributing factors to fast busy waits.
     this.unityContent.on('PollTrigger', () => {
       console.log('PollTrigger');
       axios.get('/d/game/' + gameuuid + '/state/').then((res) => {
@@ -108,7 +109,7 @@ class Game extends React.Component {
         }
       });
     });
-    // TODO: 1. EndMove, ExportState and PollTrigger may both be contributing factors to fast busy waits.
+    // TODO: 1. EndMove, ExportState and PollTrigger may all be contributing factors to fast busy waits.
     this.unityContent.on('ExportState', (savestate) => {
       console.log('Export State');
       const jsonsavestate = JSON.parse(savestate);
