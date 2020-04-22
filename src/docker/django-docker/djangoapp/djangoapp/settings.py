@@ -19,12 +19,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
+# 13. This is clearly not safe
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "$iuqv)@$vdic3%#q-r59k#htld3#3x6pem_wzk$cv&4#dznpf*"
 
+# 13. This is clearly not safe
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# 13. Need to add the server's url
 ALLOWED_HOSTS = ["webserver", "localhost"]
 
 # uncomment dbHost = 127.0.0.1 to run django outside of a docker container
@@ -78,6 +81,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# 13. This may not be safe
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ORIGIN_WHITELIST = (
 #    "http://reactapi:5000",
@@ -117,7 +121,7 @@ CHANNEL_LAYERS = {
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+# 13. This is clearly not safe
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",

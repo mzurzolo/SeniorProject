@@ -27,5 +27,6 @@ ENV PATH /app/node_modules/.bin:$PATH
 RUN yarn --verbose && yarn global add serve
 
 # start app
+# 13. we need to use the production build, not the dev build
 CMD yarn --verbose && yarn start
 #CMD ["npx", "serve", "-s", "build", "-p", "5000"]

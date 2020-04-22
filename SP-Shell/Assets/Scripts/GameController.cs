@@ -100,7 +100,6 @@ public class GameController : MonoBehaviour
         #if UNITY_WEBGL
             ExportState(savestate);
             Thread.Sleep(1000);
-            PollLoop(1);
             Debug.Log("postexport");
         #endif
     }
@@ -272,7 +271,8 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < spaceList.Length; i++)
             spaceList[i].GetComponentInParent<Button>().interactable = spaceList[i].text == "";
     }
-
+    // ToDo Item #9, restart needs to get a new game, maybe with a signal back to react.
+    // it shouldn't just be resetting the board of the current game instance
     public void Restart()
     {
         side = "X";

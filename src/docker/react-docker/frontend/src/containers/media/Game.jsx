@@ -1,6 +1,6 @@
 // Get started by creating a new React
 // component and importing the libraries!
-
+// TODO: 1. Also see /SP-Shell/Assets/Scripts/* and /SP-Shell/Assets/Plugins/webgl/Myplugin.jslib
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import Unity, {UnityContent} from 'react-unity-webgl';
@@ -80,7 +80,7 @@ class Game extends React.Component {
       });
       console.log('Winner is ' + winner);
     });
-
+    // TODO: 1. EndMove, ExportState and PollTrigger may both be contributing factors to fast busy waits.
     this.unityContent.on('EndMove', () => {
       console.log('End Move');
       axios.get('/d/game/' + gameuuid + '/state/').then((res) => {
@@ -94,7 +94,7 @@ class Game extends React.Component {
         }
       });
     });
-
+    // TODO: 1. EndMove, ExportState and PollTrigger may both be contributing factors to fast busy waits.
     this.unityContent.on('PollTrigger', () => {
       console.log('PollTrigger');
       axios.get('/d/game/' + gameuuid + '/state/').then((res) => {
@@ -108,7 +108,7 @@ class Game extends React.Component {
         }
       });
     });
-
+    // TODO: 1. EndMove, ExportState and PollTrigger may both be contributing factors to fast busy waits.
     this.unityContent.on('ExportState', (savestate) => {
       console.log('Export State');
       const jsonsavestate = JSON.parse(savestate);

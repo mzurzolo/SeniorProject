@@ -4,8 +4,10 @@ services:
   db:
     build: ./db-docker
     image: database
+    # 13. This mount should stay
     volumes:
       - db-data:/var/lib/mysql
+    # 13: this port needs to go
     ports:
       - "3306:3306"
     networks:
@@ -17,6 +19,7 @@ services:
   redis:
     build: ./redis-docker
     image: redis
+    # 13: this port needs to go
     ports:
       - "6379"
     networks:
@@ -28,8 +31,10 @@ services:
   django:
     build: ./django-docker
     image: django
+    # 13. This mount needs to go
     volumes:
       - ./django-docker/djangoapp:/djangoapp
+    # 13: this port needs to go
     ports:
       - "8000:8000"
     networks:
@@ -47,8 +52,10 @@ services:
   react:
     build: ./react-docker
     image: react
+    # 13. This mount needs to go
     volumes:
       - ./react-docker/frontend:/app
+    # 13: this port can stay
     ports:
       - "3000:3000"
     networks:

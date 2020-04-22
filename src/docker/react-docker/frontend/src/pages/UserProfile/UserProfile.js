@@ -20,6 +20,7 @@ export default class UserProfile extends Component {
       }
     });
   }
+  // Item #10 on the ToDo list. usernames are in the gamestate
   render() {
     return (
       <div id='userprofile'>

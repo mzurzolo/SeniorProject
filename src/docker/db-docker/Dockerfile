@@ -16,7 +16,7 @@ RUN git clone https://github.com/mzurzolo/SeniorProject.git \
   && rm -fR SeniorProject
 
 VOLUME /var/lib/mysql
-
+# 13. This is clearly not safe
 ENV MYSQL_ROOT_PASSWORD=password
 
 CMD ["mysqld"]
