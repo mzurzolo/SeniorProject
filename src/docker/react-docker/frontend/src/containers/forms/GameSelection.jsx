@@ -8,6 +8,7 @@ import axios from 'axios';
 import {
   withRouter,
 } from 'react-router';
+import Button from '@material-ui/core/Button';
 
 class GameSelection extends React.Component {
   constructor(props) {
@@ -19,8 +20,18 @@ class GameSelection extends React.Component {
   async componentDidMount() {
     const games = await axios.get(`/d/game/available/`)
         .then((res) => {
-          const games = res.data;
-          return games;
+          const games_response = res.data;
+          const games = games_response.map(async function(game) {
+            const gamestate = await axios.get('/d/game/' + game.id + '/state/').then((res) => {
+              if (res.status === 200) {
+                const gamestate = res.data;
+                game.gamestate = gamestate;
+                return game;
+              }
+            });
+            return gamestate;
+          });
+          return Promise.all(games);
         });
     this.setState({
       games: games,
@@ -42,7 +53,7 @@ class GameSelection extends React.Component {
     }
   }
 
-// Item #10 on the ToDo list. usernames are in the gamestate
+
   render() {
     return ( <
       div id = 'gamelist' > {
@@ -51,11 +62,11 @@ class GameSelection extends React.Component {
             game.id
           } >
           <
-            button onClick = {
+            Button onClick = {
               () => this.handleStartGame(game)
             } > {
-              game.player_1
-            } vs. {game.player_2}< /button> </div > ))
+              game.gamestate.player1
+            } vs. {game.gamestate.player2} -- {game.id.substring(0, 4)}< /Button> </div > ))
       } < /div>
     );
   }
