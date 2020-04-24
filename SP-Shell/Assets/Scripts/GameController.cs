@@ -14,12 +14,12 @@ public class GameController : MonoBehaviour
     public GameObject gameOverPanel;
     public Text gameOverText;
     public GameObject restartButton;
-    private string side;
+    private string side = "X";
     public GameObject player_container;
     public Player[] players;
-    public int player_idx;
+    public int player_idx = 0;
     public Save save = new Save();
-
+    public bool enableRestart = true;
 
     [DllImport("__Internal")]
     private static extern void GameOver(string winner);
@@ -32,6 +32,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        #if UNITY_WEBGL
+            enableRestart = false;
+        #endif
         players = player_container.GetComponentsInChildren<Player>();
         SetGameControllerReferenceForButtons();
         gameOverPanel.SetActive(false);
@@ -62,6 +65,18 @@ public class GameController : MonoBehaviour
             SetInteractable(false);
         else
             SetInteractable(true);
+    }
+
+    private float d = 0;
+
+    private void FixedUpdate()
+    {
+        d += Time.fixedDeltaTime;
+        if(d>60.0)
+        {
+            Debug.Log("!!!");
+            d = 0;
+        }
     }
 
     public void UGameOver(string winner)
@@ -180,14 +195,17 @@ public class GameController : MonoBehaviour
     {
         if (side == "X")
         {
-            Debug.Log("!!!");
             SetSide("O");
-            //player_idx = 0;
+            #if UNITY_EDITOR
+                player_idx = 1;
+            #endif
         }
         else
         {
             SetSide("X");
-            //player_idx = 1;
+            #if UNITY_EDITOR
+                player_idx = 0;
+            #endif
         }
     }
 
@@ -255,7 +273,7 @@ public class GameController : MonoBehaviour
         UGameOver(players[player_idx].name);
         gameOverPanel.SetActive(true);
         gameOverText.text = players[player_idx].name + " wins!";
-        restartButton.SetActive(true);
+        restartButton.SetActive(enableRestart);
         for (int i = 0; i < spaceList.Length; i++)
             SetInteractable(false);
     }
