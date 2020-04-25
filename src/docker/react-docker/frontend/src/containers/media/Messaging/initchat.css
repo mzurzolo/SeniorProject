@@ -1,10 +1,10 @@
 .login {
-    background-image:  linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.65) 42%, rgba(255,255,255,0.22) 93%, rgba(255,255,255,0.22) 100%), url('../../images/background.jpg');
+    background-image:  linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.65) 42%, rgba(255,255,255,0.22) 93%, rgba(255,255,255,0.22) 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-  
+
     .title {
       color: black;
       font-size: 3em;
@@ -13,7 +13,7 @@
       padding-top: 2em;
       text-transform: uppercase;
     }
-  
+
     input, .submit {
       height: 60px;
       float: left;
@@ -22,7 +22,7 @@
       padding: 10px;
       margin-top: 40vh;
     }
-  
+
     input {
       color: #7e99a0;
       margin-left: 10%;
@@ -32,7 +32,7 @@
       padding: 10px;
       box-sizing: border-box;
     }
-  
+
     .submit {
       background: red;
       border: 0;

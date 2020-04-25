@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './chat.scss';
 
-import WebSocketInstance from '../../services/WebSocket'
+import WebSocketInstance from './websocket'
 
 export default class Chat extends Component {
     constructor(props) {
