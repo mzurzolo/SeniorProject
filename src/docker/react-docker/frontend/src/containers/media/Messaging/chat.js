@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Chat.scss';
+import './chat.scss';
 
 import WebSocketInstance from '../../services/WebSocket'
 
