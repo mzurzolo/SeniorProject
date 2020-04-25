@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import InitChat from './'
-import Chat from './'
+import InitChat from './initchat'
+import Chat from './chat'
 import WebSocketInstance from './WebSocket'
 
 export default class M extends Component {
