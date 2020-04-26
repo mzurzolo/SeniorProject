@@ -10,6 +10,8 @@ export default function EditInfo(props) {
     const [email2, setEmail2] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -68,6 +70,16 @@ export default function EditInfo(props) {
               placeholder="Username"
               type="text"
               onChange={(e) => setUser(e.target.value)} />
+            <input
+              autoFocus
+              placeholder="First name"
+              type="text"
+              onChange={(e) => setFirstName(e.target.value)} />
+            <input
+              autoFocus
+              placeholder="Last name"
+              type="text"
+              onChange={(e) => setLastName(e.target.value)} />
             <input
               placeholder="Email"
               type="email"
