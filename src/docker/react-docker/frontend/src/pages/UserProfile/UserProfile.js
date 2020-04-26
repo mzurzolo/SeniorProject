@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import NavBar from '../../containers/media/Navbar.jsx';
 import axios from 'axios';
-import UserEdit from './pages/UserEdit/UserEdit';
+import UserEdit from '../../containers/pages/UserEdit/';
 
 
 export default class UserProfile extends Component {
