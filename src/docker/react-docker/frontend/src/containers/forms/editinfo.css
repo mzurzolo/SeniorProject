@@ -1,0 +1,13 @@
+.EditInfo {
+    display: flex;
+    justify-content: center;
+    margin: 60px;
+    width: max;
+  }
+    
+  .EditInfo form {
+    display: flex;
+    flex-direction: column; 
+    min-width: 300px;
+    width: 30%;
+  }
