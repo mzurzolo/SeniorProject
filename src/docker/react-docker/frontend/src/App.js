@@ -10,6 +10,7 @@ import {Route, BrowserRouter as Router} from 'react-router-dom';
 import UserProfile from './pages/UserProfile/UserProfile';
 import SelectGame from './pages/SelectGame/GameMenu';
 import GameSelection from './containers/forms/GameSelection';
+import UserEdit from './pages/UserEdit/UserEdit';
 
 // https://www.techiediaries.com/django-react-forms-csrf-axios/
 axios.defaults.xsrfCookieName = 'csrftoken';
