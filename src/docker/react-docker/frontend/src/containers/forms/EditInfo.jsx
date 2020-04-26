@@ -73,10 +73,6 @@ export default function EditInfo(props) {
               type="email"
               onChange={(e) => setEmail(e.target.value)} />
             <input
-              placeholder="First Name"
-              type="text"
-              onChange={(e) => setfirstname(e.target.value)} />
-            <input
               placeholder="Retype Email"
               type="email"
               onChange={(e) => setEmail2(e.target.value)} />
