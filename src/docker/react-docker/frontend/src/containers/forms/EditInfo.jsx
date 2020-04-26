@@ -49,8 +49,8 @@ export default function EditInfo(props) {
         password1: password,
         password2: password2,
       }).then(function(response) {
-        // If successful response (201)
-        if (response.status === 201) {
+        // If successful response (200)
+        if (response.status === 200) {
           alert('Success! Your account has been updated');
           history.push('/Dashboard');
         }

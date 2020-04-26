@@ -19,8 +19,8 @@ export default function Login(props) {
       login: user,
       password: password,
     }).then(function(response) {
-      // If successful response (200)
-      if (response.status === 200) {
+      // If successful response (201)
+      if (response.status === 201) {
         history.push('/Dashboard');
       }
     }).catch(function(error) {
