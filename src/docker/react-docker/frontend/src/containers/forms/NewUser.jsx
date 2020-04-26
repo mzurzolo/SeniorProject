@@ -50,7 +50,7 @@ export default function NewUser(props) {
       password2: password2,
     }).then(function(response) {
       // If successful response (201)
-      if (response.status === 201) {
+      if (response.status === 200) {
         alert('Success! Your account has been created');
         history.push('/Dashboard');
       }
