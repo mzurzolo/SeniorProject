@@ -47,6 +47,8 @@ export default function EditInfo(props) {
         // Call post to create an edit
     axios.post('/d/acct/profile/', {
         username: user,
+        firstName: first_name,
+        lastName: last_name,
         email: email,
         password1: password,
         password2: password2,
