@@ -42,7 +42,7 @@ export default function EditInfo(props) {
           return false;
         }
 
-        // Call post to create a new user
+        // Call post to create an edit
     axios.post('/d/acct/profile/', {
         username: user,
         email: email,
@@ -61,7 +61,7 @@ export default function EditInfo(props) {
     }
 
     return (
-        <div className="NewUser">
+        <div className="EditInfo">
           <form onSubmit={handleSubmit}>
             <input
               autoFocus
