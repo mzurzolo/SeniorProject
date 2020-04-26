@@ -31,7 +31,8 @@ export default class UserProfile extends Component {
         <h2>Email: {this.state.curr_user.email}</h2>
         <h2>First Name: {this.state.curr_user.first_name}</h2>
         <h2>Last Name: {this.state.curr_user.last_name}</h2>
-        <button onClick={() => history.push('/UserEdit')}>Edit</button>
+        <button block bsSize="small" type="button" onClick={() =>
+            this.props.history.push('/UserEdit')}>Edit</button>
       </div>
     );
   }
