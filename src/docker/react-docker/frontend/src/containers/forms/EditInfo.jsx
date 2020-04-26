@@ -93,7 +93,7 @@ export default function EditInfo(props) {
               required
               onChange={(e) => setPassword2(e.target.value)}
             />
-            <button type="submit">Create Account</button>
+            <button type="submit">Edit Account</button>
           </form>
         </div>
       );
