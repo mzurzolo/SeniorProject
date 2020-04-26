@@ -9,8 +9,7 @@ import Game from './pages/GamePlay/GamePlay';
 import Messaging from './containers/media/Messaging/messaging';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import UserProfile from './pages/UserProfile/UserProfile';
-import SelectGame from './pages/SelectGame/GameMenu';
-import GameSelection from './containers/forms/GameSelection';
+import GameMenu from './pages/GameMenu/GameMenu';
 
 // https://www.techiediaries.com/django-react-forms-csrf-axios/
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -28,7 +27,7 @@ export default class App extends React.Component {
           <Route path='/Game' component={Game} />
           <Route path="/messaging" component={Messaging} />
           <Route path='/Profile' component={UserProfile} />
-          <Route path='/SelectGame' component={GameSelection} />
+          <Route path='/GameMenu' component={GameMenu} />
         </div>
       </Router>
     );
