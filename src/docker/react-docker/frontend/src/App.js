@@ -30,6 +30,7 @@ export default class App extends React.Component {
           <Route path="/chatroom" component={ChatRoom} />
           <Route path='/Profile' component={UserProfile} />
           <Route path='/SelectGame' component={GameSelection} />
+          <Route path='/UserEdit' component={UserEdit} />
         </div>
       </Router>
     );
