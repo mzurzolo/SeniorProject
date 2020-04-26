@@ -52,7 +52,7 @@ export default function EditInfo(props) {
         // If successful response (201)
         if (response.status === 201) {
           alert('Success! Your account has been updated');
-          history.push('/UserProfile');
+          history.push('/Dashboard');
         }
       }).catch(function(error) {
         alert('Invalid request! \n' + error);
@@ -66,31 +66,26 @@ export default function EditInfo(props) {
             <input
               autoFocus
               placeholder="Username"
-              required
               type="text"
               onChange={(e) => setUser(e.target.value)} />
             <input
               placeholder="Email"
               type="email"
-              required
               onChange={(e) => setEmail(e.target.value)} />
             <input
               placeholder="Retype Email"
               type="email"
-              required
               onChange={(e) => setEmail2(e.target.value)} />
             <input
               placeholder="Password"
               type="password"
               minLength="8"
-              required
               onChange={(e) => setPassword(e.target.value)}
             />
             <input
               placeholder="Retype Password"
               type="password"
               minLength="8"
-              required
               onChange={(e) => setPassword2(e.target.value)}
             />
             <button type="submit">Edit Account</button>
