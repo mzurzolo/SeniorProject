@@ -24,12 +24,12 @@ export default class Leaderboard extends React.Component {
     return (
       <div id = 'leaderboard' >
         <div id = 'title' >
-          <h2 > Leaderboard < /h2>
+          <h2>Leaderboard</h2>
         </div>
         <table>
           <tr>
-            <th>User</th>
-            <th>Wins</th>
+            <th>Player</th>
+            <th>Score</th>
           </tr>
           <tbody>
             {

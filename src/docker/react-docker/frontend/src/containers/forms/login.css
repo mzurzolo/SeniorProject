@@ -45,7 +45,7 @@ form > * {
   margin: 5px;
 }
 
-button {
+#Login button {
   background-color: black;
   border: none;
   color: white;
@@ -61,7 +61,7 @@ button {
   width: 100%;
 }
 
-button:hover {
+#Login button:hover {
   background-color: #262626;
 }
 
