@@ -6,10 +6,6 @@ import axios from 'axios';
 export default function EditInfo(props) {
     const history = useHistory();
     const [user, setUser] = useState('');
-    const [email, setEmail] = useState('');
-    const [email2, setEmail2] = useState('');
-    const [password, setPassword] = useState('');
-    const [password2, setPassword2] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
 
@@ -33,25 +29,11 @@ export default function EditInfo(props) {
           return true;
         }
       }
-    
-      function userPost() {
-        // Validate the email and password
-        if (!confirmEmailMatch()) {
-          alert('Invalid request! \n Emails do not match');
-          return false;
-        } else if (!confirmPasswordMatch()) {
-          alert('Invalid request! \n Passwords do not match');
-          return false;
-        }
-
         // Call post to create an edit
     axios.post('/d/acct/profile/', {
         username: user,
         first_name: firstName,
         last_name: lastName,
-        email: email,
-        password1: password,
-        password2: password2,
       }).then(function(response) {
         // If successful response (200)
         if (response.status === 200) {
@@ -82,25 +64,6 @@ export default function EditInfo(props) {
               placeholder="Last name"
               type="text"
               onChange={(e) => setLastName(e.target.value)} />
-            <input
-              placeholder="Email"
-              type="email"
-              onChange={(e) => setEmail(e.target.value)} />
-            <input
-              placeholder="Retype Email"
-              type="email"
-              onChange={(e) => setEmail2(e.target.value)} />
-            <input
-              placeholder="Password"
-              type="password"
-              minLength="8"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <input
-              placeholder="Retype Password"
-              type="password"
-              minLength="8"
-              onChange={(e) => setPassword2(e.target.value)}
             />
             <button type="submit">Edit Account</button>
           </form>
