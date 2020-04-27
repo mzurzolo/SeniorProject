@@ -120,7 +120,7 @@ class GameSelectionMatUI extends React.Component {
           <Toolbar>
             <CameraIcon className={this.classes.icon} />
             <Typography variant="h6" color="inherit" noWrap>
-      Album layout
+      You good?
             </Typography>
           </Toolbar>
         </AppBar>
@@ -129,23 +129,21 @@ class GameSelectionMatUI extends React.Component {
           <div className={this.classes.heroContent}>
             <Container maxWidth="sm">
               <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-      Album layout
+      Yerp
               </Typography>
               <Typography variant="h5" align="center" color="textSecondary" paragraph>
-      Something short and leading about the collection below—its contents, the creator, etc.
-      Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-      entirely.
+      Tic Tac Toe is a fun game to play with others! Hooray!
               </Typography>
               <div className={this.classes.heroButtons}>
                 <Grid container spacing={2} justify="center">
                   <Grid item>
                     <Button variant="contained" color="primary">
-      Main call to action
+      Click This Button
                     </Button>
                   </Grid>
                   <Grid item>
                     <Button variant="outlined" color="primary">
-      Secondary action
+      Don't Click This Button
                     </Button>
                   </Grid>
                 </Grid>
@@ -155,8 +153,8 @@ class GameSelectionMatUI extends React.Component {
           <Container className={this.classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
             <Grid container spacing={4}>
-              {cards.map((card) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
+              {this.state.games.map((game) => (
+                <Grid item key={game} xs={12} sm={6} md={4}>
                   <Card className={this.classes.card}>
                     <CardMedia
                       className={this.classes.cardMedia}
@@ -165,18 +163,18 @@ class GameSelectionMatUI extends React.Component {
                     />
                     <CardContent className={this.classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
-        Heading
+                        {game.gamestate.player1} vs. {game.gamestate.player2}
                       </Typography>
                       <Typography>
-        This is a media card. You can use this section to describe the content.
+        Created :
+                        {game.date_created}
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small" color="primary">
-        View
-                      </Button>
-                      <Button size="small" color="primary">
-        Edit
+                      <Button size="Large" color="primary" onClick = {
+                        () => this.handleStartGame(game)
+                      }>
+        Play
                       </Button>
                     </CardActions>
                   </Card>
