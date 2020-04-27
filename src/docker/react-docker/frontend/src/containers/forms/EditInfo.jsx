@@ -13,23 +13,6 @@ export default function EditInfo(props) {
         event.preventDefault();
         userPost();
       }
-
-      function confirmPasswordMatch() {
-        if (password !== password2) {
-          return false;
-        } else {
-          return true;
-        }
-      }
-    
-      function confirmEmailMatch() {
-        if (email !== email2) {
-          return false;
-        } else {
-          return true;
-        }
-      }
-    
       function userPost() {
 
         // Call post to create an edit
