@@ -47,7 +47,7 @@ export default function Login(props) {
         <button block bsSize="small" type="submit" id="loginbutton">
             Login
         </button>
-        <button block bsSize="small" type="submit" onClick={() => history.push('/Signup')}>
+        <button block bsSize="small" type="submit" onClick={() => history.push('/signup')}>
           {'Create an account'}
         </button>
       </form>
