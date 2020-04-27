@@ -1,6 +1,34 @@
 #gamedescription {
+    align-items: center;
     display: flex;
-    align-items:center;
-    justify-content:center;
-    padding: 10%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@font-face {
+    font-family: arcade;
+    src: url(../fonts/ARCADE.TTF);
+  }
+
+#gamedescription h1 {
+    background: -webkit-linear-gradient(0deg, #00bfff, #00ff99, #ffff4d, #ffaa00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: arcade;
+    font-size: 100px;
+    margin: 0px;
+    text-align: center;
+}
+
+@font-face {
+    font-family: yoster;
+    src: url(../fonts/yoster.ttf);
+}
+
+#gamedescription p {
+    font-family: yoster;
+    font-size: 30px;
+    margin: 0px;
+    padding: 0px 150px 0px 150px;
+    text-align: center;
 }
