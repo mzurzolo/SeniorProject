@@ -1,6 +1,9 @@
-#placeholder {
-    background-color: #DEDCDC;
+#board-photo {
     height: 50%;
     margin: 10%;
     width: auto;
+}
+
+#board-photo img {
+    display: block;
 }

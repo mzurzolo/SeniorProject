@@ -3,8 +3,8 @@ import './GamePicture.css';
 
 export default function GamePicture() {
   return (
-    <div>
-      <div id='placeholder'></div>
+    <div id="board-photo">
+      <img src= "./board.jpg" alt="Image not found"/>
     </div>
   );
 }
