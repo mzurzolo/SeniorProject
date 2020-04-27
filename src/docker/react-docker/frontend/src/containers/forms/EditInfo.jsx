@@ -29,6 +29,9 @@ export default function EditInfo(props) {
           return true;
         }
       }
+    
+      function userPost() {
+
         // Call post to create an edit
     axios.post('/d/acct/profile/', {
         username: user,
@@ -64,7 +67,6 @@ export default function EditInfo(props) {
               placeholder="Last name"
               type="text"
               onChange={(e) => setLastName(e.target.value)} />
-            />
             <button type="submit">Edit Account</button>
           </form>
         </div>
