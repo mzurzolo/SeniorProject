@@ -51,7 +51,7 @@ class GameSelectionMatUI extends React.Component {
         game: game,
       });
       this.props.history.push({
-        pathname: '/Game',
+        pathname: '/playgame/' + game.id,
         state: {
           game: game,
         },
@@ -154,7 +154,7 @@ class GameSelectionMatUI extends React.Component {
             {/* End hero unit */}
             <Grid container spacing={4}>
               {this.state.games.map((game) => (
-                <Grid item key={game} xs={12} sm={6} md={4}>
+                <Grid item key={game.id} xs={12} sm={6} md={4}>
                   <Card className={this.classes.card}>
                     <CardMedia
                       className={this.classes.cardMedia}
@@ -166,12 +166,11 @@ class GameSelectionMatUI extends React.Component {
                         {game.gamestate.player1} vs. {game.gamestate.player2}
                       </Typography>
                       <Typography>
-        Created :
-                        {game.date_created}
+                        {window.location.protocol}//{window.location.host}/playgame/{game.id}
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="Large" color="primary" onClick = {
+                      <Button size="large" color="primary" onClick = {
                         () => this.handleStartGame(game)
                       }>
         Play

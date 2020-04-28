@@ -2,7 +2,7 @@
 // component and importing the libraries!
 // TODO: 1. Also see /SP-Shell/Assets/Scripts/* and /SP-Shell/Assets/Plugins/webgl/Myplugin.jslib
 import React, {useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import Unity, {UnityContent} from 'react-unity-webgl';
 import GameSelection from '../forms/GameSelection';
 import axios from 'axios';
@@ -128,7 +128,7 @@ class Game extends React.Component {
     // Finally render the Unity component and pass
     // the Unity content through the props.
     return (
-      <div id='games'>
+      <div id='unitygame'>
         <Unity unityContent={this.unityContent} />
       </div>);
   }
