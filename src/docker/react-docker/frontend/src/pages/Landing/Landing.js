@@ -9,16 +9,6 @@ import {useHistory} from 'react-router-dom';
 
 
 export default class Landing extends Component {
-  async componentDidMount() {
-    const history = useHistory();
-  axios.get('/d/acct/profile/').then((res) => {
-    if (res.status === 200) {
-      history.push('/Dashboard');
-    }
-    }).catch(function(error) {
-        alert('Invalid request! \n' + error);
-      });
-  }
   render() {
     return (
       <div id='landing'>

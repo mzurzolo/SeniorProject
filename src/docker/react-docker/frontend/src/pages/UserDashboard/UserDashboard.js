@@ -5,6 +5,17 @@ import './UserDashboard.css';
 
 export default class UserDashboard extends Component {
   render() {
+    async componentDidMount() {
+      const history = useHistory();
+    axios.get('/d/acct/profile/').then((res) => {
+      if (res.status === 200) {
+        history.push('/Dashboard');
+      }
+      }).catch(function(error) {
+          alert('Invalid request! \n' + error);
+          history.push('/Landing')
+        });
+    }
     return (
       <div id='dashboard'>
         <NavBar/>
