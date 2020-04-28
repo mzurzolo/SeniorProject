@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import NavBar from '../../containers/media/Navbar.jsx';
 import Leaderboard from '../../containers/media/Leaderboard';
 import './UserDashboard.css';
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 
 export default class UserDashboard extends Component {
   async componentDidMount() {
