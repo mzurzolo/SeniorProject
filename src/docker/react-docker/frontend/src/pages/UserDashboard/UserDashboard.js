@@ -9,7 +9,7 @@ export default class UserDashboard extends Component {
   async componentDidMount() {
     const history = useHistory();
   axios.get('/d/acct/profile/').then((res) => {
-    if (res.status === 200) {
+    if (res.status === 201) {
       history.push('/Dashboard');
     }
     }).catch(function(error) {
