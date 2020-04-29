@@ -38,12 +38,13 @@ class GameViewSet(viewsets.ModelViewSet):
                 game.save()
         else:
             with transaction.atomic():
-                game = (
+                games = (
                     models.Game.objects.all()
                     .order_by("-date_created")
                     .filter(date_completed=None)
                     .filter(player_2=None)
-                    .reverse()[0]
+                    .exclude(player_1=request.user)
+                    .reverse()
                 )
                 if games:
                     game = games[0]
