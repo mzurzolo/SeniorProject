@@ -1,7 +1,7 @@
 <h2 id=<span style="text-align:center;">Design Specification</span></h2>
 
 ### Rose Wars
-
+#### This Document needs to be updated to reflect the current state of the project. Task List Item #12
 ##### High Level Description:
 * Rose Wars is a chess-style turn-based game for two players.
 * The game runs through a webapp and users can login and then start a game.

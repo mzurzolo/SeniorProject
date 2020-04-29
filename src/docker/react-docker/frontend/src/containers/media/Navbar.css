@@ -1,0 +1,22 @@
+#navbar {
+    align-items: center;
+    display: flex;
+    height: 75px;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#navbar button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: invasion;
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+}
+
+#navbar a:hover {
+    cursor: pointer;
+}

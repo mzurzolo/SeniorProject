@@ -7,7 +7,7 @@ export default class UserDemo extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('/api/users/');
+      const res = await fetch('/d/users/');
       const users = await res.json();
       this.setState({
         users

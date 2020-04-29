@@ -43,7 +43,7 @@ export default function NewUser(props) {
     }
 
     // Call post to create a new user
-    axios.post('/api/register/', {
+    axios.post('/d/acct/register/', {
       username: user,
       email: email,
       password1: password,
@@ -63,26 +63,22 @@ export default function NewUser(props) {
   return (
     <div className="NewUser">
       <form onSubmit={handleSubmit}>
-        <label>Username:</label>
         <input
           autoFocus
           placeholder="Username"
           required
           type="text"
           onChange={(e) => setUser(e.target.value)} />
-        <label>Email:</label>
         <input
           placeholder="Email"
           type="email"
           required
           onChange={(e) => setEmail(e.target.value)} />
-        <label>Retype Email:</label>
         <input
           placeholder="Retype Email"
           type="email"
           required
           onChange={(e) => setEmail2(e.target.value)} />
-        <label>Password:</label>
         <input
           placeholder="Password"
           type="password"
@@ -90,7 +86,6 @@ export default function NewUser(props) {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label>Retype Password:</label>
         <input
           placeholder="Retype Password"
           type="password"

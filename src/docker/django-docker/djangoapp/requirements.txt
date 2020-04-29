@@ -60,3 +60,4 @@ uritemplate==3.0.1
 urllib3==1.25.8
 zope.interface==4.7.2
 haikunator
+jsonfield

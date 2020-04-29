@@ -1,14 +1,37 @@
-mergeInto(LibraryManager.library, {
+mergeInto(LibraryManager.library,
+    {
+      GameOver: function(winner) {
+        ReactUnityWebGL.GameOver(Pointer_stringify(winner));
+      },
+    });
+mergeInto(LibraryManager.library,
+    {
+      EndMove: function() {
+        ReactUnityWebGL.EndMove();
+      },
+    });
+mergeInto(LibraryManager.library,
+    {
+      ImportSave: function(gamestate) {
+        ReactUnityWebGL.ImportSave(Pointer_stringify(gamestate));
+      },
+    });
+mergeInto(LibraryManager.library,
+    {
+      ExportState: function(savestate) {
+        ReactUnityWebGL.ExportState(Pointer_stringify(savestate));
+      },
+    });
+mergeInto(LibraryManager.library,
+    {
+      PollLoop: function() {
+        ReactUnityWebGL.PollLoop();
+      },
+    });
 
-  // Create a new function with the same name as
-  // the event listeners name and make sure the
-  // parameters match as well.
-  GameOver: function(winner) {
-
-    // Within the function we're going to trigger
-    // the event within the ReactUnityWebGL object
-    // which is exposed by the library to the window.
-
-    ReactUnityWebGL.GameOver(Pointer_stringify(winner));
-  }
-});
+mergeInto(LibraryManager.library,
+    {
+      PollTrigger: function() {
+        ReactUnityWebGL.PollTrigger();
+      },
+    });

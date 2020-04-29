@@ -12,4 +12,5 @@ class GameSerializer(serializers.ModelSerializer):
             "date_created",
             "date_completed",
             "winner",
+            "gamestate",
         ]

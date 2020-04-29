@@ -1,10 +1,102 @@
-@media all and (min-width: 380px) {
-    .Login {
-      padding: 60px 0;
-    }
-  
-    .Login form {
-      margin: 0 auto;
-      max-width: 220px;
-    }
+#Login {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  padding: 0px 50px 0px 50px;
+  width: 100%;
+}
+
+@font-face {
+  font-family: invasion;
+  src: url(../fonts/INVASION2000.TTF);
+}
+
+#Login form {
+  align-items: center;
+  background-color: #d9d9d9;
+  border: 10px solid black;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto;
+  justify-items: center;
+  padding: 20px 30px 20px 30px;
+  width:100%;
+}
+
+form input {
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  font-family: invasion;
+  font-size: 18px;
+  height: 30px;
+  padding-left: 10px;
+  transition: border 400ms;
+  width: 100%;
+}
+
+#Login form input:hover {
+  border: 2px solid #262626;
+}
+
+form > * {
+  /* This syntax accesses all form children */
+  margin: 5px;
+}
+
+#Login button {
+  background-color: black;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: invasion;
+  font-size: 24px;
+  padding: 10px;
+  text-align: center;
+  transition: background-color 400ms;
+}
+
+#Login button {
+  width: 100%;
+}
+
+#Login button:hover {
+  background-color: #262626;
+}
+
+/* Viewport Width Media Queries */
+@media only screen and (max-width:400px) {
+  button {
+    font-size: 14px;
   }
+  form input {
+    font-size:12px;
+  }
+  #Login {
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width:401px) and (max-width:600px) {
+  form > * {
+    /* This syntax accesses all form children */
+    margin: 2px;
+  }
+  button {
+    font-size: 18px;
+  }
+  #Login form {
+    padding: 5px 20px 5px 20px;
+  }
+}
+
+@media only screen and (min-width:601px) and (max-width:900px) {
+  #Login form {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto auto;
+  }
+  #login-button {
+    grid-row-start:3;
+  }
+}

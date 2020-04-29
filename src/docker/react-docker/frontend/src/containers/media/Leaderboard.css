@@ -1,0 +1,50 @@
+#title {
+    display: flex;
+    justify-content: center;
+}
+
+#leaderboard {
+    background-color: #d9d9d9;
+    border: 10px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: 0% 10% 0% 10%;
+    padding: 10px 0px 100px 0px;
+}
+
+#leaderboard table {
+    font-family: invasion;
+    font-size: 40px;
+}
+
+#title {
+    border-bottom: 10px solid black;
+    width: 100%;
+    font-size: 50px;
+    padding: 0px;
+}
+
+@font-face {
+    font-family: karma;
+    src: url(../fonts/karma\ future.ttf);
+  }
+
+#title h2 {
+    font-family: karma;
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+}
+
+#columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+tbody {
+  text-align: center;
+}
+
+.player {
+    display: flex;
+    justify-content: space-between;
+}

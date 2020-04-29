@@ -6,6 +6,10 @@ from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
+# ToDo Item #2 (hopeful for code reuse from src/docker/django-docker/djangoapp/{chat,static}) The game and the chat are not integrated.
+# ToDo Item #3 (hopeful for code reuse from src/docker/django-docker/djangoapp/{chat,static}) The chat and the backend are not integrated.
+# ToDo Item #4 The chat does not use usernames; it allows you to define your own handle.
+# ToDo Item #5 The chat is not stateful. The old chat was stateful (it saved every message to the database) so we should be able to reuse most or all of the backend code there.
 
 class Room(models.Model):
     name = models.TextField()
