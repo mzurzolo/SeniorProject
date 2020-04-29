@@ -14,6 +14,8 @@ import UserProfile from './pages/UserProfile/UserProfile';
 import GameSelection from './pages/GameSelection/GameSelection';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+// import SelectGame from './pages/SelectGame/GameMenu';
+import './App.css';
 
 // https://www.techiediaries.com/django-react-forms-csrf-axios/
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -24,7 +26,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div id="app">
           <Route exact path='/' component={Landing} />
           <Route path='/Dashboard' component={UserDashboard} />
           <Route path='/Game' component={Game} />

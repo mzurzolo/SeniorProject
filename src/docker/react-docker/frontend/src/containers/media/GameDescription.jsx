@@ -4,14 +4,9 @@ import './GameDescription.css';
 export default function GameDescription() {
   return (
     <div id='gamedescription'>
+      <h1>TIC-TAC-TOE</h1>
       <p>
-            Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.
+        Tic-Tac-Toe is a fun game to play with friends!
       </p>
     </div>
   );

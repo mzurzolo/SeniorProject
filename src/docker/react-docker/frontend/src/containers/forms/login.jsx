@@ -37,6 +37,9 @@ export default function Login(props) {
           required
           type="text"
           onChange={(e) => setUser(e.target.value)} />
+        <button block bsSize="small" type="submit" id='login-button'>
+          Login
+        </button>
         <input
           placeholder="Password"
           type="password"
@@ -44,9 +47,6 @@ export default function Login(props) {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button block bsSize="small" type="submit" id="loginbutton">
-            Login
-        </button>
         <button block bsSize="small" type="submit" onClick={() => history.push('/signup')}>
           {'Create an account'}
         </button>
