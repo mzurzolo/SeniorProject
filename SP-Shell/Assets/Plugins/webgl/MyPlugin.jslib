@@ -35,5 +35,3 @@ mergeInto(LibraryManager.library,
         ReactUnityWebGL.PollTrigger();
       },
     });
-
-// ToDo Item #9, we may need signal/externl functions defined here?
