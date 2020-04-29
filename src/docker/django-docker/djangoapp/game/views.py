@@ -29,7 +29,7 @@ class GameViewSet(viewsets.ModelViewSet):
                 .order_by("-date_created")
                 .filter(date_completed=None)
                 .filter(player_2=None)
-                .exclude(player_1=request.user)
+                .filter(player_1=request.user)
             )
         if len(games) < 1:
             with transaction.atomic():
