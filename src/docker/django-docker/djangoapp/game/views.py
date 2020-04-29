@@ -51,10 +51,11 @@ class GameViewSet(viewsets.ModelViewSet):
                     models.Game.objects.filter(id=game.id).update(player_2=request.user)
                     game = models.Game.objects.get(id=game.id)
                     game.gamestate['player2'] = request.user.username
+                    print(game.gamestate['player1'], file=sys.stderr)
                     game.save()
 
         # serializer = self.get_serializer(game, many=False)
-        print(game.gamestate['player1'], file=sys.stderr)
+
         with transaction.atomic():
             games = list(
                 models.Game.objects.all()
