@@ -6,16 +6,15 @@ import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 
 export default class UserDashboard extends Component {
-  async componentDidMount() {
-    const history = useHistory();
-  axios.get('/d/acct/profile/').then((res) => {
-    if (res.status === 201) {
-      history.push('/Dashboard');
-    }
-    }).catch(function(error) {
-        alert('Invalid request! \n' + error);
-        history.push('/Landing')
-      });
+  constructor(props) {
+    super(props);
+    axios.get('/d/acct/profile/').then((res) => {
+      if (res.status === 403) {
+        void(0);
+      }
+    }).catch((error) => {
+      this.props.history.push('/');
+    });
   }
   render() {
     return (
@@ -23,7 +22,7 @@ export default class UserDashboard extends Component {
         <NavBar/>
         <div id='startgame'>
           <button block bsSize="small" type="button" onClick={() =>
-            this.props.history.push('/SelectGame')}>Play Game</button>
+            this.props.history.push('/GameSelection')}>Play Game</button>
         </div>
         <Leaderboard/>
       </div>

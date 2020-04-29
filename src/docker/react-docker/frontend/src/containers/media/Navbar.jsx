@@ -7,8 +7,11 @@ export default function NavBar() {
   const history = useHistory();
 
   function handleLogout() {
-    axios.post('/d/acct/logout/');
-    history.push('/');
+    axios.post('/d/acct/logout/').then(res => {
+      if (res.status === 200) {
+        history.push('/');
+      }
+    });
   }
 // ToDo Item #8: we need another button here maybe
   return (

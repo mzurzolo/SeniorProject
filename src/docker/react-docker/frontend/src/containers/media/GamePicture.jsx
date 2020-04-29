@@ -3,8 +3,8 @@ import './GamePicture.css';
 
 export default function GamePicture() {
   return (
-    <div>
-      <div id='placeholder'></div>
+    <div id="board-photo">
+      <img src={'/Assets/board.jpg'} style={{backgroundImage: '/Assets/board.jpg'}}/>
     </div>
   );
 }

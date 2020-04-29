@@ -1,0 +1,21 @@
+/* web page in it's entirety
+*/
+.outerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1A1A1D;
+}
+
+
+/* physical chat box */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #454545;
+  border-radius: 8px;
+  height: 75%;
+  width: 25%;
+}

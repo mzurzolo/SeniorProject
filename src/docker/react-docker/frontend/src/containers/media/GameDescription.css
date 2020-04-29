@@ -1,6 +1,67 @@
 #gamedescription {
+    align-items: center;
     display: flex;
-    align-items:center;
-    justify-content:center;
-    padding: 10%;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
 }
+
+@font-face {
+    font-family: arcade;
+    src: url(../fonts/ARCADE.TTF);
+  }
+
+#gamedescription h1 {
+    background: -webkit-linear-gradient(0deg, #00bfff, #00ff99, #ffff4d, #ffaa00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: arcade;
+    font-size: 100px;
+    margin: 0px;
+    text-align: center;
+}
+
+@font-face {
+    font-family: yoster;
+    src: url(../fonts/yoster.ttf);
+}
+
+#gamedescription p {
+    color: white;
+    font-family: yoster;
+    font-size: 30px;
+    margin: 0px;
+    padding: 0px 150px 0px 150px;
+    text-align: center;
+}
+
+
+
+/* Viewport Width Media Queries */
+@media only screen and (max-width:480px) {
+    #gamedescription h1 {
+        font-size: 40px;
+    }
+    #gamedescription p {
+        font-size: 18px;
+        padding: 0px 20px 0px 20px;
+    }
+  }
+
+@media only screen and (min-width:481px) and (max-width:900px) {
+    #gamedescription h1 {
+        font-size: 66px;
+    }
+    #gamedescription p {
+        font-size: 20px;
+        padding: 0px 50px 0px 50px;
+    }
+  }
+
+  @media only screen and (min-width:901px) and (max-width:1200px) {
+    #gamedescription p {
+        font-size: 20px;
+        padding: 0px 100px 0px 100px;
+    }
+  }

@@ -8,4 +8,11 @@ module.exports = function(app) {
         changeOrigin: true,
       }),
   );
+  app.use(
+      '/messaging',
+      createProxyMiddleware({
+        target: 'http://webserver:8000',
+        changeOrigin: true,
+      }),
+  );
 };

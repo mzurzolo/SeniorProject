@@ -2,15 +2,21 @@ import React from 'react';
 import axios from 'axios';
 import Landing from './pages/Landing/Landing';
 import UserDashboard from './pages/UserDashboard/UserDashboard';
-import Signup from './pages/Signup/Signup';
+// import Signup from './pages/Signup/Signup';
 import Game from './pages/GamePlay/GamePlay';
-import ChatJoin from './containers/forms/chat/client/src/components/Join/Join.js';
-import ChatRoom from './containers/forms/chat/client/src/components/Chat/Chat.js';
+import PlayGame from './pages/GamePlay/PlayGame';
+// import ChatJoin from './containers/forms/chat/client/src/components/Join/Join.js';
+// import ChatRoom from './containers/forms/chat/client/src/components/Chat/Chat.js';
+// import Messaging from './containers/media/Messaging/messaging';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 import UserProfile from './pages/UserProfile/UserProfile';
-import SelectGame from './pages/SelectGame/GameMenu';
-import GameSelection from './containers/forms/GameSelection';
+// import GameMenu from './pages/GameMenu/GameMenu';
+import GameSelection from './pages/GameSelection/GameSelection';
+import SignIn from './pages/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
 import UserEdit from './pages/UserEdit/UserEdit';
+// import SelectGame from './pages/SelectGame/GameMenu';
+import './App.css';
 
 // https://www.techiediaries.com/django-react-forms-csrf-axios/
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -21,16 +27,16 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div id="app">
           <Route exact path='/' component={Landing} />
           <Route path='/Dashboard' component={UserDashboard} />
-          <Route path='/Signup' component={Signup} />
           <Route path='/Game' component={Game} />
-          <Route path='/Chat' component={ChatJoin} />
-          <Route path="/chatroom" component={ChatRoom} />
+          <Route path='/playgame/:id' component={PlayGame} />
           <Route path='/Profile' component={UserProfile} />
-          <Route path='/SelectGame' component={GameSelection} />
           <Route path='/UserEdit' component={UserEdit} />
+          <Route path='/gameselection' component={GameSelection} />
+          <Route path='/signin' component={SignIn} />
+          <Route path='/signup' component={SignUp} />
         </div>
       </Router>
     );
