@@ -38,17 +38,21 @@ class GameViewSet(viewsets.ModelViewSet):
                 game.save()
         else:
             with transaction.atomic():
-                game = (
+                games = (
                     models.Game.objects.all()
                     .order_by("-date_created")
                     .filter(date_completed=None)
                     .filter(player_2=None)
-                    .reverse()[0]
+                    .exclude(player_1=request.user)
+                    .reverse()
                 )
-                models.Game.objects.filter(id=game.id).update(player_2=request.user)
-                game = models.Game.objects.get(id=game.id)
-                game.gamestate['player2'] = request.user.username
-                game.save()
+                if games:
+                    game = games[0]
+                    models.Game.objects.filter(id=game.id).update(player_2=request.user)
+                    game = models.Game.objects.get(id=game.id)
+                    game.gamestate['player2'] = request.user.username
+                    game.save()
+
         # serializer = self.get_serializer(game, many=False)
         print(game.gamestate['player1'], file=sys.stderr)
         with transaction.atomic():
