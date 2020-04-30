@@ -151,33 +151,33 @@
 
 ##### Goals, and Who They've Been Assigned to:
 * __Steven Douglass <smd940@gmail.com>__
-  * Implement React Components to display landing page information including:
-    * Game Description.
-    * Login.
-    * Leaderboard.
-    * Game Picture.
-  * Implement responsive CSS design for viewing on different screen sizes
+    * Created wireframes of application
+    * Implemented styling to entire application using CSS
+    * Built React Components / JavaScript functions used in application [GameDescription, GamePicture, Navbar, UserDashboard, among many others]
+    * Create procedure to query database for leaderboard results
+    * Assist with React Routing and developing application interaction
 * __Semih Sahin <semihsahin2834@gmail.com>__
-  * Lead endpoint development/organization.
-  * Integration between Django backend and React Frontend.
+    * Lead endpoint development/organization.
+    * Integration between Django backend and React Frontend.
 * __Jeff Paulson <paulsonj3@students.rowan.edu>__
-  * Establish a router within react linking pages as they are made.
-  * Secure connection between Unity and React.
+    * Establish a router within react linking pages as they are made.
+    * Secure connection between Unity and React.
 * __Tyler Roman <romant75@students.rowan.edu>__
-  * Lead game design effort.
-  * Have a basic turn system where each player commits moves and ends their turn one at a time.
+    * Lead game design effort.
+    * Have a basic turn system where each player commits moves and ends their turn one at a time.
 * __Patrick O'Brien <obrienp4@students.rowan.edu>__
-  * Assisted with unity design. 
-  * Built tic-tac-toe. 
-  * assisted with aesthetic design of game.
+    * Assisted with unity design. 
+    * Built tic-tac-toe. 
+    * assisted with aesthetic design of game.
 * __Mike Zurzolo <mikezurzolo@gmail.com>__
-  * Replace shell scripts that I'm using to manage containers with a _docker-compose.yaml_ file.
-  * Add fields to the user model to support the leader board, and possibly a friends list.
-  * Start adding game support to Django (save game features, p2p communication for 2 player gameplay, possibly leveraging code Vince wrote for the chatroom).
+    * Replace shell scripts that I'm using to manage containers with a _docker-compose.yaml_ file.
+    * Add fields to the user model to support the leader board, and possibly a friends list.
+    * Start adding game support to Django (save game features, p2p communication for 2 player gameplay, possibly leveraging code Vince wrote for the chatroom).
 * __Vincent Paone <vpaone59@gmail.com>__
-  * Have working chat functionality.
-  * Embed chat in home page.
+    * Have working chat functionality.
+    * Embed chat in home page.
 * __Colton Bonsall <Josephcbonsallv@gmail.com>__
-  * Assisted in Leaderboard integration
-  * Implemented "Edit User" function
-  * Lead efforts in documentation
+    * Assisted in Leaderboard integration
+    * Implemented "Edit User" function
+    * General Front End Maintenance
+    * Lead efforts in documentation
