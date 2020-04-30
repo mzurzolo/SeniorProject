@@ -10,6 +10,8 @@ export default function NewUser(props) {
   const [email2, setEmail2] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -63,8 +65,18 @@ export default function NewUser(props) {
   return (
     <div className="NewUser">
       <form onSubmit={handleSubmit}>
-        <input
+        <input 
           autoFocus
+          placeholder="First Name"
+          required
+          type="text"
+          onChange={(e) => setFname(e.target.value)} />
+        <input 
+          placeholder="Last Name"
+          required
+          type="text"
+          onChange={(e) => setLname(e.target.value)} />
+        <input
           placeholder="Username"
           required
           type="text"
