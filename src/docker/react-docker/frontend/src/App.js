@@ -10,8 +10,8 @@ import PlayGame from './pages/GamePlay/PlayGame';
 // import Messaging from './containers/media/Messaging/messaging';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 import UserProfile from './pages/UserProfile/UserProfile';
-// import GameMenu from './pages/GameMenu/GameMenu';
-import GameSelection from './pages/GameSelection/GameSelection';
+import GameMenu from './pages/GameMenu/GameMenu';
+//import GameSelection from './pages/GameSelection/GameSelection';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import UserEdit from './pages/UserEdit/UserEdit';
@@ -34,7 +34,7 @@ export default class App extends React.Component {
           <Route path='/playgame/:id' component={PlayGame} />
           <Route path='/Profile' component={UserProfile} />
           <Route path='/UserEdit' component={UserEdit} />
-          <Route path='/gameselection' component={GameSelection} />
+          <Route path='/gameselection' component={GameMenu} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
         </div>

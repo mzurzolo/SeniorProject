@@ -1,16 +1,53 @@
-#gameType {
-    align-items: center;
-    display: flex;
-    padding: 0px 50px 0px 50px;
-  }
 
-  button {
-    background-color: rgb(12, 89, 204);
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 10px;
-    text-align: center;
-    transition: background-color 400ms;
-  }
+
+
+.allthecards {
+  width: 100%;
+  font-size: 220%;
+  padding: 0px;
+  font-family: karma;
+}
+
+.invasiontext {
+  width: 100%;
+  font-size: 220%;
+  padding: 0px;
+  font-family: invasion;
+}
+
+.playbuttontext {
+  width: 100%;
+  font-size: 220%;
+  padding: 0px;
+  font-family: arcade;
+}
+
+.title {
+  background: -webkit-linear-gradient(0deg, #00bfff, #00ff99, #ffff4d, #ffaa00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: arcade;
+  font-size: 100px;
+  margin: 0px;
+  text-align: center;
+}
+
+@font-face {
+  font-family: karma;
+  src: url(../fonts/karma\ future.ttf);
+}
+
+@font-face {
+  font-family: yoster;
+  src: url(../fonts/yoster.ttf);
+}
+
+@font-face {
+    font-family: arcade;
+    src: url(../fonts/ARCADE.TTF);
+}
+
+@font-face {
+  font-family: invasion;
+  src: url(../fonts/INVASION2000.TTF);
+}

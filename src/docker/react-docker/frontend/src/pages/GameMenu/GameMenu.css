@@ -4,5 +4,21 @@
     display: grid;
   }
   
+  #dashboard #navbar {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
 
-  
+#gamemenu #navbar #games{
+  color: orange;
+}
+
+
+#gamemenu #gamedescription{
+  display: flex;
+  flex-direction: column;
+  margin: 0% 0% 10% 0%;
+  padding: auto auto auto auto;
+  width: 100%
+
+}

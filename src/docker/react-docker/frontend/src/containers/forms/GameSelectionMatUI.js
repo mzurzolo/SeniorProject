@@ -15,6 +15,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import axios from 'axios';
+import NavBar from '../media/Navbar.jsx';
+import './GameSelectionMatUI.css';
 
 class GameSelectionMatUI extends React.Component {
   constructor(props) {
@@ -79,7 +81,7 @@ class GameSelectionMatUI extends React.Component {
       },
       heroContent: {
         backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(8, 0, 6),
+        display:'flex',
       },
       heroButtons: {
         marginTop: theme.spacing(5),
@@ -115,6 +117,7 @@ class GameSelectionMatUI extends React.Component {
 
     return (
       <React.Fragment>
+        <NavBar/>
         <CssBaseline />
         <AppBar position="relative">
           <Toolbar>
@@ -156,7 +159,7 @@ class GameSelectionMatUI extends React.Component {
               </div>
             </Container>
           </div>
-          <Container className={this.classes.cardGrid} maxWidth="md">
+          <Container className={this.classes.cardGrid} maxWidth="sm" align="center">
             {/* End hero unit */}
             <Grid container spacing={5}>
               {this.state.games.map((game) => (
