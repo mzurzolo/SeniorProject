@@ -11,7 +11,7 @@ export default class Landing extends Component {
   async componentDidMount() {
     const history = useHistory();
   axios.get('/d/acct/profile/').then((res) => {
-    if (res.status === 201) {
+    if (res.status === 200) {
       history.push('/Dashboard');
     }
     }).catch(function(error) {
