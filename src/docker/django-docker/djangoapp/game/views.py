@@ -82,6 +82,20 @@ class GameViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=False, methods=["get"])
+    def completed_games(self, request):
+        with transaction.atomic():
+            play_history = (
+                models.Game.objects.all()
+                .order_by("-date_completed")
+                .exclude(date_completed=None)
+                .filter(Q(player_1=request.user) | Q(player_2=request.user))
+                .reverse()
+            )
+            serializer = self.get_serializer(play_history, many=True)
+        return Response(serializer.data)
+        
+        
+    @action(detail=False, methods=["get"])
     def leaderboard(self, request):
         with transaction.atomic():
             gamequery = (
@@ -104,6 +118,29 @@ class GameViewSet(viewsets.ModelViewSet):
                 for entry in results
             ]
         return Response(return_value)
+
+    @action(detail=False, methods=["get"])
+    def user_wins(self, request):
+        with transaction.atomic():
+            history = (
+                models.Game.objects.all()
+                .prefetch_related()
+                .order_by("-date_completed")
+                .exclude(date_completed=None)
+                .filter(winner=request.user)
+                .annotate(count=Count("id"))
+                .reverse()
+            )
+            results = [
+                {
+                    "count":entry["count"],
+                    "id": entry["id"],
+                    "player_1": entry["player_1"],
+                    "player_2": entry["player_2"],
+                }
+                for entry in history
+                    ]
+        return Response(results)
 
     @action(detail=True, methods=["get", "patch"])
     def state(self, request, pk):
@@ -128,3 +165,5 @@ class GameViewSet(viewsets.ModelViewSet):
                 game.save()
             serializer = self.get_serializer(game, many=False)
         return Response(serializer.data)
+
+    
