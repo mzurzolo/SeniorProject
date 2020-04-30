@@ -53,13 +53,25 @@ export default function NewUser(props) {
     }).then(function(response) {
       // If successful response (201)
       if (response.status === 201) {
-        alert('Success! Your account has been created');
-        history.push('/Dashboard');
+        axios.patch('/d/acct/profile/', {
+          username: user,
+          first_name: fname,
+          last_name: lname,
+        }).then(function(res) {
+          if (res.status === 200) {
+            alert('Success! Your account has been created');
+            history.push('/Dashboard');
+          }
+        }).catch(function(error) {
+          alert('Invalid request! \n' + error);
+          window.location.reload();
+        });
       }
     }).catch(function(error) {
       alert('Invalid request! \n' + error);
       window.location.reload();
     });
+
   }
 
   return (
