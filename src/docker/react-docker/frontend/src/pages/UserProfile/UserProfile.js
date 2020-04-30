@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import NavBar from '../../containers/media/Navbar.jsx';
 import axios from 'axios';
-
+import {useHistory} from 'react-router-dom';
 
 export default class UserProfile extends Component {
   constructor(props) {
@@ -12,19 +12,16 @@ export default class UserProfile extends Component {
   }
   async componentDidMount() {
     await axios.get('/d/acct/profile/').then((res) => {
-      if (res.status === 200) {
+      if (res.status === 200 || 403) {
         const curr_user = res.data;
+        void(0);
         this.setState({
           curr_user,
         });
       }
-    });
-    axios.get('/d/acct/profile/').then((res) => {
-      if (res.status === 403) {
-        void(0);
-      }
     }).catch((error) => {
       this.props.history.push('/');
+    }
   }
   // ToDo item #6: we may need a different page for this as well, maybe a form like user registration.
   render() {
