@@ -82,7 +82,7 @@ class GameSelectionMatUI extends React.Component {
         padding: theme.spacing(8, 0, 6),
       },
       heroButtons: {
-        marginTop: theme.spacing(4),
+        marginTop: theme.spacing(5),
       },
       cardGrid: {
         paddingTop: theme.spacing(8),
@@ -120,7 +120,7 @@ class GameSelectionMatUI extends React.Component {
           <Toolbar>
             <CameraIcon className={this.classes.icon} />
             <Typography variant="h6" color="inherit" noWrap>
-      You good?
+      We're watching you through your webcam. Always.
             </Typography>
           </Toolbar>
         </AppBar>
@@ -129,21 +129,27 @@ class GameSelectionMatUI extends React.Component {
           <div className={this.classes.heroContent}>
             <Container maxWidth="sm">
               <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-      Yerp
+      Tic-Tac-Toe
               </Typography>
               <Typography variant="h5" align="center" color="textSecondary" paragraph>
-      Tic Tac Toe is a fun game to play with others! Hooray!
+      Tic Tac Toe is a fun game to play with others! Hooray! Select a game to play it. Or, share a link! Or play on paper.
               </Typography>
               <div className={this.classes.heroButtons}>
-                <Grid container spacing={2} justify="center">
+                <Grid container spacing={5} justify="center">
                   <Grid item>
                     <Button variant="contained" color="primary">
-      Click This Button
+      Home
                     </Button>
                   </Grid>
                   <Grid item>
-                    <Button variant="outlined" color="primary">
-      Don't Click This Button
+                    <Button variant="contained" color="primary">
+      Log out
+                    </Button>
+                  </Grid>
+                  <Grid item>
+
+                    <Button variant="contained" color="primary">
+      Show Game History
                     </Button>
                   </Grid>
                 </Grid>
@@ -152,9 +158,9 @@ class GameSelectionMatUI extends React.Component {
           </div>
           <Container className={this.classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
-            <Grid container spacing={4}>
+            <Grid container spacing={5}>
               {this.state.games.map((game) => (
-                <Grid item key={game.id} xs={12} sm={6} md={4}>
+                <Grid item key={game.id} xs={0} sm={0} md={100}>
                   <Card className={this.classes.card}>
                     <CardMedia
                       className={this.classes.cardMedia}

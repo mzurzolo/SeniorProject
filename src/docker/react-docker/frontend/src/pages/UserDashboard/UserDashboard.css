@@ -1,7 +1,10 @@
 #dashboard {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: auto auto;
     grid-template-rows: auto auto;
     display: grid;
+    height: fill;
+    width: fill;
+    background-color: #262626;
 }
 
 #dashboard #navbar {
@@ -15,12 +18,16 @@
     justify-content:center;
 }
 
+#dashboard #navbar #dashboard{
+    color: orange;
+}
+
 #startgame button {
 
     background: -webkit-linear-gradient(0deg, #00bfff, #00ff99, #ffff4d, #ffaa00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
+
     background-color: transparent;
     border: none;
     color: white;

@@ -17,7 +17,6 @@ export default class Landing extends Component {
   }
 
 
-
   render() {
     return (
       <div id='landing'>
@@ -25,6 +24,7 @@ export default class Landing extends Component {
         <Login />
         <GamePicture />
         <Leaderboard />
+        <div id='inner' />
       </div>
     );
   }

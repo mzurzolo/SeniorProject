@@ -2,9 +2,9 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: auto;
     justify-content: center;
-    width: 100%;
+    width: auto;
 }
 
 @font-face {
@@ -32,7 +32,7 @@
     font-family: yoster;
     font-size: 30px;
     margin: 0px;
-    padding: 0px 150px 0px 150px;
+    padding: auto auto auto auto;
     text-align: center;
 }
 
@@ -45,7 +45,7 @@
     }
     #gamedescription p {
         font-size: 18px;
-        padding: 0px 20px 0px 20px;
+        padding: auto auto auto auto;
     }
   }
 
@@ -55,13 +55,13 @@
     }
     #gamedescription p {
         font-size: 20px;
-        padding: 0px 50px 0px 50px;
+        padding: auto auto auto auto;
     }
   }
 
   @media only screen and (min-width:901px) and (max-width:1200px) {
     #gamedescription p {
         font-size: 20px;
-        padding: 0px 100px 0px 100px;
+        padding: auto auto auto auto;
     }
   }

@@ -7,18 +7,18 @@ export default function NavBar() {
   const history = useHistory();
 
   function handleLogout() {
-    axios.post('/d/acct/logout/').then(res => {
+    axios.post('/d/acct/logout/').then((res) => {
       if (res.status === 200) {
         history.push('/');
       }
     });
   }
-// ToDo Item #8: we need another button here maybe
+  // ToDo Item #8: we need another button here maybe
   return (
     <div id='navbar'>
-      <button onClick={() => history.push('/Dashboard')}>Dashboard</button>
-      <button onClick={() => history.push('/Profile')}>User Profile</button>
-      <button onClick={handleLogout}>Sign Out</button>
+      <button id='dashboard' onClick={() => history.push('/Dashboard')}>Dashboard</button>
+      <button id='profile' onClick={() => history.push('/Profile')}>User Profile</button>
+      <button id='logout' onClick={handleLogout}>Sign Out</button>
     </div>
   );
 }

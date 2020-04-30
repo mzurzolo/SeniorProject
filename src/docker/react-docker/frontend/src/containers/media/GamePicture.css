@@ -1,7 +1,10 @@
 #board-photo {
-    height: 50%;
-    margin: 10%;
+    height: auto;
     width: auto;
+    align-items: center;
+    justify: center;
+    margin: 10% 0% 0% 24%;
+    padding: auto auto auto auto;
 }
 
 #board-photo img {

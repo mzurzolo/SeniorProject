@@ -1,6 +1,7 @@
 #title {
     display: flex;
     justify-content: center;
+    width: 90%
 }
 
 #leaderboard {
@@ -8,8 +9,9 @@
     border: 10px solid black;
     display: flex;
     flex-direction: column;
-    margin: 0% 10% 0% 10%;
-    padding: 10px 0px 100px 0px;
+    margin: 20% 10% 0% 0%;
+    padding: auto auto auto auto;
+    width: 90%
 }
 
 #leaderboard table {
@@ -20,7 +22,7 @@
 #title {
     border-bottom: 10px solid black;
     width: 100%;
-    font-size: 50px;
+    font-size: 220%;
     padding: 0px;
 }
 
