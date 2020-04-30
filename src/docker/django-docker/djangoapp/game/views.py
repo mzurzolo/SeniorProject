@@ -105,6 +105,34 @@ class GameViewSet(viewsets.ModelViewSet):
             ]
         return Response(return_value)
 
+    @action(detail=False, methods=["get"])
+    def user_wins(self, request):
+        with transaction.atomic():
+            history = (
+                models.Game.objects.all()
+                .order_by("-date_created")
+                .exclude(date_completed=None)
+                .filter(winner=request.user)
+                .reverse()
+            )
+        serializer = self.get_serializer(history, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=["get"])
+    def user_losses(self, request):
+        with transaction.atomic():
+            history = (
+                models.Game.objects.all()
+                .order_by("-date_created")
+                .exclude(date_completed=None)
+                .exlude(winner=request.user)#These filters might return empty need to be test considering you cannot be player1 and 2 in same game
+                .filter(player1=request.user)
+                .filter(player2=request.user)
+                .reverse()
+            )
+        serializer = self.get_serializer(history, many=True)
+        return Response(serializer.data)
+
     @action(detail=True, methods=["get", "patch"])
     def state(self, request, pk):
         if request.method in ["GET"]:
@@ -128,3 +156,5 @@ class GameViewSet(viewsets.ModelViewSet):
                 game.save()
             serializer = self.get_serializer(game, many=False)
         return Response(serializer.data)
+
+    
