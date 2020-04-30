@@ -110,28 +110,23 @@ class GameViewSet(viewsets.ModelViewSet):
         with transaction.atomic():
             history = (
                 models.Game.objects.all()
-                .order_by("-date_created")
+                .prefetch_related()
+                .order_by("-date_completed")
                 .exclude(date_completed=None)
                 .filter(winner=request.user)
+                .annotate(count=Count("id"))
                 .reverse()
             )
-        serializer = self.get_serializer(history, many=True)
-        return Response(serializer.data)
-
-    @action(detail=False, methods=["get"])
-    def user_losses(self, request):
-        with transaction.atomic():
-            history = (
-                models.Game.objects.all()
-                .order_by("-date_created")
-                .exclude(date_completed=None)
-                .exlude(winner=request.user)#These filters might return empty need to be test considering you cannot be player1 and 2 in same game
-                .filter(player1=request.user)
-                .filter(player2=request.user)
-                .reverse()
-            )
-        serializer = self.get_serializer(history, many=True)
-        return Response(serializer.data)
+            results = [
+                {
+                    "count":entry["count"],
+                    "id": entry["id"],
+                    "player_1": entry["player_1"],
+                    "player_2": entry["player_2"],
+                }
+                for entry in history
+                    ]
+        return Response(results)
 
     @action(detail=True, methods=["get", "patch"])
     def state(self, request, pk):
