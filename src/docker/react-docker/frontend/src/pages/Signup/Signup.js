@@ -8,7 +8,6 @@ export default class Signup extends Component {
     return (
       <div id='signup'>
         <NewUser/>
-        <UsersDemo/>
       </div>
     );
   }
