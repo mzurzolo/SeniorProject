@@ -82,6 +82,20 @@ class GameViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=False, methods=["get"])
+    def completed_games(self, request):
+        with transaction.atomic():
+            play_history = (
+                models.Game.objects.all()
+                .order_by("-date_completed")
+                .exclude(date_completed=None)
+                .filter(Q(player_1=request.user) | Q(player_2=request.user))
+                .reverse()
+            )
+            serializer = self.get_serializer(play_history, many=True)
+        return Response(serializer.data)
+        
+        
+    @action(detail=False, methods=["get"])
     def leaderboard(self, request):
         with transaction.atomic():
             gamequery = (
