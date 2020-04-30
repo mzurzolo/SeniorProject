@@ -5,18 +5,19 @@ import GameDescription from '../../containers/media/GameDescription';
 import GamePicture from '../../containers/media/GamePicture';
 import Leaderboard from '../../containers/media/Leaderboard';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 
 export default class Landing extends Component {
-  constructor(props) {
-    super(props);
-    axios.get('/d/acct/profile/').then((res) => {
-      if (res.status === 200) {
-        this.props.history.push('/Dashboard');
-      }
-    });
+  async componentDidMount() {
+    const history = useHistory();
+  axios.get('/d/acct/profile/').then((res) => {
+    if (res.status === 201) {
+      history.push('/Dashboard');
+    }
+    }).catch(function(error) {
+        history.push('/Landing')
+      });
   }
-
-
 
   render() {
     return (
