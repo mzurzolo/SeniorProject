@@ -11,6 +11,7 @@ using System.Threading;
 public class GameController : MonoBehaviour
 {
     public Text[] spaceList;
+    public Space[] trueSpaceList;
     public GameObject gameOverPanel;
     public Text gameOverText;
     public GameObject restartButton;
@@ -175,7 +176,8 @@ public class GameController : MonoBehaviour
         players[0].name = s_ave.player1;
         players[1].name = s_ave.player2;
         for (int i = 0; i < spaceList.Length; i++)
-            spaceList[i].text = s_ave.spaceList[i];
+            if (spaceList[i].text != s_ave.spaceList[i])
+                spaceList[i].GetComponentInParent<Space>().SetSpace(s_ave.spaceList[i]);
         if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
             PollLoop(1);
         Debug.Log("postimport");
