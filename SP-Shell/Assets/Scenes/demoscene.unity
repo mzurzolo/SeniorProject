@@ -551,6 +551,13 @@ MonoBehaviour:
   restartButton: {fileID: 1559417473}
   player_container: {fileID: 1441706802}
   players: []
+  player_idx: 0
+  save:
+    spaceList: []
+    side: 
+    player1: 
+    player2: 
+  enableRestart: 1
 --- !u!1 &322272315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,7 +2614,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559417473}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!1 &1624536349
 GameObject:
   m_ObjectHideFlags: 0

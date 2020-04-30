@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     public Player[] players;
     public int player_idx;
     public Save save = new Save();
-
+    public bool enableRestart = true;
 
     [DllImport("__Internal")]
     private static extern void GameOver(string winner);
@@ -32,6 +32,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        #if UNITY_WEBGL
+            enableRestart = false;
+        #endif
         players = player_container.GetComponentsInChildren<Player>();
         SetGameControllerReferenceForButtons();
         gameOverPanel.SetActive(false);
@@ -62,6 +65,18 @@ public class GameController : MonoBehaviour
             SetInteractable(false);
         else
             SetInteractable(true);
+    }
+
+    private float d = 0;
+
+    private void FixedUpdate()
+    {
+        d += Time.fixedDeltaTime;
+        if(d>60.0)
+        {
+            Debug.Log("!!!");
+            d = 0;
+        }
     }
 
     public void UGameOver(string winner)
@@ -99,9 +114,7 @@ public class GameController : MonoBehaviour
         #endif
         #if UNITY_WEBGL
             ExportState(savestate);
-            Thread.Sleep(1000);
             PollLoop(1);
-            Debug.Log("postexport");
         #endif
     }
 
@@ -125,7 +138,6 @@ public class GameController : MonoBehaviour
         StreamReader reader = new StreamReader("save.json");
         string json = reader.ReadToEnd();
         reader.Close();
-        Debug.Log(json);
 
         ImportState(json);
         Debug.Log("File loaded!");
@@ -164,7 +176,6 @@ public class GameController : MonoBehaviour
             spaceList[i].text = s_ave.spaceList[i];
         if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
             PollLoop(1);
-        Debug.Log("postimport");
     }
 
     public string GetSide()
@@ -181,14 +192,11 @@ public class GameController : MonoBehaviour
     {
         if (side == "X")
         {
-            Debug.Log("!!!");
             SetSide("O");
-            //player_idx = 0;
         }
         else
         {
             SetSide("X");
-            //player_idx = 1;
         }
     }
 
@@ -197,10 +205,6 @@ public class GameController : MonoBehaviour
       string pside = GetSide();
       if ((pside == "X" && player_idx != 0) || (pside == "O" && player_idx != 1))
       {
-        Debug.Log("Poll Loop!");
-        Debug.Log(pside);
-        Thread.Sleep(2500);
-        Debug.Log("Slept!");
         #if UNITY_WEBGL
           PollTrigger();
         #endif
@@ -256,7 +260,7 @@ public class GameController : MonoBehaviour
         UGameOver(players[player_idx].name);
         gameOverPanel.SetActive(true);
         gameOverText.text = players[player_idx].name + " wins!";
-        restartButton.SetActive(true);
+        restartButton.SetActive(enableRestart);
         for (int i = 0; i < spaceList.Length; i++)
             SetInteractable(false);
     }
