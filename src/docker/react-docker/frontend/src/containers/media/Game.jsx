@@ -80,7 +80,7 @@ class Game extends React.Component {
         alert('Invalid request! \n' + error);
       });
       console.log('Winner is ' + winner);
-      this.props.history.push('/gameselection');
+      this.props.history.push('/dashboard');
     });
     // TODO: 1. EndMove, ExportState and PollTrigger may all be contributing factors to fast busy waits.
     this.unityContent.on('EndMove', () => {
