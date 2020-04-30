@@ -9,7 +9,7 @@ import PlayGame from './pages/GamePlay/PlayGame';
 // import ChatRoom from './containers/forms/chat/client/src/components/Chat/Chat.js';
 // import Messaging from './containers/media/Messaging/messaging';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
-import UserProfile from './pages/UserProfile/UserProfile';
+import UserPage from './pages/UserPage/UserPage';
 import GameMenu from './pages/GameMenu/GameMenu';
 //import GameSelection from './pages/GameSelection/GameSelection';
 import SignIn from './pages/SignIn/SignIn';
@@ -32,7 +32,7 @@ export default class App extends React.Component {
           <Route path='/Dashboard' component={UserDashboard} />
           <Route path='/Game' component={Game} />
           <Route path='/playgame/:id' component={PlayGame} />
-          <Route path='/Profile' component={UserProfile} />
+          <Route path='/Profile' component={UserPage} />
           <Route path='/UserEdit' component={UserEdit} />
           <Route path='/gameselection' component={GameMenu} />
           <Route path='/signin' component={SignIn} />

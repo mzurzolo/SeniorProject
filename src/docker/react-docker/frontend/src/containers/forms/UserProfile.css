@@ -1,0 +1,106 @@
+
+
+
+
+#userprofile table {
+  font-family: invasion;
+  font-size: 40px;
+  text-align: center;
+  margin: 0% 0% 3% 0%;
+  padding: 0% 0% 3% 0%;
+}
+
+#userprofile h1 {
+  font-family: arcade;
+  font-size: 100px;
+  margin: 2% 0% 0% 0%;
+  text-align: center;
+}
+#userprofile #uname {
+  font-family: invasion;
+  font-size: 20px;
+  margin: 0% 0% 0% 0%;
+  text-align: center;
+
+}
+#userprofile #unameval {
+  font-family: invasion;
+  font-size: 20px;
+  margin: 0% 0% 0% 0%;
+  text-align: center;
+}
+
+
+#userprofile #email {
+  font-family: invasion;
+  font-size: 20px;
+  margin: 0% 0% 0% 0%;
+  text-align: center;
+}
+
+#userprofile #emailval {
+  font-family: invasion;
+  font-size: 20px;
+  margin: 0% 0% 0% 0%;
+  text-align: center;
+}
+
+#userprofile #fname {
+  font-family: invasion;
+  font-size: 20px;
+  margin: 0% 0% 0% 0%;
+  text-align: center;
+}
+
+#userprofile #fnameval {
+  font-family: invasion;
+  font-size: 20px;
+  margin: 0% 0% 0% 0%;
+  text-align: center;
+}
+
+#userprofile #lname {
+  font-family: invasion;
+  font-size: 20px;
+  margin: 0% 0% 0% 0%;
+  text-align: center;
+}
+
+#userprofile #lnameval {
+  font-family: invasion;
+  font-size: 20px;
+  margin: 0% 0% 0% 0%;
+  text-align: center;
+}
+
+button {
+  background-color: black;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: invasion;
+  font-size: 24px;
+  padding: 10px;
+  text-align: center;
+  transition: background-color 400ms;
+  margin: 1% 30% 5% 30%;
+}
+
+button:hover {
+  background-color: #262626;
+}
+
+@font-face {
+  font-family: yoster;
+  src: url(../../containers/fonts/yoster.ttf);
+}
+@font-face {
+  font-family: arcade;
+  src: url(../../containers/fonts/ARCADE.TTF);
+}
+@font-face {
+  font-family: karma;
+  src: url(../../containers/fonts/karma\ future.ttf);
+}
+
+

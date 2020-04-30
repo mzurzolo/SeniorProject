@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import NavBar from '../../containers/media/Navbar.jsx';
+import {withRouter} from 'react-router';
 import axios from 'axios';
 import './UserProfile.css';
 
 
-export default class UserProfile extends Component {
+class UserProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,15 +25,20 @@ export default class UserProfile extends Component {
   render() {
     return (
       <div id='userprofile'>
-        <NavBar/>
         <h1>User Profile </h1>
-        <h2 id='uname'>Username: {this.state.curr_user.username}</h2>
-        <h2 id='email'>Email: {this.state.curr_user.email}</h2>
-        <h2 id='fname'>First Name: {this.state.curr_user.first_name}</h2>
-        <h2 id='lname'>Last Name: {this.state.curr_user.last_name}</h2>
+        <table>
+          <tbody>
+            {<tr><td id='uname'>Username: </td><td id='unameval'>{this.state.curr_user.username}</td></tr>}
+            {<tr><td id='email'>Email: </td><td id='emailval'>{this.state.curr_user.email}</td></tr>}
+            {<tr><td id='fname'>First Name: </td><td id='fname'>{this.state.curr_user.first_name}</td></tr>}
+            {<tr><td id='lname'>Last Name: </td><td id='lname'>{this.state.curr_user.last_name}</td></tr>}
+          </tbody>
+        </table>
+          <tbody></tbody>
         <button id='edit' block bsSize="small" type="button" onClick={() =>
           this.props.history.push('/UserEdit')}>Edit Profile</button>
       </div>
     );
   }
 }
+export default withRouter(UserProfile);

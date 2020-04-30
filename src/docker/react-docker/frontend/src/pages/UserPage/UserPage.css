@@ -1,29 +1,29 @@
-#UserEdit #navbar {
+#userpage #navbar {
     grid-column-start: 1;
     grid-column-end: 2;
 }
-#UserEdit #navbar #profile{
-    color: rgb(251, 255, 0);
+#userpage #navbar #profile{
+    color: orange;
 }
-#UserEdit #navbar #dashboard{
+#userpage #navbar #dashboard{
     color: white;
 }
 
 
-#UserEdit #EditInfo{
+#userpage #userprofile{
     display: grid;
     margin: 0% 30% 0% 30%;
     padding: auto auto auto auto;
     background-color: #d9d9d9;
     border: 10px solid black;
-    margin: 20% 10% 10% 10%;
+    margin: 10% 10% 10% 10%;
 }
 
-#UserEdit{
+#userpage{
     background-color: #262626;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto;
-    height: fill;
-    width: fill;
+  height: fill;
+  width: fill;
   }
