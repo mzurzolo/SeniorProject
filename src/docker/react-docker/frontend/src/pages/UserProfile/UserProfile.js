@@ -11,7 +11,7 @@ export default class UserProfile extends Component {
     };
   }
   async componentDidMount() {
-    axios.get('/d/acct/profile/').then((res) => {
+    await axios.get('/d/acct/profile/').then((res) => {
       if (res.status === 200) {
         const curr_user = res.data;
         this.setState({

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NavBar from '../../containers/media/Navbar.jsx';
 import EditInfo from '../../containers/forms/EditInfo';
 import './UserEdit.css';
+import axios from 'axios';
 
 export default class Signup extends Component {
   constructor(props) {
