@@ -14,10 +14,10 @@ public class GameController : MonoBehaviour
     public GameObject gameOverPanel;
     public Text gameOverText;
     public GameObject restartButton;
-    private string side = "X";
+    private string side;
     public GameObject player_container;
     public Player[] players;
-    public int player_idx = 0;
+    public int player_idx;
     public Save save = new Save();
     public bool enableRestart = true;
 
@@ -114,8 +114,7 @@ public class GameController : MonoBehaviour
         #endif
         #if UNITY_WEBGL
             ExportState(savestate);
-            Thread.Sleep(1000);
-            Debug.Log("postexport");
+            PollLoop(1);
         #endif
     }
 
@@ -139,7 +138,6 @@ public class GameController : MonoBehaviour
         StreamReader reader = new StreamReader("save.json");
         string json = reader.ReadToEnd();
         reader.Close();
-        Debug.Log(json);
 
         ImportState(json);
         Debug.Log("File loaded!");
@@ -178,7 +176,6 @@ public class GameController : MonoBehaviour
             spaceList[i].text = s_ave.spaceList[i];
         if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
             PollLoop(1);
-        Debug.Log("postimport");
     }
 
     public string GetSide()
@@ -196,16 +193,10 @@ public class GameController : MonoBehaviour
         if (side == "X")
         {
             SetSide("O");
-            #if UNITY_EDITOR
-                player_idx = 1;
-            #endif
         }
         else
         {
             SetSide("X");
-            #if UNITY_EDITOR
-                player_idx = 0;
-            #endif
         }
     }
 
@@ -214,10 +205,6 @@ public class GameController : MonoBehaviour
       string pside = GetSide();
       if ((pside == "X" && player_idx != 0) || (pside == "O" && player_idx != 1))
       {
-        Debug.Log("Poll Loop!");
-        Debug.Log(pside);
-        Thread.Sleep(2500);
-        Debug.Log("Slept!");
         #if UNITY_WEBGL
           PollTrigger();
         #endif

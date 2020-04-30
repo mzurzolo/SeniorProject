@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     private ArrayList grid_selected = new ArrayList();
     public string pid;
+    public string name;
 
     public void push_space(Grid_Space gs)
     {
