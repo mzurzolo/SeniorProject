@@ -18,6 +18,11 @@ export default class UserProfile extends Component {
           curr_user,
         });
       }
+      if (res.status === 403) {
+        void(0);
+      }
+    }).catch((error) => {
+      this.props.history.push('/');
     });
   }
   // ToDo item #6: we may need a different page for this as well, maybe a form like user registration.
