@@ -6,12 +6,16 @@ public class asplosion : MonoBehaviour
 {
     ExplosionMat exp;
     Transform tf;
+    public StressReceiver sr;
+
     // Start is called before the first frame update
     void Start()
     {
         tf = transform;
         exp = GetComponent<ExplosionMat>();
         tf.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+        sr = GetComponentInParent<StressReceiver>();
+        sr.InduceStress(5);
     }
 
     float scaleChange = 0.25f;

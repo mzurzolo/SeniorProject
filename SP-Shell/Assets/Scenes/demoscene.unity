@@ -430,7 +430,7 @@ MonoBehaviour:
     type: 3}
   leftright: -1
   scaleChange: 0.005
-  rotChange: 1.5
+  rotChange: 0.5
   colChange: 0.005
 --- !u!114 &197356467
 MonoBehaviour:
@@ -933,7 +933,7 @@ MonoBehaviour:
     type: 3}
   leftright: 1
   scaleChange: 0.005
-  rotChange: 1.5
+  rotChange: 0.5
   colChange: 0.005
 --- !u!114 &360367287
 MonoBehaviour:
@@ -1233,7 +1233,7 @@ MonoBehaviour:
     type: 3}
   leftright: 1
   scaleChange: 0.005
-  rotChange: 1.5
+  rotChange: 0.5
   colChange: 0.005
 --- !u!114 &697836547
 MonoBehaviour:
@@ -1383,7 +1383,7 @@ MonoBehaviour:
     type: 3}
   leftright: -1
   scaleChange: 0.005
-  rotChange: 1.5
+  rotChange: 0.5
   colChange: 0.005
 --- !u!114 &698889435
 MonoBehaviour:
@@ -2234,7 +2234,7 @@ MonoBehaviour:
     type: 3}
   leftright: 1
   scaleChange: 0.005
-  rotChange: 1.5
+  rotChange: 0.5
   colChange: 0.005
 --- !u!114 &1128023220
 MonoBehaviour:
@@ -2340,6 +2340,7 @@ GameObject:
   - component: {fileID: 1175507570}
   - component: {fileID: 1175507571}
   - component: {fileID: 1175507572}
+  - component: {fileID: 1175507573}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2551,6 +2552,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eb50ae4393eff6045bce387e13552be5, type: 3}
   - {fileID: 8300000, guid: 76b53e46ff6ef6745931798de86f2bd4, type: 3}
   - {fileID: 8300000, guid: 1071a86b0e4f9a34c93999f973edee04, type: 3}
+--- !u!114 &1175507573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175507566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ee1c62c905bb24ea7c9cf3d9d40b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TraumaExponent: 1
+  MaximumAngularShake: {x: 10, y: 10, z: 10}
+  MaximumTranslationShake: {x: 1, y: 1, z: 1}
 --- !u!1 &1203054674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2773,7 +2789,7 @@ MonoBehaviour:
     type: 3}
   leftright: 1
   scaleChange: 0.005
-  rotChange: 1.5
+  rotChange: 0.5
   colChange: 0.005
 --- !u!1001 &1339225130
 PrefabInstance:
@@ -2902,7 +2918,7 @@ MonoBehaviour:
     type: 3}
   leftright: -1
   scaleChange: 0.005
-  rotChange: 1.5
+  rotChange: 0.5
   colChange: 0.005
 --- !u!114 &1421035716
 MonoBehaviour:
@@ -3296,7 +3312,7 @@ MonoBehaviour:
     type: 3}
   leftright: -1
   scaleChange: 0.005
-  rotChange: 1.5
+  rotChange: 0.5
   colChange: 0.005
 --- !u!114 &1624536352
 MonoBehaviour:
@@ -3887,7 +3903,7 @@ MonoBehaviour:
     type: 3}
   leftright: 1
   scaleChange: 0.005
-  rotChange: 1.5
+  rotChange: 0.5
   colChange: 0.005
 --- !u!114 &1984511196
 MonoBehaviour:
