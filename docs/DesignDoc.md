@@ -33,6 +33,7 @@
 ![UserProfile](pics/UserProfile.png)
   * [/api/users/editprofile]
   * [/api/users/logout]
+
 #####
 * GameSetup
 ![GameScreen](pics/GameScreen.png)
@@ -51,7 +52,7 @@
 * [Click here to click through the screens](https://xd.adobe.com/view/0afd475f-d31e-4b11-7b1d-ffa94a47ca39-7ccc/)
 
 
- ![navflow](pics/navflow.png)
+ ![navflow](pics/flowdiagram.png)
 
 ##### Backend Information:
 * Database schema:
