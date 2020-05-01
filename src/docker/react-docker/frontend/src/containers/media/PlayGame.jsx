@@ -11,6 +11,13 @@ import {withRouter} from 'react-router';
 class PGame extends React.Component {
   constructor(props) {
     super(props);
+    axios.get('/d/acct/profile/').then((res) => {
+      if (res.status === 403) {
+        void(0);
+      }
+    }).catch((error) => {
+      this.props.history.push('/');
+    });
   }
   async componentDidMount() {
     const game = await axios.get('/d/game/' + this.props.match.params.id).then(async function(response) {

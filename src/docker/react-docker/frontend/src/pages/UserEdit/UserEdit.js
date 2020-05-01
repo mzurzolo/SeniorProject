@@ -4,6 +4,7 @@ import EditInfo from '../../containers/forms/EditInfo';
 import './UserEdit.css';
 import axios from 'axios';
 
+  
 export default class Signup extends Component {
   constructor(props) {
     super(props);

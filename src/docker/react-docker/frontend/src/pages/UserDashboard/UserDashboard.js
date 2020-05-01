@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NavBar from '../../containers/media/Navbar.jsx';
 import Leaderboard from '../../containers/media/Leaderboard';
+import GameHistory from '../../containers/media/GameHistory';
 import './UserDashboard.css';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
@@ -25,6 +26,7 @@ export default class UserDashboard extends Component {
             this.props.history.push('/GameSelection')}>Play Game</button>
         </div>
         <Leaderboard/>
+        <GameHistory/>
       </div>
     );
   }

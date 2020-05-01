@@ -1,0 +1,59 @@
+#title {
+    display: flex;
+    justify-content: center;
+    width: 90%
+}
+
+#gamehistory {
+    background-color: #d9d9d9;
+    border: 10px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: 20% 10% 0% 0%;
+    padding: auto auto auto auto;
+    width: 90%
+}
+
+#gamehistory table {
+    font-family: yoster;
+    font-size: 40px;
+}
+
+#title {
+    border-bottom: 10px solid black;
+    width: 100%;
+    font-size: 220%;
+    padding: 0px;
+}
+
+
+#title h3{
+    font-family: yoster;
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+}
+
+#columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+tbody {
+  text-align: center;
+}
+
+.player {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@font-face {
+    font-family: karma;
+    src: url(../fonts/karma\ future.ttf);
+  }
+
+  @font-face {
+    font-family: yoster;
+    src: url(../fonts/yoster.ttf);
+}

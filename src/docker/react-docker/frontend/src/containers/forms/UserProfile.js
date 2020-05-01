@@ -7,6 +7,13 @@ import './UserProfile.css';
 class UserProfile extends Component {
   constructor(props) {
     super(props);
+    axios.get('/d/acct/profile/').then((res) => {
+      if (res.status === 403) {
+        void(0);
+      }
+    }).catch((error) => {
+      this.props.history.push('/');
+    });
     this.state = {
       curr_user: [],
     };

@@ -26,10 +26,7 @@
     padding: 0px;
 }
 
-@font-face {
-    font-family: karma;
-    src: url(../fonts/karma\ future.ttf);
-  }
+
 
 #title h2 {
     font-family: karma;
@@ -50,3 +47,8 @@ tbody {
     display: flex;
     justify-content: space-between;
 }
+
+@font-face {
+    font-family: karma;
+    src: url(../fonts/karma\ future.ttf);
+  }
