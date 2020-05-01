@@ -1,4 +1,5 @@
 <h2 id=<span style="text-align:center;">Design Specification</span></h2>
+
 ### Tic Tac Toe
 ##### High Level Description:
 * Tic-Tac-Toe is a turn-based game for two players over the internet.
@@ -162,7 +163,7 @@
     * Start adding game support to Django (save game features, p2p communication for 2 player gameplay, possibly leveraging code Vince wrote for the chatroom).
 * __Vincent Paone <vpaone59@gmail.com>__
     * Have working chat functionality.
-    * 
+    *
 * __Colton Bonsall <Josephcbonsallv@gmail.com>__
     * Assisted in Leaderboard integration
     * Implemented "Edit User" function
