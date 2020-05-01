@@ -10,6 +10,8 @@ export default function NewUser(props) {
   const [email2, setEmail2] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -51,8 +53,19 @@ export default function NewUser(props) {
     }).then(function(response) {
       // If successful response (201)
       if (response.status === 201) {
-        alert('Success! Your account has been created');
-        history.push('/Dashboard');
+        axios.patch('/d/acct/profile/', {
+          username: user,
+          first_name: fname,
+          last_name: lname,
+        }).then(function(res) {
+          if (res.status === 200) {
+            alert('Success! Your account has been created');
+            history.push('/Dashboard');
+          }
+        }).catch(function(error) {
+          alert('Invalid request! \n' + error);
+          window.location.reload();
+        });
       }
     }).catch(function(error) {
       alert('Invalid request! \n' + error);
@@ -65,6 +78,16 @@ export default function NewUser(props) {
       <form onSubmit={handleSubmit}>
         <input
           autoFocus
+          placeholder="First Name"
+          required
+          type="text"
+          onChange={(e) => setFname(e.target.value)} />
+        <input
+          placeholder="Last Name"
+          required
+          type="text"
+          onChange={(e) => setLname(e.target.value)} />
+        <input
           placeholder="Username"
           required
           type="text"

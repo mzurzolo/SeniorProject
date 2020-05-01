@@ -9,8 +9,8 @@ import axios from 'axios';
 import {withRouter} from 'react-router';
 
 class Game extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+      super(props);
     this.unityContent = new UnityContent(
         'MyGame/Build/MyGame.json',
         'MyGame/Build/UnityLoader.js',

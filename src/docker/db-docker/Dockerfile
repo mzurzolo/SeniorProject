@@ -1,4 +1,4 @@
-FROM mysql/mysql-server:5.7
+FROM mysql/mysql-server:latest
 
 # switch shell
 SHELL ["/bin/bash", "-c"]

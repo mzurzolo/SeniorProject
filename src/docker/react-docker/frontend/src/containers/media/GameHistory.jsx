@@ -14,10 +14,10 @@ export default class GameHistory extends React.Component {
         .then((res) => {
           const games_response = res.data;
           const games = games_response.map(async function(game) {
-            const gamestate = await axios.get('/d/game/' + game.id + '/state/').then((res) => {
+            const gamestate = await axios.get('/d/user/' + game.winner + '/').then((res) => {
               if (res.status === 200) {
-                const gamestate = res.data;
-                game.gamestate = gamestate;
+                const user = res.data;
+                game.winner = user.username;
                 return game;
               }
             });
@@ -40,15 +40,13 @@ export default class GameHistory extends React.Component {
         <table>
           <tr>
             <th>GameID</th>
-            <th>Player 1</th>
-            <th>Player 2</th>
             <th>Winner</th>
             <th>Date Finished</th>
           </tr>
           <tbody>
             {
               this.state.games.map((gamehist) =>{
-                return <tr><td>{gamehist.id}</td><td>{gamehist.gamestate.player1}</td><td>{gamehist.gamestate.player2}</td><td>{gamehist.gamestate.winner}</td><td>{gamehist.date_completed}</td></tr>;
+                return <tr><td>{gamehist.id}</td><td>{gamehist.winner}</td><td>{gamehist.date_completed}</td></tr>;
               })
             }
           </tbody>

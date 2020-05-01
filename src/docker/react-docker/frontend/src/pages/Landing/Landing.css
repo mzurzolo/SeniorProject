@@ -6,3 +6,11 @@
   height: fill;
   width: fill;
 }
+
+#leaderboard {
+  display: flex;
+  flex-direction: column;
+  margin: 0% 10% 0% 0%;
+  padding: auto auto auto auto;
+  width: 90%
+}

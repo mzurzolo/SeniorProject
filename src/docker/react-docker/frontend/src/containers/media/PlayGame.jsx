@@ -4,7 +4,6 @@
 import React, {useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import Unity, {UnityContent} from 'react-unity-webgl';
-import GameSelection from '../forms/GameSelection';
 import axios from 'axios';
 import {withRouter} from 'react-router';
 
@@ -34,7 +33,7 @@ class PGame extends React.Component {
       }
     });
     if (game.player_2 === null) {
-      this.props.history.push('/gameselection');
+      this.props.history.push('/GameMenu');
     } else {
       this.props.history.push({
         pathname: '/Game',
