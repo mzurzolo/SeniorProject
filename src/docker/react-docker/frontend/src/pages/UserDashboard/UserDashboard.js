@@ -5,6 +5,7 @@ import GameHistory from '../../containers/media/GameHistory';
 import './UserDashboard.css';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
+import { Container } from '@material-ui/core';
 
 export default class UserDashboard extends Component {
   constructor(props) {
