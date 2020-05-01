@@ -26,7 +26,6 @@ export default class UserDashboard extends Component {
             this.props.history.push('/GameMenu')}>Play Game</button>
         </div>
         <Leaderboard/>
-        <GameHistory/>
       </div>
     );
   }

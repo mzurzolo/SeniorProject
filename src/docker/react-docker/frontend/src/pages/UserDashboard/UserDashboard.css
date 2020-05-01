@@ -2,41 +2,17 @@
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
     display: grid;
-    height: max;
+    height: fill;
     width: fill;
     background-color: #262626;
 }
 
 #dashboard #navbar {
     grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
-}
-
-#gamehistory{
-
-    grid-column-start: 2;
     grid-column-end: 3;
-    align-items:center;
-    margin: 10% 0% 0% 0%;
 }
-
-#leaderboard{
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 4;
-
-}
-
-
 
 #startgame {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 2;
     align-items:center;
     display: flex;
     justify-content:center;
