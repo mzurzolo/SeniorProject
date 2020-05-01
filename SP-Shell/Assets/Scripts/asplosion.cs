@@ -15,7 +15,7 @@ public class asplosion : MonoBehaviour
         exp = GetComponent<ExplosionMat>();
         tf.localScale = new Vector3(0.0f, 0.0f, 0.0f);
         sr = GetComponentInParent<StressReceiver>();
-        sr.InduceStress(5);
+        sr.InduceStress(10);
     }
 
     float scaleChange = 0.25f;

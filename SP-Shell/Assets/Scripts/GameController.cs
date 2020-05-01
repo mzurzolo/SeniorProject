@@ -15,10 +15,10 @@ public class GameController : MonoBehaviour
     public GameObject gameOverPanel;
     public Text gameOverText;
     public GameObject restartButton;
-    private string side = "X";
+    private string side;
     public GameObject player_container;
     public Player[] players;
-    public int player_idx = 0;
+    public int player_idx;
     public Save save = new Save();
     public bool enableRestart = true;
     public bool gameOver = false;
@@ -43,6 +43,8 @@ public class GameController : MonoBehaviour
             enableRestart = false;
 #endif
 #if UNITY_EDITOR
+        player_idx = 0;
+        side = "X";
         enableRestart = true;
 #endif
         players = player_container.GetComponentsInChildren<Player>();
