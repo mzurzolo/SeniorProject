@@ -2,17 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import Landing from './pages/Landing/Landing';
 import UserDashboard from './pages/UserDashboard/UserDashboard';
-// import Signup from './pages/Signup/Signup';
 import Game from './pages/GamePlay/GamePlay';
 import PlayGame from './pages/GamePlay/PlayGame';
-// import ChatJoin from './containers/forms/chat/client/src/components/Join/Join.js';
-// import ChatRoom from './containers/forms/chat/client/src/components/Chat/Chat.js';
-// import Messaging from './containers/media/Messaging/messaging';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 import UserPage from './pages/UserPage/UserPage';
 import GameMenu from './pages/GameMenu/GameMenu';
-//import GameSelection from './pages/GameSelection/GameSelection';
-import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import UserEdit from './pages/UserEdit/UserEdit';
 // import SelectGame from './pages/SelectGame/GameMenu';
@@ -35,7 +29,6 @@ export default class App extends React.Component {
           <Route path='/Profile' component={UserPage} />
           <Route path='/UserEdit' component={UserEdit} />
           <Route path='/gameselection' component={GameMenu} />
-          <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
         </div>
       </Router>

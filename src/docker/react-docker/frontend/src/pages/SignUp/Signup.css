@@ -1,0 +1,9 @@
+#signup {
+    background-color: #262626;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    height: fill;
+    width: fill;
+  }
+  

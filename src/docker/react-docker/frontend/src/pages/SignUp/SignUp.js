@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
-import SignUpMatUI from '../../containers/forms/SignUpMatUI';
+import NewUser from '../../containers/forms/NewUser';
+import './Signup.css';
 
 export default class SignUp extends Component {
   render() {
     return (
       <div id='signup'>
-        <SignUpMatUI />
+        <NewUser />
       </div>
     );
   }
