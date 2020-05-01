@@ -2,7 +2,7 @@
 Senior Project, Group Project
 ## [Specification Sheet](docs/SpecSheet.md)
 
-## [Design Doc](docs/DesignDoc.md)
+## [Design Doc](docs/DesignDocv2.md)
 
 ## [Contributions](src/README.md)
 
