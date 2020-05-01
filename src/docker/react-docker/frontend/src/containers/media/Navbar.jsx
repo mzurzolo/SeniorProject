@@ -18,6 +18,7 @@ export default function NavBar() {
     <div id='navbar'>
       <button id='dashboard' onClick={() => history.push('/Dashboard')}>Dashboard</button>
       <button id='profile' onClick={() => history.push('/Profile')}>User Profile</button>
+      <button id='games' onClick={() => history.push('/GameMenu')}>Games</button>
       <button id='logout' onClick={handleLogout}>Sign Out</button>
     </div>
   );
