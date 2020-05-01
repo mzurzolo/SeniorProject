@@ -139,11 +139,19 @@
     * Create procedure to query database for leaderboard results
     * Assist with React Routing and developing application interaction
 * __Semih Sahin <semihsahin2834@gmail.com>__
-    *
+    * Assist with front-end functionality design and implementation
+    * Re-routing of certain pages that should only be accessible to users
 * __Jeff Paulson <paulsonj3@students.rowan.edu>__
-    *
+    * Project design
+    * Workforce coordination
+    * Documentation
+    * Frontend developement
+    * Backend support
 * __Tyler Roman <romant75@students.rowan.edu>__
-    *
+    * Integrated Unity into React through rendering in WebGL using an open-source 3rd-party plugin.
+    * Assisted in connecting endpoints between React and Unity.
+    * Designed original game concept on paper and pencil, and designed potential implementations for this concept.
+    * Overhauled game aesthetics adding royalty-free sounds, music, and visuals.
 * __Patrick O'Brien <obrienp4@students.rowan.edu>__
     * Assisted with unity design.
     * Built tic-tac-toe.
@@ -154,7 +162,7 @@
     * Start adding game support to Django (save game features, p2p communication for 2 player gameplay, possibly leveraging code Vince wrote for the chatroom).
 * __Vincent Paone <vpaone59@gmail.com>__
     * Have working chat functionality.
-    *
+    * 
 * __Colton Bonsall <Josephcbonsallv@gmail.com>__
     * Assisted in Leaderboard integration
     * Implemented "Edit User" function
