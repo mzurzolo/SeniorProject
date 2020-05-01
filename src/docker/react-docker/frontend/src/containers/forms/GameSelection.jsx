@@ -50,7 +50,7 @@ class GameSelection extends React.Component {
         game: game,
       });
       this.props.history.push({
-        pathname: '/Game',
+        pathname: '/playgame/' + game.id,
         state: {
           game: game,
         },
