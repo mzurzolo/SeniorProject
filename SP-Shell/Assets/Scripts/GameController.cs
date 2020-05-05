@@ -240,37 +240,14 @@ public class GameController : MonoBehaviour
 
     public void PollLoop(int i)
     {
-      string pside = GetSide();
-      if (spaceList[0].text == side && spaceList[1].text == side && spaceList[2].text == side)
-          GameOver();
-      else if (spaceList[3].text == side && spaceList[4].text == side && spaceList[5].text == side)
-          GameOver();
-      else if (spaceList[6].text == side && spaceList[7].text == side && spaceList[8].text == side)
-          GameOver();
-      else if (spaceList[0].text == side && spaceList[3].text == side && spaceList[6].text == side)
-          GameOver();
-      else if (spaceList[1].text == side && spaceList[4].text == side && spaceList[7].text == side)
-          GameOver();
-      else if (spaceList[2].text == side && spaceList[5].text == side && spaceList[8].text == side)
-          GameOver();
-      else if (spaceList[0].text == side && spaceList[4].text == side && spaceList[8].text == side)
-          GameOver();
-      else if (spaceList[2].text == side && spaceList[4].text == side && spaceList[6].text == side)
-          GameOver();
-      else if (CheckBoard())
-      {
-          gameOverPanel.SetActive(true);
-          gameOverText.text = "Tie!";
-          restartButton.SetActive(true);
-          GameOver();
-      }
-      if ((pside == "X" && player_idx != 0) || (pside == "O" && player_idx != 1))
-      {
-        #if UNITY_WEBGL
-          PollTrigger();
-        #endif
-        pside = GetSide();
-      }
+        string pside = GetSide();
+        if ((pside == "X" && player_idx != 0) || (pside == "O" && player_idx != 1))
+        {
+            #if UNITY_WEBGL
+                PollTrigger();
+            #endif
+            pside = GetSide();
+        }
     }
 
     public void EndTurn()
