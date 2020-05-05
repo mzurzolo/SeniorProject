@@ -183,7 +183,11 @@ public class GameController : MonoBehaviour
         if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
             PollLoop(1);
 
-        CheckGameOver();
+        if (s_ave.winner != -1)
+        {
+            player_idx = s_ave.winner;
+            GameOver();
+        }
 
         Debug.Log("postimport");
     }
@@ -278,29 +282,14 @@ public class GameController : MonoBehaviour
             gameOverText.text = "Tie!";
         else
         {
-            if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
-            {
-                if (player_idx == 0)
-                {
-                    UGameOver(players[0].name);
-                    gameOverText.text = players[0].name + " WINS!";
-                }
-                else
-                {
-                    UGameOver(players[1].name);
-                    gameOverText.text = players[1].name + " WINS!";
-                }
-            }
-            else
-            {
-                UGameOver(players[player_idx].name);
-                gameOverText.text = players[player_idx].name + " WINS!";
-            }
+            UGameOver(players[player_idx].name);
+            gameOverText.text = players[player_idx].name + " WINS!";
         }
         gameOverPanel.SetActive(true);
         restartButton.SetActive(enableRestart);
         for (int i = 0; i < spaceList.Length; i++)
             SetInteractable(false);
+        save.winner = player_idx;
     }
 
     void SetInteractable(bool setting)
@@ -343,4 +332,5 @@ public class Save
     public string side;
     public string player1;
     public string player2;
+    public int winner = -1;
 }
