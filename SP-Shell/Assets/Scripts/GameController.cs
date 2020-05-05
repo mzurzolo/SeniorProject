@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
             enableRestart = false;
 #endif
 #if UNITY_EDITOR
+        side = "X";
         player_idx = 0;
         enableRestart = true;
 #endif
@@ -108,6 +109,7 @@ public class GameController : MonoBehaviour
             PollLoop(1);
             Debug.Log("postexport");
         #endif
+
     }
 
     void SetGameControllerReferenceForButtons()
