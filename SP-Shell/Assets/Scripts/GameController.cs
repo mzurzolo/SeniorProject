@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     public GameObject gameOverPanel;
     public Text gameOverText;
     public GameObject restartButton;
-    private string side = "X";
+    private string side;
     public GameObject player_container;
     public Player[] players;
     public int player_idx;
@@ -251,7 +251,7 @@ public class GameController : MonoBehaviour
         if (!gameOver)
         {
             CheckGameOver();
-            UEndMove();
+            //UEndMove();
             ChangeSide();
             ExportState();
         }
