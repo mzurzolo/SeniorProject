@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
         player_idx = 0;
         enableRestart = true;
 #endif
-        
+
         SetGameControllerReferenceForButtons();
         gameOverPanel.SetActive(false);
         waitingPanel.SetActive(false);
@@ -282,13 +282,13 @@ public class GameController : MonoBehaviour
             {
                 if (player_idx == 0)
                 {
-                    UGameOver(players[1].name);
-                    gameOverText.text = players[1].name + " WINS!";
+                    UGameOver(players[0].name);
+                    gameOverText.text = players[0].name + " WINS!";
                 }
                 else
                 {
-                    UGameOver(players[0].name);
-                    gameOverText.text = players[0].name + " WINS!";
+                    UGameOver(players[1].name);
+                    gameOverText.text = players[1].name + " WINS!";
                 }
             }
             else
