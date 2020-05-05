@@ -91,17 +91,18 @@ public class Space : MonoBehaviour
 
     public void SetSpace(string change)
     {
-        if (buttonText.text == "")
+        if (change != "")
+        {
+            buttonText.text = change;
+            instanceExplosion();
+        }
+        else if (buttonText.text == "")
         {
             buttonText.text = gameController.GetSide();
             instanceExplosion();
             gameController.EndTurn();
         }
-        else if(change != "")
-        {
-            buttonText.text = change;
-            instanceExplosion();
-        }
+
     }
 
     void instanceExplosion()
