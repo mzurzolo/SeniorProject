@@ -116,6 +116,16 @@ class Game extends React.Component {
       axios.patch('/d/game/' + gameuuid + '/state/', {gamestate: jsonsavestate}).then(function(response) {
         if (response.status === 200) {
           console.log('good');
+          axios.get('/d/game/' + gameuuid + '/state/').then((res) => {
+            if (res.status === 200) {
+              const gamestate = res.data;
+              this.unityContent.send(
+                  'GameController',
+                  'ImportState',
+                  JSON.stringify(gamestate),
+              );
+            }
+          });
         }
       }).catch(function(error) {
         alert('Invalid request! \n' + error);
