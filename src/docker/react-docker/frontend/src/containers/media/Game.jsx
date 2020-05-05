@@ -113,13 +113,14 @@ class Game extends React.Component {
     this.unityContent.on('ExportState', (savestate) => {
       console.log('Export State');
       const jsonsavestate = JSON.parse(savestate);
-      axios.patch('/d/game/' + gameuuid + '/state/', {gamestate: jsonsavestate}).then((response, jsonsavestate) => {
+      axios.patch('/d/game/' + gameuuid + '/state/', {gamestate: jsonsavestate}).then((response) => {
         if (response.status === 200) {
           console.log('good');
+          const gamestate = response.data;
           this.unityContent.send(
               'GameController',
               'ImportState',
-              JSON.stringify(jsonsavestate),
+              JSON.stringify(gamestate),
           );
         }
       });
