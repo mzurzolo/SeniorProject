@@ -104,8 +104,8 @@ public class GameController : MonoBehaviour
             return;
         #endif
         #if UNITY_WEBGL
-            PollLoop(1);
             ExportState(savestate);
+            PollLoop(1);
             Debug.Log("postexport");
         #endif
     }
