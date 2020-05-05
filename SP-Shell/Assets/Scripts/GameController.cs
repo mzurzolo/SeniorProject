@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     public GameObject gameOverPanel;
     public Text gameOverText;
     public GameObject restartButton;
-    private string side;
+    private string side = "X";
     public GameObject player_container;
     public Player[] players;
     public int player_idx;
@@ -44,7 +44,6 @@ public class GameController : MonoBehaviour
 #endif
 #if UNITY_EDITOR
         player_idx = 0;
-        side = "X";
         enableRestart = true;
 #endif
         players = player_container.GetComponentsInChildren<Player>();
@@ -105,8 +104,8 @@ public class GameController : MonoBehaviour
             return;
         #endif
         #if UNITY_WEBGL
+            PollLoop(1);
             ExportState(savestate);
-            Thread.Sleep(1000);
             Debug.Log("postexport");
         #endif
     }
@@ -240,21 +239,11 @@ public class GameController : MonoBehaviour
       string pside = GetSide();
       if ((pside == "X" && player_idx != 0) || (pside == "O" && player_idx != 1))
       {
-        Debug.Log("Poll Loop!");
-        Debug.Log(pside);
-        Thread.Sleep(2500);
-        Debug.Log("Slept!");
         #if UNITY_WEBGL
           PollTrigger();
         #endif
         pside = GetSide();
       }
-
-      //while (poll_side == side)
-      //{
-        //Thread.Sleep(1000);
-        //side = GetSide();
-      //}
     }
 
     public void EndTurn()
@@ -278,7 +267,6 @@ public class GameController : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log(enableRestart);
         gameOver = true;
         UGameOver(players[player_idx].name);
         gameOverPanel.SetActive(true);
