@@ -11,6 +11,7 @@ using System.Threading;
 public class GameController : MonoBehaviour
 {
     public Text[] spaceList;
+    public Space[] trueSpaceList;
     public GameObject gameOverPanel;
     public Text gameOverText;
     public GameObject restartButton;
@@ -20,6 +21,10 @@ public class GameController : MonoBehaviour
     public int player_idx;
     public Save save = new Save();
     public bool enableRestart = true;
+    public bool gameOver = false;
+    public bool tie = false;
+    public GameObject waitingPanel;
+    public imgColor imgCol;
 
     [DllImport("__Internal")]
     private static extern void GameOver(string winner);
@@ -32,50 +37,41 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        players = player_container.GetComponentsInChildren<Player>();
+        Screen.SetResolution(9, 16,true);
+        imgCol.Init();
         #if UNITY_WEBGL
             enableRestart = false;
-        #endif
-        players = player_container.GetComponentsInChildren<Player>();
+#endif
+#if UNITY_EDITOR
+        players[0].SetName("Player1");
+        players[1].SetName("Player2");
+
+        side = "X";
+        player_idx = 0;
+        enableRestart = true;
+#endif
+
         SetGameControllerReferenceForButtons();
         gameOverPanel.SetActive(false);
+        waitingPanel.SetActive(false);
         restartButton.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (!gameOver)
         {
-            #if UNITY_WEBGL
-                //Call react function to export json i guess?
-            #endif
-            #if UNITY_EDITOR
-                SaveFile();
-            #endif
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            #if UNITY_WEBGL
-                //Call react function to import json i guess?
-            #endif
-            #if UNITY_EDITOR
-                LoadFile();
-            #endif
-        }
-        if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
-            SetInteractable(false);
-        else
-            SetInteractable(true);
-    }
-
-    private float d = 0;
-
-    private void FixedUpdate()
-    {
-        d += Time.fixedDeltaTime;
-        if(d>60.0)
-        {
-            Debug.Log("!!!");
-            d = 0;
+            if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
+            {
+                waitingPanel.SetActive(true);
+                SetInteractable(false);
+            }
+            else
+            {
+                waitingPanel.SetActive(false);
+                SetInteractable(true);
+            }
         }
     }
 
@@ -114,14 +110,22 @@ public class GameController : MonoBehaviour
         #endif
         #if UNITY_WEBGL
             ExportState(savestate);
-            PollLoop(1);
+            //PollLoop(1);
+            Debug.Log("postexport");
         #endif
+
     }
 
     void SetGameControllerReferenceForButtons()
     {
+        int x = Random.Range(-1, 1);
+        while (x == 0)
+            x = Random.Range(-1, 1);
         for (int i = 0; i < spaceList.Length; i++)
+        {
             spaceList[i].GetComponentInParent<Space>().SetControllerReference(this);
+            spaceList[i].GetComponentInParent<Space>().Init(x);
+        }
     }
 
     public void SaveFile()
@@ -173,11 +177,44 @@ public class GameController : MonoBehaviour
         players[0].name = s_ave.player1;
         players[1].name = s_ave.player2;
         for (int i = 0; i < spaceList.Length; i++)
-            spaceList[i].text = s_ave.spaceList[i];
+            if (spaceList[i].text != s_ave.spaceList[i])
+                spaceList[i].GetComponentInParent<Space>().SetSpace(s_ave.spaceList[i]);
         if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
             PollLoop(1);
+
+        if (s_ave.winner != -1)
+        {
+            player_idx = s_ave.winner;
+            GameOver();
+        }
+
+        Debug.Log("postimport");
     }
 
+    public void CheckGameOver()
+    {
+        if (spaceList[0].text != "" && spaceList[1].text == spaceList[0].text && spaceList[2].text == spaceList[0].text)
+            GameOver();
+        else if (spaceList[3].text != "" && spaceList[4].text == spaceList[3].text && spaceList[5].text == spaceList[3].text)
+            GameOver();
+        else if (spaceList[6].text != "" && spaceList[7].text == spaceList[6].text && spaceList[8].text == spaceList[6].text)
+            GameOver();
+        else if (spaceList[0].text != "" && spaceList[3].text == spaceList[0].text && spaceList[6].text == spaceList[0].text)
+            GameOver();
+        else if (spaceList[1].text != "" && spaceList[4].text == spaceList[1].text && spaceList[7].text == spaceList[1].text)
+            GameOver();
+        else if (spaceList[2].text != "" && spaceList[5].text == spaceList[2].text && spaceList[8].text == spaceList[2].text)
+            GameOver();
+        else if (spaceList[0].text != "" && spaceList[4].text == spaceList[0].text && spaceList[8].text == spaceList[0].text)
+            GameOver();
+        else if (spaceList[2].text != "" && spaceList[4].text == spaceList[2].text && spaceList[6].text == spaceList[2].text)
+            GameOver();
+        else if (CheckBoard())
+        {
+            tie = true;
+            GameOver();
+        }
+    }
     public string GetSide()
     {
         return side;
@@ -233,41 +270,17 @@ public class GameController : MonoBehaviour
         #endif
         pside = GetSide();
       }
-      //while (poll_side == side)
-      //{
-        //Thread.Sleep(1000);
-        //side = GetSide();
-      //}
     }
 
     public void EndTurn()
     {
-        if (spaceList[0].text == side && spaceList[1].text == side && spaceList[2].text == side)
-            GameOver();
-        else if (spaceList[3].text == side && spaceList[4].text == side && spaceList[5].text == side)
-            GameOver();
-        else if (spaceList[6].text == side && spaceList[7].text == side && spaceList[8].text == side)
-            GameOver();
-        else if (spaceList[0].text == side && spaceList[3].text == side && spaceList[6].text == side)
-            GameOver();
-        else if (spaceList[1].text == side && spaceList[4].text == side && spaceList[7].text == side)
-            GameOver();
-        else if (spaceList[2].text == side && spaceList[5].text == side && spaceList[8].text == side)
-            GameOver();
-        else if (spaceList[0].text == side && spaceList[4].text == side && spaceList[8].text == side)
-            GameOver();
-        else if (spaceList[2].text == side && spaceList[4].text == side && spaceList[6].text == side)
-            GameOver();
-        else if (CheckBoard())
+        if (!gameOver)
         {
-            gameOverPanel.SetActive(true);
-            gameOverText.text = "Tie!";
-            restartButton.SetActive(true);
-            GameOver();
+            CheckGameOver();
+            //UEndMove();
+            ChangeSide();
+            ExportState();
         }
-        UEndMove();
-        ChangeSide();
-        ExportState();
     }
 
     bool CheckBoard()
@@ -280,24 +293,19 @@ public class GameController : MonoBehaviour
 
     void GameOver()
     {
-      string pside = GetSide();
-      if ((pside == "X" && player_idx != 0) || (pside == "O" && player_idx != 1))
-      {
-        if (player_idx == 0)
+        gameOver = true;
+        if (tie)
+            gameOverText.text = "Tie!";
+        else
         {
-          UGameOver(players[1].name);
-        } else {
-          UGameOver(players[0].name);
+            UGameOver(players[player_idx].name);
+            gameOverText.text = players[player_idx].name + " WINS!";
         }
-      } else {
-        UGameOver(players[player_idx].name);
-      }
-
         gameOverPanel.SetActive(true);
-        gameOverText.text = players[player_idx].name + " wins!";
         restartButton.SetActive(enableRestart);
         for (int i = 0; i < spaceList.Length; i++)
             SetInteractable(false);
+        save.winner = player_idx;
     }
 
     void SetInteractable(bool setting)
@@ -316,11 +324,19 @@ public class GameController : MonoBehaviour
     {
         side = "X";
         player_idx = 0;
+        gameOver = false;
+        tie = false;
         gameOverPanel.SetActive(false);
         SetInteractable(true);
         restartButton.SetActive(false);
+        int x = Random.Range(-1, 1);
+        while (x == 0)
+            x = Random.Range(-1, 1);
         for (int i = 0; i < spaceList.Length; i++)
+        {
             spaceList[i].text = "";
+            spaceList[i].GetComponentInParent<Space>().Init(x);
+        }
     }
 }
 
@@ -331,4 +347,5 @@ public class Save
     public string side;
     public string player1;
     public string player2;
+    public int winner = -1;
 }
