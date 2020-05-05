@@ -37,17 +37,21 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        players = player_container.GetComponentsInChildren<Player>();
         Screen.SetResolution(9, 16,true);
         imgCol.Init();
         #if UNITY_WEBGL
             enableRestart = false;
 #endif
 #if UNITY_EDITOR
+        players[0].SetName("Player1");
+        players[1].SetName("Player2");
+
         side = "X";
         player_idx = 0;
         enableRestart = true;
 #endif
-        players = player_container.GetComponentsInChildren<Player>();
+        
         SetGameControllerReferenceForButtons();
         gameOverPanel.SetActive(false);
         waitingPanel.SetActive(false);
@@ -186,21 +190,21 @@ public class GameController : MonoBehaviour
 
     public void CheckGameOver()
     {
-        if (spaceList[0].text == side && spaceList[1].text == side && spaceList[2].text == side)
+        if (spaceList[0].text != "" && spaceList[1].text == spaceList[0].text && spaceList[2].text == spaceList[0].text)
             GameOver();
-        else if (spaceList[3].text == side && spaceList[4].text == side && spaceList[5].text == side)
+        else if (spaceList[3].text != "" && spaceList[4].text == spaceList[3].text && spaceList[5].text == spaceList[3].text)
             GameOver();
-        else if (spaceList[6].text == side && spaceList[7].text == side && spaceList[8].text == side)
+        else if (spaceList[6].text != "" && spaceList[7].text == spaceList[6].text && spaceList[8].text == spaceList[6].text)
             GameOver();
-        else if (spaceList[0].text == side && spaceList[3].text == side && spaceList[6].text == side)
+        else if (spaceList[0].text != "" && spaceList[3].text == spaceList[0].text && spaceList[6].text == spaceList[0].text)
             GameOver();
-        else if (spaceList[1].text == side && spaceList[4].text == side && spaceList[7].text == side)
+        else if (spaceList[1].text != "" && spaceList[4].text == spaceList[1].text && spaceList[7].text == spaceList[1].text)
             GameOver();
-        else if (spaceList[2].text == side && spaceList[5].text == side && spaceList[8].text == side)
+        else if (spaceList[2].text != "" && spaceList[5].text == spaceList[2].text && spaceList[8].text == spaceList[2].text)
             GameOver();
-        else if (spaceList[0].text == side && spaceList[4].text == side && spaceList[8].text == side)
+        else if (spaceList[0].text != "" && spaceList[4].text == spaceList[0].text && spaceList[8].text == spaceList[0].text)
             GameOver();
-        else if (spaceList[2].text == side && spaceList[4].text == side && spaceList[6].text == side)
+        else if (spaceList[2].text != "" && spaceList[4].text == spaceList[2].text && spaceList[6].text == spaceList[2].text)
             GameOver();
         else if (CheckBoard())
         {
@@ -270,12 +274,30 @@ public class GameController : MonoBehaviour
     void GameOver()
     {
         gameOver = true;
-        UGameOver(players[player_idx].name);
-        gameOverPanel.SetActive(true);
         if (tie)
             gameOverText.text = "Tie!";
         else
-            gameOverText.text = players[player_idx].name + " wins!";
+        {
+            if ((side == "X" && player_idx != 0) || (side == "O" && player_idx != 1))
+            {
+                if (player_idx == 0)
+                {
+                    UGameOver(players[1].name);
+                    gameOverText.text = players[1].name + " WINS!";
+                }
+                else
+                {
+                    UGameOver(players[0].name);
+                    gameOverText.text = players[0].name + " WINS!";
+                }
+            }
+            else
+            {
+                UGameOver(players[player_idx].name);
+                gameOverText.text = players[player_idx].name + " WINS!";
+            }
+        }
+        gameOverPanel.SetActive(true);
         restartButton.SetActive(enableRestart);
         for (int i = 0; i < spaceList.Length; i++)
             SetInteractable(false);
