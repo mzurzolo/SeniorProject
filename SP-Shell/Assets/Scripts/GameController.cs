@@ -185,7 +185,8 @@ public class GameController : MonoBehaviour
 
         if (s_ave.winner != -1)
         {
-            player_idx = s_ave.winner;
+            if(s_ave.winner != -2)
+                player_idx = s_ave.winner;
             GameOver();
         }
 
@@ -212,7 +213,7 @@ public class GameController : MonoBehaviour
             GameOver();
         else if (CheckBoard())
         {
-            tie = true;
+            save.winner = -2;
             GameOver();
         }
     }
@@ -278,7 +279,7 @@ public class GameController : MonoBehaviour
     void GameOver()
     {
         gameOver = true;
-        if (tie)
+        if (save.winner == -2)
             gameOverText.text = "Tie!";
         else
         {
@@ -289,7 +290,8 @@ public class GameController : MonoBehaviour
         restartButton.SetActive(enableRestart);
         for (int i = 0; i < spaceList.Length; i++)
             SetInteractable(false);
-        save.winner = player_idx;
+        if(save.winner != -2)
+            save.winner = player_idx;
     }
 
     void SetInteractable(bool setting)
