@@ -186,7 +186,7 @@ public class GameController : MonoBehaviour
         {
             if(s_ave.winner != -2)
                 player_idx = s_ave.winner;
-            GameOver();
+            CheckGameOver();
         }
 
         Debug.Log("postimport");
