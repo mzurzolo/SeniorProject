@@ -25,7 +25,8 @@ SECRET_KEY = "$iuqv)@$vdic3%#q-r59k#htld3#3x6pem_wzk$cv&4#dznpf*"
 
 # 13. This is clearly not safe
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+#True
 
 # 13. Need to add the server's url
 ALLOWED_HOSTS = ["webserver", "localhost"]

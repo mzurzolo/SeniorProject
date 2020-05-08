@@ -24,7 +24,8 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
-RUN yarn --verbose && yarn global add serve
+RUN yarn --verbose && yarn global add serve && yarn build
+#CMD yarn && serve -s build -p 3000
 
 # start app
 # 13. we need to use the production build, not the dev build
