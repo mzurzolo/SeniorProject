@@ -12,7 +12,7 @@
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.19.0",
-    "http-proxy": "^1.18.0",
+    "http-proxy": "^1.18.1",
     "http-proxy-middleware": "^1.0.1",
     "material-ui": "^0.20.2",
     "node-http-proxy": "^0.2.3",
