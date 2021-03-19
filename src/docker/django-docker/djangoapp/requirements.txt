@@ -21,7 +21,7 @@ django-cors-headers==3.2.1
 django-rest==0.0.1
 django-rest-auth==0.9.5
 django-rest-registration==0.5.4
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 drf-yasg==1.17.1
 hiredis==1.0.1
 hyperlink==19.0.0
